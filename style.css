@@ -2163,7 +2163,7 @@ footer {
 /* ── WhatsApp Float ───────────────────────────────────────── */
 .whatsapp-float {
   position: fixed;
-  bottom: 1.5rem;
+  bottom: 6.5rem;
   left: 1.5rem;
   width: 52px;
   height: 52px;
@@ -2819,10 +2819,11 @@ footer {
 /* ── In-House AI Chatbot (Sales Closer) ──────────────────── */
 .ai-chat-widget {
   position: fixed;
-  bottom: 1.5rem;
+  bottom: 6.5rem;
   right: 1.5rem;
   z-index: 9999;
   font-family: var(--font-body);
+  pointer-events: none;
 }
 
 .ai-chat-btn {
@@ -2880,6 +2881,7 @@ footer {
   opacity: 0;
   visibility: hidden;
   transition: all 0.4s var(--ease-bounce);
+  pointer-events: auto;
 }
 
 .ai-chat-window.open {
