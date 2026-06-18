@@ -2163,8 +2163,8 @@ footer {
 /* ── WhatsApp Float ───────────────────────────────────────── */
 .whatsapp-float {
   position: fixed;
-  bottom: 5.5rem;
-  right: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.5rem;
   width: 52px;
   height: 52px;
   background: #25d366;
@@ -2837,6 +2837,8 @@ footer {
   cursor: pointer;
   transition: all 0.3s var(--ease-bounce);
   position: relative;
+  z-index: 99999 !important;
+  pointer-events: auto !important;
 }
 
 .ai-chat-btn::before {
