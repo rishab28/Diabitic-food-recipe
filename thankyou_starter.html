@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Confirmed — Thank You | Khadu Farm</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎉</text></svg>" />
+  <style>
+    .thankyou-box {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      max-width: 700px;
+      margin: 2rem auto;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+    .check-icon {
+      font-size: 4rem;
+      color: var(--accent-green);
+      margin-bottom: 1rem;
+    }
+    .download-section {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      padding: 1.5rem;
+      border-radius: var(--radius-lg);
+      margin: 2rem 0;
+    }
+    .upsell-section {
+      border: 2px solid var(--accent-primary);
+      background: linear-gradient(180deg, rgba(249, 115, 22, 0.08) 0%, var(--bg-secondary) 100%);
+      padding: 2.5rem 2rem;
+      border-radius: var(--radius-xl);
+      margin: 3rem 0;
+      text-align: center;
+      box-shadow: 0 16px 48px var(--accent-glow);
+    }
+    .upsell-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 600px) {
+      .upsell-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section>
+    <div class="container">
+      <div class="thankyou-box">
+        <div class="check-icon">✓</div>
+        <h1 class="section-title" style="margin-bottom: 0.5rem;">Thank You for Your Purchase!</h1>
+        <p style="color: var(--text-secondary);">Your payment was successful and your order is confirmed.</p>
+
+        <!-- DELIVERABLES SECTION -->
+        <div class="download-section">
+          <h3 style="margin-bottom: 1rem;">🎁 Your Starter Deliverables:</h3>
+          <a href="#REPLACE_WITH_ACTUAL_RECIPE_PDF_DOWNLOAD_LINK" class="btn btn-green" style="width: 100%; margin-bottom: 1rem;">
+            📥 Download 100+ Recipe eBook (PDF)
+          </a>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">A download link has also been sent to your email.</p>
+        </div>
+
+        <!-- WHATSAPP COMMUNITY SECTION (STARTER SPECIFIC) -->
+        <div class="download-section" style="border-color: rgba(37, 211, 102, 0.3);">
+          <h3 style="margin-bottom: 0.5rem; color: #25d366;">💬 Join Our Starter Community:</h3>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">
+            Join our exclusive Starter WhatsApp group to get support, weekly diabetic tips, and interact with other healthy home cooks.
+          </p>
+          <a href="#REPLACE_WITH_STARTER_WHATSAPP_COMMUNITY_LINK" class="btn" style="background-color: #25d366; color: white; width: 100%;" target="_blank" rel="noopener">
+            Join Starter WhatsApp Group
+          </a>
+        </div>
+      </div>
+
+      <!-- HORMORZI ONE-TIME-OFFER UPSELL (50% OFF PRO/PREMIUM) -->
+      <div class="upsell-section">
+        <span class="section-label center" style="color: var(--accent-primary); font-weight: 900;">⚡ EXCLUSIVE ONE-TIME OFFER</span>
+        <h2 class="section-title" style="margin: 0.5rem 0 1rem;">Upgrade Your Health & Save 50%</h2>
+        <p style="color: var(--text-secondary); max-width: 550px; margin: 0 auto 1.5rem;">
+          Since you already bought the Starter Pack, we want to give you a one-time opportunity to unlock our highly requested meal plans, checklists, and survival guides at a <strong>special 50% discount</strong>. This offer is only available on this page right now.
+        </p>
+
+        <div class="upsell-grid">
+          <!-- UPGRADE TO PRO -->
+          <div class="price-card" style="background: var(--bg-primary); text-align: left;">
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">🏆 Upgrade to Pro Bundle</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Includes 30-Day Meal Planner, Smart Grocery Lists, GI Cheat Sheet, and Dining Out Survival Guide.</p>
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent-green); margin-bottom: 1rem;">
+              Only ₹249 <span style="text-decoration: line-through; font-size: 0.9rem; color: var(--text-muted); font-weight: 400;">(Regular ₹499)</span>
+            </div>
+            <a href="#REPLACE_WITH_SUPERPROFILE_STARTER_TO_PRO_UPSELL" class="btn btn-primary" style="width: 100%; font-size: 0.9rem; padding: 0.75rem 1.5rem;">
+              Unlock Pro for ₹249
+            </a>
+          </div>
+
+          <!-- UPGRADE TO PREMIUM -->
+          <div class="price-card" style="background: var(--bg-primary); text-align: left;">
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">💎 Upgrade to Premium</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Includes all Pro resources, 10 Insulin Drinks Guide, and access to the Private VIP WhatsApp Support Community.</p>
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent-green); margin-bottom: 1rem;">
+              Only ₹499 <span style="text-decoration: line-through; font-size: 0.9rem; color: var(--text-muted); font-weight: 400;">(Regular ₹999)</span>
+            </div>
+            <a href="#REPLACE_WITH_SUPERPROFILE_STARTER_TO_PREMIUM_UPSELL" class="btn btn-green" style="width: 100%; font-size: 0.9rem; padding: 0.75rem 1.5rem;">
+              Unlock Premium for ₹499
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="container">
+      <p>© 2025 <a href="https://khadufarm.com" target="_blank">Khadu Farm</a>. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
