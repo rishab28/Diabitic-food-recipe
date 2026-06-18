@@ -2823,7 +2823,6 @@ footer {
   right: 1.5rem;
   z-index: 9999;
   font-family: var(--font-body);
-  pointer-events: none;
 }
 
 .ai-chat-btn {
@@ -2839,7 +2838,6 @@ footer {
   transition: all 0.3s var(--ease-bounce);
   position: relative;
   z-index: 99999 !important;
-  pointer-events: auto !important;
 }
 
 .ai-chat-btn::before {
@@ -2881,7 +2879,6 @@ footer {
   opacity: 0;
   visibility: hidden;
   transition: all 0.4s var(--ease-bounce);
-  pointer-events: auto;
 }
 
 .ai-chat-window.open {
