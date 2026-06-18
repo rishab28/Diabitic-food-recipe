@@ -18,6 +18,24 @@
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'INSERT_PIXEL_ID_HERE');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=INSERT_PIXEL_ID_HERE&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -1136,17 +1154,36 @@
   updateViewerCount();
 
   // ===================================================================
-  // k) META PIXEL STUBS for CTA clicks
+  // k) META PIXEL tracking for CTA clicks
   // ===================================================================
   var ctaButtons = document.querySelectorAll('#heroCTA, #finalCTA, #exitCTA, .plan-cta');
   ctaButtons.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      // META PIXEL: Uncomment when pixel is installed
-      // fbq('track', 'InitiateCheckout', {
-      //   value: 499,
-      //   currency: 'INR',
-      //   content_name: 'Diabetic Recipe Bundle'
-      // });
+      if (typeof fbq === 'function') {
+        var price = 499;
+        var planName = 'Pro Bundle';
+        var text = btn.textContent || '';
+        
+        if (text.indexOf('299') !== -1) {
+          price = 299;
+          planName = 'Starter';
+        } else if (text.indexOf('999') !== -1) {
+          price = 999;
+          planName = 'Premium Masterclass';
+        } else if (text.indexOf('499') !== -1) {
+          price = 499;
+          planName = 'Pro Bundle';
+        } else if (btn.id === 'exitCTA') {
+          price = 424; // Discounted Pro in exit modal
+          planName = 'Pro Bundle (Discounted)';
+        }
+        
+        fbq('track', 'InitiateCheckout', {
+          value: price,
+          currency: 'INR',
+          content_name: planName
+        });
+      }
     });
   });
 
