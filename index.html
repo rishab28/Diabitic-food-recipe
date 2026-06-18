@@ -70,11 +70,11 @@
       <div class="hero-badge">⚡ Trusted by 2,847+ Diabetic Families Across India</div>
 
       <h1 class="hero-title">
-        Your Doctor Said <span>"Control Your Blood Sugar."</span><br/>We Say: <span>Do It While Eating The Indian Food You Love.</span>
+        End the Days of Cooking <span>"Separate Meals"</span> for the Diabetic in Your Family.
       </h1>
 
       <p class="hero-subtitle">
-        Discover <strong>100+ clinically-reviewed, diabetic-friendly Indian recipes</strong> that keep blood sugar completely stable — while tasting so incredibly delicious that your entire family will love every single bite.
+        Now, your entire family can sit at the same table and enjoy the exact same <strong>delicious Indian food</strong> — using <strong>100+ recipes</strong> designed to keep blood sugar completely stable. Ready in under 30 minutes. <strong>2,847+ families have already switched.</strong> It's your turn.
       </p>
 
       <div class="hero-cta-row">
@@ -1188,6 +1188,167 @@
   });
 
 })();
+</script>
+
+<!-- ==================== 14. IN-HOUSE AI CHATBOT ==================== -->
+<div class="ai-chat-widget">
+  <div class="ai-chat-btn" id="aiChatBtn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+  </div>
+
+  <div class="ai-chat-window" id="aiChatWindow">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">👩‍⚕️</div>
+        <div>
+          <div class="chat-title">Dr. Sana (AI)</div>
+          <div class="chat-subtitle"><div class="chat-online-dot"></div> Online Now</div>
+        </div>
+      </div>
+      <button class="chat-close" id="aiChatClose">&times;</button>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+      <div class="chat-msg bot">
+        Hi there! 👋 I'm Dr. Sana, your AI Nutrition Guide. Are you looking to stabilize your blood sugar with Indian food?
+      </div>
+      <div class="chat-quick-replies" id="quickReplies">
+        <button class="chat-qr-btn" data-reply="Will this really lower my sugar?">"Will this really lower my sugar?"</button>
+        <button class="chat-qr-btn" data-reply="Are the recipes hard to cook?">"Are the recipes hard to cook?"</button>
+        <button class="chat-qr-btn" data-reply="Is there a discount available?">"Is there a discount available?"</button>
+      </div>
+      <div class="chat-typing" id="chatTyping">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Ask me anything..." />
+      <button class="chat-send-btn" id="chatSendBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // In-House AI Chatbot Logic
+  const chatBtn = document.getElementById('aiChatBtn');
+  const chatWindow = document.getElementById('aiChatWindow');
+  const chatClose = document.getElementById('aiChatClose');
+  const chatBody = document.getElementById('chatBody');
+  const chatTyping = document.getElementById('chatTyping');
+  const chatInput = document.getElementById('chatInput');
+  const chatSendBtn = document.getElementById('chatSendBtn');
+  const quickRepliesDiv = document.getElementById('quickReplies');
+  const qrBtns = document.querySelectorAll('.chat-qr-btn');
+
+  let isFirstOpen = true;
+
+  chatBtn.addEventListener('click', () => {
+    chatWindow.classList.add('open');
+    chatBtn.style.display = 'none';
+    if(isFirstOpen) {
+      setTimeout(() => {
+        // Optional: play a notification sound
+      }, 300);
+      isFirstOpen = false;
+    }
+  });
+
+  chatClose.addEventListener('click', () => {
+    chatWindow.classList.remove('open');
+    setTimeout(() => {
+      chatBtn.style.display = 'flex';
+    }, 400);
+  });
+
+  function appendUserMessage(text) {
+    if(quickRepliesDiv) quickRepliesDiv.style.display = 'none';
+    const msgDiv = document.createElement('div');
+    msgDiv.className = 'chat-msg user';
+    msgDiv.textContent = text;
+    chatBody.insertBefore(msgDiv, chatTyping);
+    scrollToBottom();
+  }
+
+  function appendBotMessage(html) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = 'chat-msg bot';
+    msgDiv.innerHTML = html;
+    chatBody.insertBefore(msgDiv, chatTyping);
+    scrollToBottom();
+  }
+
+  function showTyping() {
+    chatTyping.style.display = 'flex';
+    scrollToBottom();
+  }
+
+  function hideTyping() {
+    chatTyping.style.display = 'none';
+  }
+
+  function scrollToBottom() {
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function handleUserQuery(text) {
+    appendUserMessage(text);
+    showTyping();
+    chatInput.value = '';
+
+    setTimeout(() => {
+      hideTyping();
+      let responseHtml = '';
+      let t = text.toLowerCase();
+
+      // Advanced Objection Handling (The 20-Year Closer Script)
+      if (t.match(/expensive|price|cost|money|rupees|mehenga|paise/)) {
+        responseHtml = 'Think about it this way: The Pro Bundle is just ₹499 right now. That\\'s literally less than what you\\'d spend on a single doctor\\'s visit or a month\\'s supply of test strips. Plus, you are fully backed by a 7-day money-back guarantee. You have absolutely nothing to lose. <br><br><a href="#pricing" class="btn btn-primary" onclick="document.getElementById(\\\'aiChatClose\\\').click()">Claim It For Just ₹499</a>';
+      } 
+      else if (t.match(/work|sure|guarantee|sach me|result|scam|trust/)) {
+        responseHtml = 'I completely understand your skepticism. But we already have **2,847+ Indian families** who have completely transformed their blood sugar levels using these exact recipes. In fact, we are so confident that we offer a **100% money-back guarantee** if you don\\'t see results in 7 days. We take all the risk. <br><br><a href="#pricing" class="btn btn-green" onclick="document.getElementById(\\\'aiChatClose\\\').click()">Try It Risk-Free</a>';
+      } 
+      else if (t.match(/time|busy|hard|cook|ingredients|bana|market/)) {
+        responseHtml = 'You don\\'t need to spend hours in the kitchen! We designed these specifically for the busy Indian household. **Prep time is under 30 minutes**, and you don\\'t need any special, expensive ingredients — just what\\'s already in your local market. <br><br><a href="#pricing" class="btn btn-primary" onclick="document.getElementById(\\\'aiChatClose\\\').click()">Get The Fast Recipes</a>';
+      } 
+      else if (t.match(/family|kids|husband|wife|alag|together/)) {
+        responseHtml = 'That\\'s the best part! You **don\\'t have to cook separate meals** anymore. These recipes are so incredibly delicious that your entire family will eat them without even knowing they are "diabetic-friendly". Finally, you can all sit at the same table and eat the same food. <br><br><a href="#pricing" class="btn btn-primary" onclick="document.getElementById(\\\'aiChatClose\\\').click()">Bring Your Family Together</a>';
+      } 
+      else if (t.match(/doctor|medicine|insulin/)) {
+        responseHtml = 'While this isn\\'t medical advice, these recipes are strictly reviewed by **certified dietitians**. Diet is the #1 way to control blood sugar. Don\\'t wait until the doctor increases your insulin dosage. Take control of your kitchen today. <br><br><a href="#pricing" class="btn btn-primary" onclick="document.getElementById(\\\'aiChatClose\\\').click()">Take Control Today</a>';
+      } 
+      else if (t.match(/buy|pay|upi|card|where|how|link/)) {
+        responseHtml = 'You can securely order right now using UPI (GPay, PhonePe, Paytm) or Cards. You will get **instant access on WhatsApp and Email** immediately after payment. <br><br>Click below to choose your plan before the 50% discount expires! <br><a href="#pricing" class="btn btn-green" onclick="document.getElementById(\\\'aiChatClose\\\').click()">Show Me The Plans</a>';
+      } 
+      else {
+        // The Ultimate Generic Closer
+        responseHtml = 'Look, you are on this page for a reason. You know the current diet isn\\'t working and the sugar spikes are dangerous. We are giving you the exact blueprint to fix it, completely risk-free. Are you ready to take the first step towards a healthier life? <br><br><a href="#pricing" class="btn btn-primary" onclick="document.getElementById(\\\'aiChatClose\\\').click()">Yes, I\\'m Ready To Change</a>';
+      }
+
+      appendBotMessage(responseHtml);
+    }, 1500); // Simulated "thought process" delay for realism
+  }
+
+  qrBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      handleUserQuery(btn.getAttribute('data-reply'));
+    });
+  });
+
+  chatSendBtn.addEventListener('click', () => {
+    const text = chatInput.value.trim();
+    if (text) handleUserQuery(text);
+  });
+
+  chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      const text = chatInput.value.trim();
+      if (text) handleUserQuery(text);
+    }
+  });
+
 </script>
 
 </body>
