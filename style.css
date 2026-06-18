@@ -1343,6 +1343,15 @@ html {
   padding: var(--section-padding);
 }
 
+#pricing {
+  scroll-margin-top: 100px;
+}
+@media (max-width: 768px) {
+  #pricing {
+    scroll-margin-top: 60px;
+  }
+}
+
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
