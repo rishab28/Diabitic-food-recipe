@@ -1192,7 +1192,7 @@
 
 <!-- ==================== 14. IN-HOUSE AI CHATBOT ==================== -->
 <div class="ai-chat-widget">
-  <div class="ai-chat-btn" id="aiChatBtn">
+  <div class="ai-chat-btn" id="aiChatBtn" onclick="document.getElementById('aiChatWindow').classList.add('open'); document.getElementById('aiChatBtn').style.display='none';">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
   </div>
 
@@ -1205,7 +1205,7 @@
           <div class="chat-subtitle"><div class="chat-online-dot"></div> Online Now</div>
         </div>
       </div>
-      <button class="chat-close" id="aiChatClose">&times;</button>
+      <button class="chat-close" id="aiChatClose" onclick="document.getElementById('aiChatWindow').classList.remove('open'); setTimeout(() => document.getElementById('aiChatBtn').style.display='flex', 400);">&times;</button>
     </div>
 
     <div class="chat-body" id="chatBody">
@@ -1245,23 +1245,7 @@
 
   let isFirstOpen = true;
 
-  chatBtn.addEventListener('click', () => {
-    chatWindow.classList.add('open');
-    chatBtn.style.display = 'none';
-    if(isFirstOpen) {
-      setTimeout(() => {
-        // Optional: play a notification sound
-      }, 300);
-      isFirstOpen = false;
-    }
-  });
 
-  chatClose.addEventListener('click', () => {
-    chatWindow.classList.remove('open');
-    setTimeout(() => {
-      chatBtn.style.display = 'flex';
-    }, 400);
-  });
 
   function appendUserMessage(text) {
     if(quickRepliesDiv) quickRepliesDiv.style.display = 'none';
