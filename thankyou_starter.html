@@ -3,48 +3,111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Order Confirmed — Thank You | Khadu Farm</title>
+  <title>Order Confirmed — Thank You | 100+ Diabetic Recipes</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎉</text></svg>" />
   <style>
+    .thankyou-wrapper {
+      padding: 6rem 1rem 4rem;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
     .thankyou-box {
       text-align: center;
-      padding: 3rem 1.5rem;
+      padding: 3.5rem 2.5rem;
       background: var(--bg-secondary);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-xl);
-      max-width: 700px;
-      margin: 2rem auto;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto 2.5rem;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
     }
-    .check-icon {
-      font-size: 4rem;
+    .thankyou-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-green));
+    }
+    .check-icon-container {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-full);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--border-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
       color: var(--accent-green);
-      margin-bottom: 1rem;
+      font-size: 2.5rem;
+      font-weight: bold;
     }
     .download-section {
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(255, 255, 255, 0.01);
       border: 1px solid var(--border-subtle);
-      padding: 1.5rem;
+      padding: 2rem;
       border-radius: var(--radius-lg);
-      margin: 2rem 0;
+      margin: 2.5rem 0;
+      text-align: left;
+    }
+    .download-section h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      margin-bottom: 1.25rem;
+      color: var(--text-primary);
+    }
+    .download-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      margin-bottom: 1rem;
+    }
+    .download-item-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .download-item-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+    .download-item-size {
+      font-size: 0.8rem;
+      color: var(--text-muted);
     }
     .upsell-section {
-      border: 2px solid var(--accent-primary);
-      background: linear-gradient(180deg, rgba(249, 115, 22, 0.08) 0%, var(--bg-secondary) 100%);
-      padding: 2.5rem 2rem;
+      border: 2px solid var(--border-accent);
+      background: linear-gradient(180deg, rgba(249, 115, 22, 0.05) 0%, var(--bg-secondary) 100%);
+      padding: 3.5rem 2rem;
       border-radius: var(--radius-xl);
-      margin: 3rem 0;
+      margin: 3rem auto;
+      max-width: 800px;
       text-align: center;
-      box-shadow: 0 16px 48px var(--accent-glow);
+      box-shadow: 0 20px 50px rgba(249, 115, 22, 0.15);
     }
     .upsell-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
+      gap: 2rem;
+      margin-top: 2.5rem;
     }
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      .thankyou-box {
+        padding: 2.5rem 1.5rem;
+      }
       .upsell-grid {
         grid-template-columns: 1fr;
       }
@@ -71,65 +134,79 @@
 </head>
 <body>
 
-  <section>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <section class="thankyou-wrapper">
     <div class="container">
       <div class="thankyou-box">
-        <div class="check-icon">✓</div>
-        <h1 class="section-title" style="margin-bottom: 0.5rem;">Thank You for Your Purchase!</h1>
-        <p style="color: var(--text-secondary);">Your payment was successful and your order is confirmed.</p>
+        <div class="check-icon-container">✓</div>
+        <h1 class="section-title-center" style="font-size: 2rem; margin-bottom: 0.5rem;">Order Confirmed!</h1>
+        <p class="section-desc-center" style="margin-bottom: 2rem; color: var(--text-secondary);">
+          Your payment was successful. Welcome to a healthier lifestyle!
+        </p>
 
-        <!-- DELIVERABLES SECTION -->
+        <!-- DOWNLOAD SECTION -->
         <div class="download-section">
-          <h3 style="margin-bottom: 1rem;">🎁 Your Starter Deliverables:</h3>
-          <a href="#REPLACE_WITH_ACTUAL_RECIPE_PDF_DOWNLOAD_LINK" class="btn btn-green" style="width: 100%; margin-bottom: 1rem;">
-            📥 Download 100+ Recipe eBook (PDF)
-          </a>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">A download link has also been sent to your email.</p>
+          <h3>📥 Download Your Digital Products</h3>
+          
+          <div class="download-item">
+            <div class="download-item-info">
+              <span class="download-item-title">The Ultimate Indian Diabetic Cookbook</span>
+              <span class="download-item-size">105 Recipes Complete Master Edition (PDF)</span>
+            </div>
+            <a href="final_deliverables_pdf_excel/The_Ultimate_Diabetic_Indian_Cookbook_105_Recipes.pdf" class="btn btn-green" download style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">Download</a>
+          </div>
+
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem; text-align: center;">
+            💡 <strong>Tip:</strong> Right-click and choose "Save Link As" if download doesn't start automatically.
+          </p>
         </div>
 
-        <!-- WHATSAPP COMMUNITY SECTION (STARTER SPECIFIC) -->
-        <div class="download-section" style="border-color: rgba(37, 211, 102, 0.3);">
-          <h3 style="margin-bottom: 0.5rem; color: #25d366;">💬 Join Our Starter Community:</h3>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">
-            Join our exclusive Starter WhatsApp group to get support, weekly diabetic tips, and interact with other healthy home cooks.
+        <!-- WHATSAPP INTEGRATION -->
+        <div class="download-section" style="border-color: var(--border-green); background: rgba(16, 185, 129, 0.02);">
+          <h3 style="color: var(--accent-green); display: flex; align-items: center; gap: 0.5rem;">
+            <span>💬</span> Join Our Recipe Support Community
+          </h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+            Get free daily low-GI tips, peer cooking challenges, and live updates. Tap below to join our official members-only group.
           </p>
-          <a href="#REPLACE_WITH_STARTER_WHATSAPP_COMMUNITY_LINK" class="btn" style="background-color: #25d366; color: white; width: 100%;" target="_blank" rel="noopener">
+          <a href="https://wa.me/918325526418?text=Join%20Starter%20Group" class="btn btn-green btn-pulse" style="width: 100%; display: inline-flex; justify-content: center; align-items: center; gap: 0.5rem;" target="_blank" rel="noopener">
             Join Starter WhatsApp Group
           </a>
         </div>
       </div>
 
-      <!-- HORMORZI ONE-TIME-OFFER UPSELL (50% OFF PRO/PREMIUM) -->
+      <!-- ONE TIME UPGRADES -->
       <div class="upsell-section">
-        <span class="section-label center" style="color: var(--accent-primary); font-weight: 900;">⚡ EXCLUSIVE ONE-TIME OFFER</span>
-        <h2 class="section-title" style="margin: 0.5rem 0 1rem;">Upgrade Your Health & Save 50%</h2>
-        <p style="color: var(--text-secondary); max-width: 550px; margin: 0 auto 1.5rem;">
-          Since you already bought the Starter Pack, we want to give you a one-time opportunity to unlock our highly requested meal plans, checklists, and survival guides at a <strong>special 50% discount</strong>. This offer is only available on this page right now.
+        <span class="section-tag" style="justify-content:center; margin-bottom: 0.75rem;">One-Time Offer</span>
+        <h2>Complete Your Arsenal & Save 50% Today</h2>
+        <p style="color: var(--text-secondary); max-width: 620px; margin: 0.5rem auto 2rem; font-size: 0.95rem;">
+          Upgrade your order right now to unlock advanced meal planners, shopping guides, and trackers designed to drop your HbA1c faster.
         </p>
 
         <div class="upsell-grid">
-          <!-- UPGRADE TO PRO -->
-          <div class="price-card" style="background: var(--bg-primary); text-align: left;">
-            <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">🏆 Upgrade to Pro Bundle</h4>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Includes 30-Day Meal Planner, Smart Grocery Lists, GI Cheat Sheet, and Dining Out Survival Guide.</p>
-            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent-green); margin-bottom: 1rem;">
-              Only ₹249 <span style="text-decoration: line-through; font-size: 0.9rem; color: var(--text-muted); font-weight: 400;">(Regular ₹499)</span>
+          <!-- PRO UPGRADE -->
+          <div class="price-card" style="text-align: left; padding: 2rem; background: var(--bg-card);">
+            <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary);">🏆 Upgrade to Pro Bundle</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.5;">
+              Adds the 30-Day Meal Planner, Smart Grocery lists (Excel + PDF), GI Cheat Sheet, and Dining Out Survival Guide.
+            </p>
+            <div style="font-size: 1.6rem; font-weight: 800; color: var(--accent-primary); margin-bottom: 1.5rem;">
+              ₹249 <span style="text-decoration: line-through; font-size: 0.9rem; color: var(--text-muted); font-weight: 400;">(Regular ₹499)</span>
             </div>
-            <a href="#REPLACE_WITH_SUPERPROFILE_STARTER_TO_PRO_UPSELL" class="btn btn-primary" style="width: 100%; font-size: 0.9rem; padding: 0.75rem 1.5rem;">
-              Unlock Pro for ₹249
-            </a>
+            <a href="https://superprofile.bio/vp/FUIMWaYB?discountCode=KHADU50" class="btn btn-primary" style="width: 100%; text-align: center;">Upgrade to Pro Now →</a>
           </div>
 
-          <!-- UPGRADE TO PREMIUM -->
-          <div class="price-card" style="background: var(--bg-primary); text-align: left;">
-            <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">💎 Upgrade to Premium</h4>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Includes all Pro resources, 10 Insulin Drinks Guide, and access to the Private VIP WhatsApp Support Community.</p>
-            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent-green); margin-bottom: 1rem;">
-              Only ₹499 <span style="text-decoration: line-through; font-size: 0.9rem; color: var(--text-muted); font-weight: 400;">(Regular ₹999)</span>
+          <!-- PREMIUM UPGRADE -->
+          <div class="price-card" style="text-align: left; padding: 2rem; background: var(--bg-card); border-color: var(--border-green);">
+            <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-green);">💎 Upgrade to Premium</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.5;">
+              Includes all Pro deliverables, the 15-Minute Fast Cooking Guide, and 30 Days of VIP 1-on-1 WhatsApp Dietitian Support.
+            </p>
+            <div style="font-size: 1.6rem; font-weight: 800; color: var(--accent-green); margin-bottom: 1.5rem;">
+              ₹499 <span style="text-decoration: line-through; font-size: 0.9rem; color: var(--text-muted); font-weight: 400;">(Regular ₹999)</span>
             </div>
-            <a href="#REPLACE_WITH_SUPERPROFILE_STARTER_TO_PREMIUM_UPSELL" class="btn btn-green" style="width: 100%; font-size: 0.9rem; padding: 0.75rem 1.5rem;">
-              Unlock Premium for ₹499
-            </a>
+            <a href="https://superprofile.bio/vp/Ro2FQ3-t?discountCode=KHADU50" class="btn btn-green btn-pulse" style="width: 100%; text-align: center;">Upgrade to Premium →</a>
           </div>
         </div>
       </div>
@@ -137,11 +214,21 @@
   </section>
 
   <!-- ========== FOOTER ========== -->
-  <footer>
+  <footer style="border-top: 1px solid var(--border-subtle); padding: 2rem 0; text-align: center;">
     <div class="container">
-      <p>© 2025 <a href="https://khadufarm.com" target="_blank">Khadu Farm</a>. All rights reserved.</p>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">© 2026 Diabetic Recipe Bundle. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scrollProgress').style.width = scrolled + '%';
+    });
+  </script>
 
 </body>
 </html>
