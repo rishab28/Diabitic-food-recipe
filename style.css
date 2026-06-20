@@ -3476,6 +3476,11 @@ footer {
 
 .bonus-value {
   display: inline-block;
+  position: static;
+  transform: none;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
   color: var(--accent-red);
   font-size: 1rem;
   font-weight: 700;
