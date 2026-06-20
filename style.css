@@ -3529,3 +3529,162 @@ footer {
   margin-bottom: 1rem;
   font-weight: 800;
 }
+
+/* ============================================================
+   UPSELL PROGRESS BAR & TESTIMONIALS
+   ============================================================ */
+.upsell-progress-container {
+  background: var(--bg-secondary);
+  padding: 1rem 0;
+  text-align: center;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.upsell-progress-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.upsell-progress-bar-bg {
+  width: 80%;
+  max-width: 400px;
+  height: 12px;
+  background: #333;
+  border-radius: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.upsell-progress-bar-fill {
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-red) 0%, var(--accent-primary) 100%);
+  border-radius: 10px;
+  animation: loadProgress 1s ease-out forwards;
+}
+
+@keyframes loadProgress {
+  from { width: 0%; }
+  to { width: 50%; }
+}
+
+.upsell-product-image {
+  margin: 2rem auto 3rem;
+  max-width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 40px rgba(249, 115, 22, 0.15);
+  border: 1px solid var(--border-accent);
+}
+
+.upsell-testimonials {
+  margin: 4rem 0;
+  padding: 2rem;
+  background: rgba(255,255,255,0.02);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+}
+
+.upsell-testimonials h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
+
+.upsell-testimonial-card {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--accent-green);
+}
+
+.upsell-testimonial-card p {
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   COUNTDOWN TIMER & OFFER STACK (BRUNSON HACKS)
+   ============================================================ */
+.upsell-timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(239, 68, 68, 0.03);
+  padding: 2rem;
+  border-bottom: 1px solid rgba(239, 68, 68, 0.15);
+  margin-bottom: 2rem;
+}
+
+.upsell-timer-text {
+  color: var(--accent-red);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.upsell-timer-text::before {
+  content: '⏳';
+}
+
+.upsell-timer {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ef4444 0%, #991b1b 100%);
+  padding: 0.8rem 2.5rem;
+  border-radius: 16px;
+  letter-spacing: 6px;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 15px 35px rgba(239, 68, 68, 0.25), inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  line-height: 1;
+}
+
+.offer-stack-list {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.offer-stack-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.offer-stack-list li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--border-subtle);
+  padding: 0.8rem 0;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+}
+
+.offer-stack-list li:last-child {
+  border-bottom: none;
+}
+
+.offer-stack-item-name::before {
+  content: '✅ ';
+  margin-right: 0.5rem;
+}
+
+.offer-stack-item-value {
+  color: var(--text-secondary);
+  font-family: monospace;
+}
