@@ -1,13 +1,24 @@
-# 100+ Diabetic-Friendly Indian Recipes: The Master Guide
+# The Secret Swap Recipe Vault (105+ Meals)
 *Clinically-Reviewed, Low-Glycemic Indian Meals for Stable Blood Sugar*
 
-## Introduction: Why Indian Food Can Actually Reverse Insulin Resistance
+## Introduction: The "Secret Swap" Method
 
-For decades, diabetics in India have been told the same heartbreaking lie: *"Stop eating Indian food. It's too carb-heavy."*
+Welcome to the **Secret Swap Recipe Vault**. 
 
-The truth? Our ancestors ate Indian food and did not suffer from the epidemic of diabetes we see today. The problem isn't Indian food. The problem is how we have changed it. We started polishing our rice, refining our wheat into maida, replacing healthy ghee with refined seed oils, and loading our gravies with sugar and cream.
+For decades, diabetics in India have been told the same heartbreaking lie: *"Stop eating Indian food. It's too carb-heavy. Stick to boiled vegetables and plain oats."*
 
-This book is about going back to the roots. By swapping out high-GI (Glycemic Index) ingredients for low-GI alternatives, and by ensuring every meal has a strong base of protein and fiber, you can enjoy rich, flavorful Indian meals without the blood sugar spikes.
+The truth? Our ancestors ate rich Indian food and did not suffer from the epidemic of diabetes we see today. The problem isn't Indian food. The problem is how modern processing has ruined our ingredients. We started polishing our rice, refining our wheat into maida, replacing healthy ghee with refined seed oils, and loading our gravies with sugar and cream.
+
+**This is where the Secret Swap Method comes in.** 
+
+You do NOT need to give up your favorite foods. You don't need to eat a separate "sad plate" while your family enjoys dinner. Instead, we use a simple framework:
+1. **Identify** the high-GI (Glycemic Index) culprit in your favorite dish (like white rice or maida).
+2. **Swap** it with a nutrient-dense, fiber-rich, low-GI alternative that tastes almost identical.
+3. **Eat** the same delicious meal with your entire family, while watching your fasting numbers drop!
+
+Every single recipe in this vault is built on the Secret Swap philosophy. By ensuring every meal has a strong base of protein, fiber, and healthy fats, you can enjoy Parathas, Dals, and even Sweets without the dangerous blood sugar spikes. 
+
+Let's start cooking!
 
 ---
 
