@@ -1,37 +1,99 @@
-# The 90-Day Self-Accountability & Habit Tracker
+<style>
+  body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; padding: 1.5cm; }
+  h1 { color: #f59e0b; font-size: 2.5rem; border-bottom: 2px solid #f59e0b; padding-bottom: 0.5rem; text-align: center; }
+  h2 { color: #10b981; font-size: 1.5rem; margin-top: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; text-align: center; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; text-align: center; }
+  th, td { padding: 10px; border: 1px solid #d1d5db; }
+  th { background-color: #f3f4f6; font-weight: bold; color: #1f2937; }
+  .checkbox { display: inline-block; width: 16px; height: 16px; border: 1px solid #9ca3af; border-radius: 3px; }
+  .cover-page { text-align: center; margin-top: 25vh; page-break-after: always; }
+  .cover-title { font-size: 3rem; color: #10b981; font-weight: 800; margin-bottom: 1rem; }
+  .cover-subtitle { font-size: 1.5rem; color: #6b7280; font-style: italic; }
+  .instructions { background: #fefce8; border: 1px solid #fde047; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; }
+</style>
 
-Accountability does not always have to come from someone else. The most successful people in reversing their diabetes take 100% personal responsibility for their daily habits.
+<div class="cover-page">
+  <div class="cover-title">The 90-Day Accountability Tracker</div>
+  <div class="cover-subtitle">Your daily visual proof of progress.</div>
+  <p style="margin-top: 3rem; font-weight: bold;">The Secret Swap VIP System</p>
+</div>
 
-This journal is your daily contract with yourself. Print it out or keep it on your phone.
+# The 90-Day Accountability Tracker
 
-## Your Daily Checklist (The Non-Negotiables)
+<div class="instructions">
+<strong>How to use this tracker:</strong> Print these pages and stick them on your fridge. Every night before bed, check off the boxes. If you miss a day, DO NOT give up. Just make sure you check the box the very next day. 
+</div>
 
-For the next 90 days, check off these 4 items every single evening before bed. If you hit 4/4, you won the day. If you hit less, don't panic—just aim for 4/4 tomorrow.
+## Month 1: The Reset Phase
+*Building the habit of sequential eating and hydration.*
 
-**[ ] 1. Did I eat within my 90-Day Meal Plan today?**
-*(It is okay to cheat occasionally, but honesty is required. Did you stick to the plan for at least 80% of your calories?)*
+| Day | Drank 1 Glass Water Before Meals | Ate Veggies FIRST | 10-Min Walk After Dinner | Fasting Sugar Reading |
+|-----|:---:|:---:|:---:|---|
+| **Day 1** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 2** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 3** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 4** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 5** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 6** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 7** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 8** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 9** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 10**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 11**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 12**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 13**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 14**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 15**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 16**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 17**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 18**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 19**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 20**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 21**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 22**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 23**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 24**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 25**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 26**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 27**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 28**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 29**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 30**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
 
-**[ ] 2. Did I test and log my Fasting Blood Sugar today?**
-*(Write it down in your 'Sugar Sniper Tracker' sheet. What gets measured gets managed).*
+<div style="page-break-after: always;"></div>
 
-**[ ] 3. Did I walk for 15 minutes immediately after my heaviest meal?**
-*(This simple habit alone can reduce post-meal spikes by up to 30%).*
+## Month 2 & 3: The Sustenance Phase
+*(Print this page twice for Month 2 and Month 3)*
 
-**[ ] 4. Did I drink enough water and stay hydrated?**
-*(Dehydration concentrates the glucose in your blood, making your readings artificially higher).*
-
----
-
-## Weekly Reflection (Every Sunday)
-
-At the end of every week, answer these 3 questions to yourself:
-
-1. **What was my biggest challenge this week?** (e.g., cravings, eating out, skipping meals).
-2. **What is my plan to overcome this challenge next week?** (e.g., I will pack my Safe Snacking items in my work bag).
-3. **What is my fasting sugar average this week compared to last week?** 
-
-### The 90-Day Contract
-"I am committing to these 90 days because I want total freedom from blood sugar anxiety. I understand that nobody else can eat the food for me or walk for me. I am 100% responsible for my results."
-
-**Signature:** _____________________
-**Start Date:** _____________________
+| Day | Drank 1 Glass Water Before Meals | Ate Veggies FIRST | 10-Min Walk After Dinner | Fasting Sugar Reading |
+|-----|:---:|:---:|:---:|---|
+| **Day 1** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 2** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 3** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 4** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 5** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 6** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 7** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 8** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 9** | <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 10**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 11**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 12**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 13**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 14**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 15**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 16**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 17**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 18**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 19**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 20**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 21**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 22**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 23**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 24**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 25**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 26**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 27**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 28**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 29**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
+| **Day 30**| <div class="checkbox"></div> | <div class="checkbox"></div> | <div class="checkbox"></div> | _____ mg/dL |
