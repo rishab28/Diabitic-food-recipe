@@ -51,16 +51,16 @@
   <p>Don't leave your family's health to chance. Use this special code for an exclusive discount:</p>
   <div class="exit-modal-discount">
     <span class="discount-label">Your Exclusive Code:</span>
-    <span class="discount-code">HEALTHYFAMILY</span>
-    <span class="discount-value">Extra 15% OFF on any plan</span>
+    <span class="discount-code">KHADU50</span>
+    <span class="discount-value">Extra 50% OFF on any plan</span>
   </div>
-  <a href="https://superprofile.bio/vp/FUIMWaYB?checkout=true" class="btn btn-primary btn-lg btn-pulse" id="exitCTA">Yes! I Want The Ultimate Diabetic Freedom Bundle →</a>
-  <p class="exit-modal-subtext">⏰ This code expires in 10 minutes</p>
+  <a href="https://superprofile.bio/vp/FUIMWaYB?discountCode=KHADU50" class="btn btn-primary btn-lg btn-pulse" id="exitCTA">Yes! I Want The Ultimate Diabetic Freedom Bundle →</a>
+  <p class="exit-modal-subtext">⏰ This code expires when the timer hits zero!</p>
 </div>
 
 <!-- ==================== 3. TOP ANNOUNCEMENT BAR ==================== -->
 <div class="top-bar-alert" id="topAlert">
-  🚨 86% OFF BUNDLE: Limited to 500 families (due to WhatsApp support capacity). <span class="countdown-timer" id="topTimer">23:59:59</span> remaining.
+  🚨 86% OFF BUNDLE: Limited to 500 families (due to WhatsApp support capacity). <span class="countdown-timer" id="topTimer">15:00</span> remaining.
 </div>
 
 <!-- ==================== 4. HERO SECTION ==================== -->
@@ -755,7 +755,7 @@
       </a>
 
       <div class="final-urgency">
-        ⏳ Launch bundle for ₹499 — ending tonight. <span class="countdown-timer" id="finalTimer">23:59:59</span>
+        ⏳ Launch bundle for ₹499 — ending soon. <span class="countdown-timer" id="finalTimer">15:00</span>
       </div>
 
       <div class="final-scarcity">
@@ -876,7 +876,7 @@
       var end = parseInt(stored, 10);
       if (end > Date.now()) return end;
     }
-    var newEnd = Date.now() + 24 * 60 * 60 * 1000;
+    var newEnd = Date.now() + 15 * 60 * 1000;
     localStorage.setItem('offerEndTime', newEnd.toString());
     return newEnd;
   }
@@ -888,14 +888,13 @@
     var diff = offerEnd - Date.now();
     if (diff <= 0) {
       // Reset timer
-      offerEnd = Date.now() + 24 * 60 * 60 * 1000;
+      offerEnd = Date.now() + 15 * 60 * 1000;
       localStorage.setItem('offerEndTime', offerEnd.toString());
       diff = offerEnd - Date.now();
     }
-    var hrs = Math.floor(diff / 3600000);
     var mins = Math.floor((diff % 3600000) / 60000);
     var secs = Math.floor((diff % 60000) / 1000);
-    var str = String(hrs).padStart(2, '0') + ':' + String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+    var str = String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
     timerEls.forEach(function (el) {
       el.textContent = str;
     });
