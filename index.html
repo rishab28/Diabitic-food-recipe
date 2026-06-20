@@ -81,7 +81,7 @@
       </p>
 
       <div class="hero-timer-container" style="text-align: center; margin-bottom: 1.5rem; padding: 1rem; background: rgba(239, 68, 68, 0.1); border: 1px dashed var(--accent-red); border-radius: var(--radius-md);">
-        <div style="color: var(--accent-red); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">🚨 91% OFF Launch Price Expires In:</div>
+        <div style="color: var(--accent-red); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">🚨 91% OFF FLASH SALE Expires In:</div>
         <div class="hero-countdown" id="heroTimer" style="font-size: 2rem; font-weight: 800; color: var(--text-primary); font-variant-numeric: tabular-nums;">15:00</div>
       </div>
 
@@ -475,7 +475,7 @@
 
       <div class="total-value-box" style="text-align: center;">
         <h4>Total Value: <span class="strike">₹5,493</span> <span style="color: var(--accent-red); font-size: 2rem;">Today: Just ₹499</span></h4>
-        <p style="margin-top: 0.5rem; font-weight: 600; color: var(--text-primary);">⚡ This 91% OFF Launch Bundle is limited to the next 500 families.</p>
+        <p style="margin-top: 0.5rem; font-weight: 600; color: var(--text-primary);">⚡ This 91% OFF Special Bundle is limited to the next 500 families.</p>
         <a href="https://superprofile.bio/vp/FUIMWaYB?checkout=true" class="btn btn-primary btn-lg btn-pulse" style="margin-top: 1.5rem; width: 100%; max-width: 400px;">Yes! I Want The Ultimate Freedom Bundle</a>
       </div>
 
@@ -755,7 +755,7 @@
       </a>
 
       <div class="final-urgency">
-        ⏳ Launch bundle for ₹499 — ending soon. <span class="countdown-timer" id="finalTimer">15:00</span>
+        ⏳ Special ₹499 Bundle — ending soon. <span class="countdown-timer" id="finalTimer">15:00</span>
       </div>
 
       <div class="final-scarcity">
@@ -871,13 +871,13 @@
   // c) PERSISTENT COUNTDOWN TIMER (localStorage)
   // ===================================================================
   function getOfferEndTime() {
-    var stored = localStorage.getItem('offerEndTime');
+    var stored = localStorage.getItem('offerEndTime15m');
     if (stored) {
       var end = parseInt(stored, 10);
       if (end > Date.now()) return end;
     }
     var newEnd = Date.now() + 15 * 60 * 1000;
-    localStorage.setItem('offerEndTime', newEnd.toString());
+    localStorage.setItem('offerEndTime15m', newEnd.toString());
     return newEnd;
   }
 
@@ -889,7 +889,7 @@
     if (diff <= 0) {
       // Reset timer
       offerEnd = Date.now() + 15 * 60 * 1000;
-      localStorage.setItem('offerEndTime', offerEnd.toString());
+      localStorage.setItem('offerEndTime15m', offerEnd.toString());
       diff = offerEnd - Date.now();
     }
     var mins = Math.floor((diff % 3600000) / 60000);
