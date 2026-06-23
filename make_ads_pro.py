@@ -84,14 +84,14 @@ def generate_ad_1():
     
     # Left Column: Unhealthy
     draw.text((80, box_y + 40), "❌ Regular Sweets", font=f_comp, fill=(239, 68, 68))
-    draw.text((80, box_y + 90), "• Spikes Blood Sugar (250+)\n• Loaded with Refined Sugar\n• Post-meal guilt & fatigue", font=f_comp_desc, fill=(241, 245, 249))
+    draw.text((80, box_y + 90), "• Spikes Blood Sugar\n• Loaded with Refined Sugar\n• Post-meal guilt & fatigue", font=f_comp_desc, fill=(241, 245, 249))
     
     # Vertical line separator
     draw.line([w//2, box_y + 20, w//2, box_y + 180], fill=(255, 255, 255, 40), width=2)
     
     # Right Column: Healthy
     draw.text((w//2 + 60, box_y + 40), "✅ Our Guilt-Free Recipes", font=f_comp, fill=(16, 185, 129))
-    draw.text((w//2 + 60, box_y + 90), "• Under 110 Sugar (Low GI)\n• Made with Natural Sweeteners\n• 100% Home-Cooked & Safe", font=f_comp_desc, fill=(241, 245, 249))
+    draw.text((w//2 + 60, box_y + 90), "• Stable Blood Sugar (Low GI)\n• Made with Natural Sweeteners\n• 100% Home-Cooked & Safe", font=f_comp_desc, fill=(241, 245, 249))
     
     # Bottom Action Bar (Bright Red/Yellow urgency banner)
     bot_y = 900
@@ -149,7 +149,7 @@ def generate_ad_2():
         ("💚 100% Diabetic-Friendly", (16, 185, 129)),
         ("🌾 Made with Low-GI Grains", (16, 185, 129)),
         ("⏱️ Ready in under 30 Mins", (16, 185, 129)),
-        ("👩‍⚕️ Clinically Approved Guidelines", (16, 185, 129))
+        ("👩‍⚕️ Nutritionist-Backed Guidelines", (16, 185, 129))
     ]
     
     p_y = 260
@@ -183,7 +183,7 @@ def generate_ad_2():
     f_sp_sub = ImageFont.truetype(body_reg_font_path, 16)
     
     draw.text((60, sp_y + 20), "⭐⭐⭐⭐⭐  5-Star Reviewed", font=f_sp_title, fill=(250, 204, 21))
-    draw.text((60, sp_y + 55), "\"HbA1c levels went down from 8.2 to 6.4!\"\n- Ramesh K., New Delhi", font=f_sp_sub, fill=(226, 232, 240))
+    draw.text((60, sp_y + 55), "\"My daily sugar readings are stable, and I feel light & energetic!\"\n- Ramesh K., New Delhi", font=f_sp_sub, fill=(226, 232, 240))
     
     # Bottom Call to Action
     bot_y = 900
@@ -221,7 +221,7 @@ def generate_ad_3():
     t_w = draw.textbbox((0,0), title_text, font=f_title)[2]
     draw.text(((w - t_w)//2, 45), title_text, font=f_title, fill=(255, 255, 255))
     
-    sub_text = "🇮🇳 CLINICALLY APPROVED LOW-GI RECIPES FOR INDIAN FAMILIES"
+    sub_text = "🇮🇳 DIABETIC-FRIENDLY LOW-GI RECIPES FOR INDIAN FAMILIES"
     s_w = draw.textbbox((0,0), sub_text, font=f_sub)[2]
     draw.text(((w - s_w)//2, 115), sub_text, font=f_sub, fill=(16, 185, 129)) # Trust green
     

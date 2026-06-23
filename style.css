@@ -9,33 +9,33 @@
 /* ── Design System (CSS Custom Properties) ────────────────── */
 :root {
   /* Backgrounds */
-  --bg-primary: #060608;
-  --bg-secondary: #0f0f14;
-  --bg-card: #16161e;
-  --bg-card-hover: #1e1e28;
-  --bg-glass: rgba(22, 22, 30, 0.7);
-  --bg-glass-strong: rgba(22, 22, 30, 0.9);
+  --bg-primary: #fbf9f6;      /* Warm soft cream/off-white background */
+  --bg-secondary: #f4f0e7;    /* Slightly darker beige/cream */
+  --bg-card: #ffffff;         /* Pure white cards */
+  --bg-card-hover: #fcfbfa;   /* Very light cream on hover */
+  --bg-glass: rgba(255, 255, 255, 0.75);
+  --bg-glass-strong: rgba(255, 255, 255, 0.92);
 
   /* Accent Colors */
-  --accent-primary: #f97316;
-  --accent-secondary: #fb923c;
-  --accent-glow: rgba(249, 115, 22, 0.4);
-  --accent-green: #10b981;
-  --accent-green-glow: rgba(16, 185, 129, 0.3);
-  --accent-red: #ef4444;
-  --accent-gold: #f59e0b;
-  --accent-blue: #3b82f6;
+  --accent-primary: #e66a15;  /* Culinary orange */
+  --accent-secondary: #f97316;
+  --accent-glow: rgba(230, 106, 21, 0.12); /* Soft orange glow for light backgrounds */
+  --accent-green: #15803d;    /* Forest green */
+  --accent-green-glow: rgba(21, 128, 61, 0.1);
+  --accent-red: #dc2626;
+  --accent-gold: #b45309;     /* Deep gold amber (readable) */
+  --accent-blue: #1d4ed8;
 
   /* Text */
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --text-muted: #64748b;
-  --text-dark: #0f172a;
+  --text-primary: #1e293b;    /* Slate-800 for primary text */
+  --text-secondary: #475569;  /* Slate-600 for descriptions */
+  --text-muted: #576071;      /* Darker grey for high contrast readability */
+  --text-dark: #0f172a;       /* Slate-900 */
 
   /* Borders */
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-accent: rgba(249, 115, 22, 0.25);
-  --border-green: rgba(16, 185, 129, 0.25);
+  --border-subtle: rgba(15, 23, 42, 0.08); /* Dark gray tint with low opacity */
+  --border-accent: rgba(230, 106, 21, 0.15);
+  --border-green: rgba(21, 128, 61, 0.15);
 
   /* Typography */
   --font-heading: 'Playfair Display', Georgia, serif;
@@ -284,8 +284,8 @@ html {
 /* Secondary Button */
 .btn-secondary {
   background: transparent;
-  color: #fff;
-  border-color: var(--border-accent);
+  color: var(--text-primary);
+  border: 1.5px solid var(--border-accent);
 }
 
 .btn-secondary:hover {
@@ -676,7 +676,7 @@ html {
 
 .hero-float-card {
   position: absolute;
-  background: var(--bg-glass);
+  background: var(--bg-card);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);
@@ -688,7 +688,7 @@ html {
   font-size: 0.8rem;
   font-weight: 500;
   color: var(--text-secondary);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
   animation: float-gentle 3s ease-in-out infinite;
   z-index: 2;
 }
@@ -1178,6 +1178,19 @@ html {
   font-size: 0.85rem;
   color: var(--text-muted);
   line-height: 1.65;
+}
+
+.inside-tag {
+  display: inline-block;
+  background: rgba(230, 106, 21, 0.08);
+  color: var(--accent-primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  margin-top: 1rem;
 }
 
 .inside-preview-image {
@@ -2048,7 +2061,7 @@ html {
 /* ── Footer ───────────────────────────────────────────────── */
 footer {
   border-top: 1px solid var(--border-subtle);
-  padding: 2.5rem 1.5rem;
+  padding: 2.5rem 1.5rem 8rem 1.5rem; /* Increased bottom padding to clear sticky bar */
   text-align: center;
 }
 
@@ -2083,8 +2096,9 @@ footer {
 
 .footer-links a {
   font-size: 0.82rem;
-  color: var(--text-muted);
+  color: var(--text-secondary); /* Brighter color for higher contrast readability */
   transition: color 0.3s ease;
+  text-decoration: underline;
 }
 
 .footer-links a:hover {
@@ -2100,9 +2114,8 @@ footer {
 .disclaimer {
   max-width: 750px;
   margin: 0 auto;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
-  opacity: 0.6;
   line-height: 1.6;
 }
 
@@ -2112,7 +2125,7 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(6, 6, 8, 0.92);
+  background: var(--bg-glass-strong);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid var(--border-subtle);
