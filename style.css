@@ -876,6 +876,13 @@ html {
   width: 100%;
   border-radius: var(--radius-lg);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.pacing-img img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ── Problem Section ──────────────────────────────────────── */
