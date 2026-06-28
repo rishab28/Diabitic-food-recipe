@@ -10,8 +10,8 @@
   <meta property="og:title" content="The Happy Tiffin System — 5-Minute Picky Eater Trick" />
   <meta property="og:description" content="Help kids enjoy their school lunchbox. 101 simple Indian recipes with hidden veggies. Rs. 499." />
   <meta property="og:type" content="product" />
-  <meta property="og:url" content="https://secretswapvault.vercel.app/kids/index-en.html" />
-  <meta property="og:image" content="https://secretswapvault.vercel.app/kids/kids_tiffin_hero.webp" />
+  <meta property="og:url" content="https://secretswapvaults.vercel.app/kids/index-en.html" />
+  <meta property="og:image" content="https://secretswapvaults.vercel.app/kids/kids_tiffin_hero.webp" />
   <meta name="twitter:card" content="summary_large_image" />
   
   <link rel="stylesheet" href="style.css?v=3.1" />
@@ -135,7 +135,10 @@
             <div class="trust-row">
               <span>⚡ Instant WhatsApp Delivery</span>
               <span>🔒 100% Secure Checkout</span>
-              <span>🛡️ 30-Day Money-Back Guarantee</span>
+              <span>🛡️ 7-Day Money-Back Guarantee</span>
+            </div>
+            <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 8px; text-align: center;">
+              By proceeding, you agree to our terms & privacy policy in compliance with the Indian DPDP Act 2023.
             </div>
           </div>
         </div>
@@ -480,9 +483,9 @@
 
         <!-- Guarantee Section -->
         <div class="guarantee-box">
-          <div class="g-badge">🛡️ 10-Day Tiffin Tryout Offer</div>
+          <div class="g-badge">🛡️ 7-Day Tiffin Tryout Offer</div>
           <p class="g-text">
-            Try our recipes. Pack any 5 recipes in your child's tiffin. If the lunchbox doesn't start coming back empty within 10 days, simply send us a message. We will issue a **100% refund immediately, and you can keep the books and bonuses anyway.** We want you to try this completely risk-free.
+            Try our recipes. Pack any 5 recipes in your child's tiffin. If the lunchbox doesn't start coming back empty within 7 days, simply send us a message. We will issue a **100% refund immediately, and you can keep the books and bonuses anyway.** We want you to try this completely risk-free.
           </p>
         </div>
 
@@ -490,7 +493,10 @@
           <a href="https://superprofile.bio/vp/FUIMWaYB" class="btn btn-primary btn-lg btn-pulse plan-cta">
             Yes! Solve My Morning Tiffin Stress for ₹499 →
           </a>
-          <p class="checkout-trust">🔒 100% Safe UPI, Paytm & Cards Checkout</p>
+          <p class="checkout-trust" style="margin-bottom: 2px;">🔒 100% Safe UPI, Paytm & Cards Checkout</p>
+          <div style="font-size: 0.65rem; color: var(--text-muted); text-align: center; margin-top: 4px;">
+            By proceeding, you agree to our terms & privacy policy in compliance with the Indian DPDP Act 2023.
+          </div>
         </div>
       </div>
     </div>
@@ -554,7 +560,7 @@
     <div style="max-width: 600px; margin: 0 auto; line-height: 1.8; color: var(--text-secondary); font-size: 1rem;">
       <h3 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.5rem; margin-bottom: 20px; text-align: center;">P.S. A Personal Note From Priya... ❤️</h3>
       <p>I know how painful it is to watch your child reject healthy food day after day. As mothers, we often blame ourselves, feeling like we aren't doing enough for our child's nutrition. I created this system to take that heavy weight off your shoulders.</p>
-      <p>You have absolutely nothing to lose. Try the recipes under our <strong>10-Day Tiffin Tryout Offer</strong>. If your child's tiffin doesn't start coming back empty, just tell us. We will issue a full refund, and you get to keep all the books and bonuses anyway.</p>
+      <p>You have absolutely nothing to lose. Try the recipes under our <strong>7-Day Tiffin Tryout Offer</strong>. If your child's tiffin doesn't start coming back empty, just tell us. We will issue a full refund, and you get to keep all the books and bonuses anyway.</p>
       <p style="margin-top: 20px;">To your child's happy and healthy mealtime,</p>
       <p><strong>Priya</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">Creator, The Happy Tiffin</span></p>
       
@@ -562,7 +568,10 @@
         <a href="https://superprofile.bio/vp/FUIMWaYB" class="btn btn-primary btn-pulse plan-cta" style="width: 100%; max-width: 400px; margin-bottom: 8px;">
           Yes! Solve My Morning Tiffin Stress for ₹499 →
         </a>
-        <p class="checkout-trust" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px;">🔒 100% Safe UPI, Paytm & Cards Checkout</p>
+        <p class="checkout-trust" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px; margin-bottom: 2px;">🔒 100% Safe UPI, Paytm & Cards Checkout</p>
+        <div style="font-size: 0.65rem; color: var(--text-muted); text-align: center; margin-top: 4px;">
+          By proceeding, you agree to our terms & privacy policy in compliance with the Indian DPDP Act 2023.
+        </div>
       </div>
     </div>
   </div>
@@ -786,6 +795,21 @@
       }
     })();
   </script>
+
+<!-- Cookie & Consent Banner -->
+<div id="consentBanner" style="position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: white; padding: 15px; text-align: center; font-size: 0.85rem; z-index: 9999; display: flex; justify-content: center; align-items: center; gap: 15px; box-shadow: 0 -2px 10px rgba(0,0,0,0.15);">
+  <span>We use cookies to optimize your experience. By continuing, you agree to our Privacy Policy in compliance with the DPDP Act 2023.</span>
+  <button onclick="acceptConsent()" style="background: #10b981; color: white; border: none; padding: 6px 15px; border-radius: 4px; cursor: pointer; font-weight: 600;">Accept</button>
+</div>
+<script>
+  function acceptConsent() {
+    document.getElementById('consentBanner').style.display = 'none';
+    localStorage.setItem('cookieConsent', 'accepted');
+  }
+  if (localStorage.getItem('cookieConsent') === 'accepted') {
+    document.getElementById('consentBanner').style.display = 'none';
+  }
+</script>
 
 </body>
 </html>
