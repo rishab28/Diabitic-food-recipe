@@ -43,6 +43,30 @@
   /></noscript>
   <!-- End Meta Pixel Code -->
 
+  <!-- Microsoft Clarity — FREE Heatmaps & Session Recordings -->
+  <!-- Sign up at https://clarity.microsoft.com and replace YOUR_CLARITY_PROJECT_ID below -->
+  <script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "YOUR_CLARITY_PROJECT_ID");
+  </script>
+  <!-- End Clarity -->
+
+  <!-- Fire ViewContent event for Meta Pixel -->
+  <script>
+  if (typeof fbq === 'function') {
+    fbq('track', 'ViewContent', {
+      content_name: 'Secret Swap Bundle Landing Page',
+      content_category: 'Recipe eBook',
+      content_type: 'product',
+      value: 499,
+      currency: 'INR'
+    });
+  }
+  </script>
+
 </head>
 <body>
 
@@ -1230,6 +1254,77 @@
       }
     });
   });
+
+  // ===================================================================
+  // l) SCROLL DEPTH TRACKING — fires at 25%, 50%, 75%, 100%
+  // Shows up in Meta Events Manager as custom events
+  // ===================================================================
+  var scrollMilestones = {25: false, 50: false, 75: false, 100: false};
+  window.addEventListener('scroll', function() {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrollPercent = Math.round((scrollTop / docHeight) * 100);
+    
+    [25, 50, 75, 100].forEach(function(milestone) {
+      if (scrollPercent >= milestone && !scrollMilestones[milestone]) {
+        scrollMilestones[milestone] = true;
+        if (typeof fbq === 'function') {
+          fbq('trackCustom', 'ScrollDepth', {
+            depth: milestone + '%',
+            page: 'landing_page'
+          });
+        }
+      }
+    });
+  });
+
+  // ===================================================================
+  // m) TIME ON PAGE TRACKING — fires at 30s, 60s, 120s, 300s
+  // Tells you if people are actually reading or bouncing
+  // ===================================================================
+  var timeThresholds = [30, 60, 120, 300];
+  var pageLoadTime = Date.now();
+  var timeFired = {};
+  setInterval(function() {
+    var elapsed = Math.floor((Date.now() - pageLoadTime) / 1000);
+    timeThresholds.forEach(function(t) {
+      if (elapsed >= t && !timeFired[t]) {
+        timeFired[t] = true;
+        if (typeof fbq === 'function') {
+          fbq('trackCustom', 'TimeOnPage', {
+            seconds: t,
+            page: 'landing_page'
+          });
+        }
+      }
+    });
+  }, 5000);
+
+  // ===================================================================
+  // n) SECTION VISIBILITY TRACKING — which sections users actually see
+  // ===================================================================
+  var trackSections = ['hero', 'problemSection', 'whatYouGet', 'socialProof', 'pricing', 'faqSection'];
+  if ('IntersectionObserver' in window) {
+    var sectionObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var sectionId = entry.target.id || entry.target.className;
+          if (typeof fbq === 'function') {
+            fbq('trackCustom', 'SectionView', {
+              section: sectionId,
+              page: 'landing_page'
+            });
+          }
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    trackSections.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) sectionObserver.observe(el);
+    });
+  }
 
 })();
 </script>
