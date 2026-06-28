@@ -64,6 +64,25 @@
 </head>
 <body>
 
+  <!-- ==================== 1. SCROLL PROGRESS BAR ==================== -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ==================== 2. EXIT INTENT MODAL ==================== -->
+  <div class="exit-intent-overlay" id="exitOverlay"></div>
+  <div class="exit-intent-modal" id="exitModal">
+    <button class="exit-modal-close" id="exitModalClose">&times;</button>
+    <div class="exit-modal-emoji">🛑</div>
+    <h3>Wait! Don't Leave Your Child's Nutrition Behind</h3>
+    <p>Don't miss this one-time chance to end morning school tiffin stress. Use this special coupon for an instant discount:</p>
+    <div class="exit-modal-discount">
+      <span class="discount-label">Your Exclusive Coupon Code:</span>
+      <span class="discount-code">KIDS50</span>
+      <span class="discount-value">Get Extra 50% OFF (Only ₹249 today!)</span>
+    </div>
+    <a href="https://superprofile.bio/vp/FUIMWaYB?discountCode=KIDS50" class="btn btn-primary btn-pulse" id="exitCTA">Yes! I Want The Happy Tiffin System →</a>
+    <p class="exit-modal-subtext">⏰ Note: This code will be applied automatically at checkout.</p>
+  </div>
+
   <!-- ==================== TOP ANNOUNCEMENT BAR ==================== -->
   <div class="top-bar">
     ⚡ BACK TO SCHOOL SALE: Get 92% OFF + 5 Free Bonuses today! Offer ends soon.
@@ -141,6 +160,21 @@
         <span class="section-tag">Morning Struggles</span>
         <h2 class="section-title">Is this your daily morning story in the kitchen?</h2>
         <p class="section-subtitle">School tiffin stress and picky eating tantrums drain every mother's energy...</p>
+      </div>
+
+      <div class="problem-stat-bar" style="display: flex; justify-content: space-around; background: #FFFDF9; border: 1.5px dashed var(--primary); padding: 25px; border-radius: var(--radius-md); margin-bottom: 40px; text-align: center; flex-wrap: wrap; gap: 20px;">
+        <div class="problem-stat">
+          <div class="stat-number" id="statCounter1" style="font-size: 2.8rem; font-weight: 900; color: var(--primary); font-family: var(--font-heading); line-height: 1;">85</div>
+          <div class="stat-label" style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 700; margin-top: 5px;">% Indian Mothers Face Daily Tiffin Stress</div>
+        </div>
+        <div class="problem-stat">
+          <div class="stat-number" id="statCounter2" style="font-size: 2.8rem; font-weight: 900; color: var(--primary); font-family: var(--font-heading); line-height: 1;">70</div>
+          <div class="stat-label" style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 700; margin-top: 5px;">% Veggies Left Untouched in Lunchboxes</div>
+        </div>
+        <div class="problem-stat">
+          <div class="stat-number" id="statCounter3" style="font-size: 2.8rem; font-weight: 900; color: var(--primary); font-family: var(--font-heading); line-height: 1;">5</div>
+          <div class="stat-label" style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 700; margin-top: 5px;">Minutes Prep to Swap & Sneak Nutrition</div>
+        </div>
       </div>
 
       <div class="checklist">
@@ -301,6 +335,7 @@
             <div class="stack-desc">
               <h4>[Bonus #1] 30-Day "Empty Tiffin" Calendar</h4>
               <p>Stop thinking! Follow this simple print-ready calendar to pick daily balanced tiffin combinations without decision fatigue.</p>
+              <p class="bonus-belief" style="font-size: 0.85rem; font-weight: bold; color: #E53935; margin-top: 8px; display: inline-block; background: rgba(229,57,53,0.06); padding: 4px 8px; border-radius: 4px;">🎯 Kills the belief: "I get tired of thinking about what to make daily" (Decision Fatigue)</p>
             </div>
             <span class="stack-tag-free">FREE</span>
           </div>
@@ -310,6 +345,7 @@
             <div class="stack-desc">
               <h4>[Bonus #2] "Sabzi Chhipao" Veggie-Hiding Cheat Sheet</h4>
               <p>15 clever methods to secretly hide spinach, carrots, bottle gourd, and beetroot in meals they love.</p>
+              <p class="bonus-belief" style="font-size: 0.85rem; font-weight: bold; color: #E53935; margin-top: 8px; display: inline-block; background: rgba(229,57,53,0.06); padding: 4px 8px; border-radius: 4px;">🎯 Kills the belief: "My child is too stubborn, they will find the hidden veggies"</p>
             </div>
             <span class="stack-tag-free">FREE</span>
           </div>
@@ -319,6 +355,7 @@
             <div class="stack-desc">
               <h4>[Bonus #3] 5-Minute Breakfast Guide</h4>
               <p>Easy, quick-prep breakfast ideas for rushed school mornings that take under 5 minutes to prepare.</p>
+              <p class="bonus-belief" style="font-size: 0.85rem; font-weight: bold; color: #E53935; margin-top: 8px; display: inline-block; background: rgba(229,57,53,0.06); padding: 4px 8px; border-radius: 4px;">🎯 Kills the belief: "I don't have even 5 minutes to cook in the morning"</p>
             </div>
             <span class="stack-tag-free">FREE</span>
           </div>
@@ -394,6 +431,20 @@
     </div>
   </section>
 
+  <!-- ==================== 6.5 FUTURE PACING ==================== -->
+  <section class="future-pacing-section" id="futurePacingSection" style="padding: 80px 0; background: #FFFDF8; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container narrow text-center" style="max-width: 720px; margin: 0 auto; text-align: center;">
+      <span class="section-tag" style="justify-content:center;">Imagine This</span>
+      <h2 class="section-title">Picture This: 15 Days From Now...</h2>
+      <p style="font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.7;">
+        You unzip their school bag and find a 100% empty lunchbox. Your child runs up and says, <strong>"Mom, can you make that chocolate pancake again tomorrow?"</strong> The morning stress is gone. The vegetable battle is won. You start your day with absolute peace of mind.
+      </p>
+      <div style="font-size: 0.95rem; font-style: italic; color: var(--text-muted); background: rgba(255, 112, 32, 0.04); padding: 15px; border-radius: 8px; border: 1px dashed var(--primary);">
+        "The best feeling is knowing your child ate their veggies without any fight." — Real feedback from a mom
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== 7. PRICING & VALUE COMPARISON ==================== -->
   <section class="pricing" id="pricing">
     <div class="container narrow">
@@ -406,8 +457,13 @@
         <div class="price-comparison">
           <div class="comparison-row bad">
             <span class="comp-icon">❌</span>
-            <span class="comp-label">1 Dominos Pizza (Just 1 Meal)</span>
-            <span class="comp-price">₹500</span>
+            <span class="comp-label">1 Month School Canteen Junk Bill</span>
+            <span class="comp-price">₹1,200</span>
+          </div>
+          <div class="comparison-row bad">
+            <span class="comp-icon">❌</span>
+            <span class="comp-label">1 Pack of Processed Preservative Snacks</span>
+            <span class="comp-price">₹150</span>
           </div>
           <div class="comparison-row good">
             <span class="comp-icon">✅</span>
@@ -608,6 +664,108 @@
           }
         });
       });
+    })();
+
+    // a) Exit Intent Modal Logic
+    (function() {
+      var exitOverlay = document.getElementById('exitOverlay');
+      var exitModal = document.getElementById('exitModal');
+      var exitClose = document.getElementById('exitModalClose');
+      var exitCTA = document.getElementById('exitCTA');
+
+      if (!exitOverlay || !exitModal) return;
+
+      var modalShown = false;
+
+      function showExitModal() {
+        if (modalShown) return;
+        modalShown = true;
+        exitOverlay.classList.add('active');
+        exitModal.classList.add('active');
+        if (typeof fbq === 'function') {
+          fbq('trackCustom', 'ExitIntentShown', { page: 'kids_landing_page_en' });
+        }
+      }
+
+      function hideExitModal() {
+        exitOverlay.classList.remove('active');
+        exitModal.classList.remove('active');
+      }
+
+      // Detect mouse leaving the viewport (Desktop)
+      document.addEventListener('mouseleave', function(e) {
+        if (e.clientY < 20) {
+          showExitModal();
+        }
+      });
+
+      // Mobile Exit Intent: Show after 25 seconds
+      var scrollTimer = setTimeout(showExitModal, 25000);
+
+      exitClose.addEventListener('click', hideExitModal);
+      exitOverlay.addEventListener('click', hideExitModal);
+
+      if (exitCTA) {
+        exitCTA.addEventListener('click', function() {
+          if (typeof fbq === 'function') {
+            fbq('track', 'InitiateCheckout', {
+              value: 249,
+              currency: 'INR',
+              content_name: 'Happy Tiffin Discounted Bundle EN'
+            });
+          }
+        });
+      }
+    })();
+
+    // b) Scroll Progress Bar Logic
+    window.addEventListener('scroll', function() {
+      var winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+      var progressEl = document.getElementById('scrollProgress');
+      if (progressEl) {
+        progressEl.style.width = scrolled + '%';
+      }
+    });
+
+    // c) Animated Numbers Counter Logic
+    (function() {
+      function animateCounter(el, target, duration) {
+        var start = 0;
+        var stepTime = Math.abs(Math.floor(duration / target));
+        var timer = setInterval(function() {
+          start += 1;
+          el.textContent = start;
+          if (start >= target) {
+            el.textContent = target;
+            clearInterval(timer);
+          }
+        }, stepTime);
+      }
+
+      var counters = [
+        { id: 'statCounter1', target: 85 },
+        { id: 'statCounter2', target: 70 },
+        { id: 'statCounter3', target: 5 }
+      ];
+
+      if ('IntersectionObserver' in window) {
+        counters.forEach(function(counter) {
+          var el = document.getElementById(counter.id);
+          if (!el) return;
+          el.textContent = '0';
+          var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                animateCounter(el, counter.target, 1500);
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.2 });
+          observer.observe(el);
+        });
+      }
     })();
   </script>
 
