@@ -3,15 +3,109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Order Confirmed | The Happy Tiffin VIP System 🏆</title>
-  
-  <link rel="stylesheet" href="style.css?v=3.0" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏆</text></svg>" />
-
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <title>Order Confirmed — The 90-Day VIP System | The Secret Swap Bundle</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>" />
+  <style>
+    .thankyou-wrapper {
+      padding: 6rem 1rem 4rem;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .thankyou-box {
+      text-align: center;
+      padding: 3.5rem 2.5rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto 2.5rem;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .thankyou-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    }
+    .check-icon-container {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-full);
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid #f59e0b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      color: #f59e0b;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    .download-section {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      margin: 2.5rem 0;
+      text-align: left;
+    }
+    .download-section.vip-section {
+      border-color: #f59e0b;
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.05) 0%, var(--bg-secondary) 100%);
+    }
+    .download-section h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      margin-bottom: 1.25rem;
+      color: var(--text-primary);
+    }
+    .download-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .download-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+    }
+    .download-item.vip-item {
+      border-left: 4px solid #f59e0b;
+    }
+    .download-item-info {
+      display: flex;
+      flex-direction: column;
+      max-width: 70%;
+    }
+    .download-item-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+    .download-item-size {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    @media (max-width: 768px) {
+      .thankyou-box {
+        padding: 2.5rem 1.5rem;
+      }
+    }
+  </style>
 
   <!-- Meta Pixel Code -->
   <script>
@@ -23,16 +117,9 @@
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '832552641809527');
+  fbq('init', '832552641809527'); // Meta Pixel ID inserted
   fbq('track', 'PageView');
   fbq('trackCustom', 'ThankYouVIPPageView');
-  
-  // Standard Purchase event for Meta Pixel (Upsell purchase)
-  fbq('track', 'Purchase', {
-    value: 999,
-    currency: 'INR',
-    content_name: 'Happy Tiffin VIP Family Bundle'
-  });
   </script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=832552641809527&ev=PageView&noscript=1"
@@ -51,89 +138,175 @@
 </head>
 <body>
 
-  <section class="hero" style="padding: 80px 0;">
-    <div class="container text-center" style="max-width: 720px; margin: 0 auto; text-align: center;">
-      
-      <div style="font-size: 4rem; margin-bottom: 20px;">🏆</div>
-      <h1 class="hero-title" style="font-size: 2.5rem; margin-bottom: 15px;">Order Confirmed: VIP Family Upgrade!</h1>
-      <p class="hero-subtitle" style="font-size: 1.15rem; margin-bottom: 40px; color: var(--text-secondary);">
-        Aapka Complete Family Health System order confirm ho gaya hai. Deliverables details WhatsApp aur Email par 2-5 minutes me mil jayengi.
-      </p>
+  <div class="scroll-progress" id="scrollProgress"></div>
 
-      <!-- STEP 1: JOIN WHATSAPP COMMUNITY -->
-      <div style="background: #FFFFFF; border: 2px solid var(--secondary); padding: 30px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: 35px; text-align: left;">
-        <h3 style="color: var(--secondary); display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 1.3rem;">
-          <span>💬</span> Step 1: Join Smart Moms VIP WhatsApp Group (MANDATORY)
-        </h3>
-        <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6;">
-          Yahan aapko daily family nutrition updates, smart swaps guidelines, and support community milegi. Group turant join karein.
+  <section class="thankyou-wrapper">
+    <div class="container">
+      <div class="thankyou-box">
+        <div class="check-icon-container">💎</div>
+        <h1 class="section-title-center" style="font-size: 2rem; margin-bottom: 0.5rem; color: #f59e0b;">VIP System Unlocked!</h1>
+        <p class="section-desc-center" style="margin-bottom: 2rem; color: var(--text-secondary);">
+          Your payment was successful. You now have full access to the 90-Day System AND the Core Recipe Bundle.
         </p>
-        <a href="https://chat.whatsapp.com/DvctCt8RgsqLfS7n0RZzyh" class="btn btn-primary btn-pulse" style="background: var(--secondary); box-shadow: 0 8px 24px rgba(76, 175, 80, 0.3);" target="_blank" rel="noopener">
-          Join VIP WhatsApp Group Now →
-        </a>
-      </div>
 
-      <!-- STEP 2: DOWNLOAD DELIVERABLES -->
-      <div style="background: #FFFFFF; border: 1px solid var(--border-subtle); padding: 30px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); text-align: left;">
-        <h3 style="margin-bottom: 20px; font-size: 1.3rem; color: var(--text-primary);">📥 Step 2: Download Your VIP E-books & Guides</h3>
-        
-        <div style="display: flex; flex-direction: column; gap: 15px;">
-          <!-- Item 1 -->
-          <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-primary); padding: 15px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-            <div>
-              <strong style="font-size: 0.95rem; display: block; color: var(--text-primary);">[Core Book] The Happy Tiffin System</strong>
-              <span style="font-size: 0.8rem; color: var(--text-muted);">101 Healthy Indian Recipes (PDF)</span>
+        <!-- VIP DOWNLOAD SECTION -->
+        <div class="download-section vip-section">
+          <h3 style="color: #f59e0b;">💎 Download Your 90-Day VIP System</h3>
+          
+          <div class="download-grid">
+            <div class="download-item vip-item">
+              <div class="download-item-info">
+                <span class="download-item-title">The "Zero-Thinking" 90-Day Master Meal Plan</span>
+                <span class="download-item-size">Zero-Thinking Protocol (PDF)</span>
+              </div>
+              <a href="Upsell_999_Deliverables/90_Day_Master_Meal_Plan.pdf" class="btn btn-primary" download style="background: #f59e0b; color: #000; padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
             </div>
-            <a href="#" class="btn" style="background: var(--primary); padding: 10px 20px; font-size: 0.9rem; width: auto; font-family: var(--font-body); box-shadow: none;">Download</a>
-          </div>
-          <!-- Item 2 -->
-          <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-primary); padding: 15px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-            <div>
-              <strong style="font-size: 0.95rem; display: block; color: var(--text-primary);">[VIP Upgrade] Complete Family Health Blueprint</strong>
-              <span style="font-size: 0.8rem; color: var(--text-muted);">High-Protein Meal Plans for Parents (PDF)</span>
+
+            <div class="download-item vip-item">
+              <div class="download-item-info">
+                <span class="download-item-title">The "Sugar Sniper" Tracker & Medicine Log</span>
+                <span class="download-item-size">Interactive Tracking (Excel)</span>
+              </div>
+              <a href="Upsell_999_Deliverables/Smart_Sugar_Tracker_&_Diabetic_Medicine_Log.xlsx" class="btn btn-primary" download style="background: #f59e0b; color: #000; padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
             </div>
-            <a href="#" class="btn" style="background: var(--primary); padding: 10px 20px; font-size: 0.9rem; width: auto; font-family: var(--font-body); box-shadow: none;">Download</a>
-          </div>
-          <!-- Item 3 -->
-          <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-primary); padding: 15px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-            <div>
-              <strong style="font-size: 0.95rem; display: block; color: var(--text-primary);">[VIP Upgrade] "No-Sugar" Desi Desserts Guide</strong>
-              <span style="font-size: 0.8rem; color: var(--text-muted);">Safe natural Indian sweets (PDF)</span>
+
+            <div class="download-item vip-item">
+              <div class="download-item-info">
+                <span class="download-item-title">90-Day Self-Accountability Tracker</span>
+                <span class="download-item-size">Daily Checklists (PDF)</span>
+              </div>
+              <a href="Upsell_999_Deliverables/90_Day_Self_Accountability_Tracker.pdf" class="btn btn-primary" download style="background: #f59e0b; color: #000; padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
             </div>
-            <a href="#" class="btn" style="background: var(--primary); padding: 10px 20px; font-size: 0.9rem; width: auto; font-family: var(--font-body); box-shadow: none;">Download</a>
-          </div>
-          <!-- Item 4 -->
-          <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-primary); padding: 15px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-            <div>
-              <strong style="font-size: 0.95rem; display: block; color: var(--text-primary);">[VIP Upgrade] Grandparents Wellness Guide</strong>
-              <span style="font-size: 0.8rem; color: var(--text-muted);">Immunity and joint care recipes (PDF)</span>
+
+            <div class="download-item vip-item">
+              <div class="download-item-info">
+                <span class="download-item-title">Print & Go Grocery Lists</span>
+                <span class="download-item-size">Weekly Shopping Guides (Excel)</span>
+              </div>
+              <a href="Upsell_999_Deliverables/Smart_Grocery_Shopping_Lists.xlsx" class="btn btn-primary" download style="background: #f59e0b; color: #000; padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
             </div>
-            <a href="#" class="btn" style="background: var(--primary); padding: 10px 20px; font-size: 0.9rem; width: auto; font-family: var(--font-body); box-shadow: none;">Download</a>
-          </div>
-          <!-- Item 5 -->
-          <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-primary); padding: 15px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-            <div>
-              <strong style="font-size: 0.95rem; display: block; color: var(--text-primary);">[VIP Upgrade] Kitchen Toxic Chemical Audit</strong>
-              <span style="font-size: 0.8rem; color: var(--text-muted);">Packaged food grocery checklist (PDF)</span>
+
+            <div class="download-item vip-item">
+              <div class="download-item-info">
+                <span class="download-item-title">[Bonus] The Indian Wedding Cheat Code</span>
+                <span class="download-item-size">Festival Eating Guide (PDF)</span>
+              </div>
+              <a href="Upsell_999_Deliverables/Bonus_Wedding_Cheat_Code.pdf" class="btn btn-primary" download style="background: #f59e0b; color: #000; padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
             </div>
-            <a href="#" class="btn" style="background: var(--primary); padding: 10px 20px; font-size: 0.9rem; width: auto; font-family: var(--font-body); box-shadow: none;">Download</a>
+
+            <div class="download-item vip-item">
+              <div class="download-item-info">
+                <span class="download-item-title">[Bonus] Safe Snacking Guide</span>
+                <span class="download-item-size">5 PM Chai Time Snacks (PDF)</span>
+              </div>
+              <a href="Upsell_999_Deliverables/Bonus_Safe_Snacking.pdf" class="btn btn-primary" download style="background: #f59e0b; color: #000; padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
+            </div>
           </div>
         </div>
-        
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 15px; text-align: center; font-style: italic;">
-          💡 Tip: Save these PDFs to your phone or computer files for offline access.
-        </p>
-      </div>
 
+        <!-- CORE DOWNLOAD SECTION -->
+        <div class="download-section">
+          <h3>📥 Download Your Core Secret Swap Files</h3>
+          
+          <div class="download-grid">
+            <div class="download-item">
+              <div class="download-item-info">
+                <span class="download-item-title">The Secret Swap Recipe Vault</span>
+                <span class="download-item-size">105+ Recipes Complete Master Edition (PDF)</span>
+              </div>
+              <a href="final_deliverables_pdf_excel/The_Secret_Swap_Recipe_Vault.pdf" class="btn btn-green" download style="padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
+            </div>
+
+            <div class="download-item">
+              <div class="download-item-info">
+                <span class="download-item-title">30-Day Diabetic Meal Planner</span>
+                <span class="download-item-size">The Stable Sugar Protocol Planner (PDF)</span>
+              </div>
+              <a href="final_deliverables_pdf_excel/30_Day_Diabetic_Meal_Planner.pdf" class="btn btn-green" download style="padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
+            </div>
+
+            <div class="download-item">
+              <div class="download-item-info">
+                <span class="download-item-title">7-Day Sugar Reset Meal Plan</span>
+                <span class="download-item-size">Rapid Action Protocol (PDF)</span>
+              </div>
+              <a href="final_deliverables_pdf_excel/7_Day_Sugar_Reset_Meal_Plan.pdf" class="btn btn-green" download style="padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
+            </div>
+
+            <div class="download-item">
+              <div class="download-item-info">
+                <span class="download-item-title">15-Minute Fast Cooking Guide</span>
+                <span class="download-item-size">Hacks for Busy Days (PDF)</span>
+              </div>
+              <a href="final_deliverables_pdf_excel/15_Min_Fast_Cooking_Guide.pdf" class="btn btn-green" download style="padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
+            </div>
+
+            <div class="download-item">
+              <div class="download-item-info">
+                <span class="download-item-title">Dining Out Survival Guide</span>
+                <span class="download-item-size">Pro Guide to Smart Dining Out (PDF)</span>
+              </div>
+              <a href="final_deliverables_pdf_excel/Dining_Out_Survival_Guide.pdf" class="btn btn-green" download style="padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
+            </div>
+
+            <div class="download-item">
+              <div class="download-item-info">
+                <span class="download-item-title">Glycemic Index (GI) Food Cheat Sheet</span>
+                <span class="download-item-size">Color-Coded Glycemic Index Chart (PDF)</span>
+              </div>
+              <a href="final_deliverables_pdf_excel/GI_Food_Cheat_Sheet.pdf" class="btn btn-green" download style="padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
+            </div>
+
+            <div class="download-item">
+              <div class="download-item-info">
+                <span class="download-item-title">Herbal Drinks & Kadha Recipes</span>
+                <span class="download-item-size">10 Traditional Wellness Drinks (PDF)</span>
+              </div>
+              <a href="final_deliverables_pdf_excel/Herbal_Drinks_Kadha_Recipes.pdf" class="btn btn-green" download style="padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
+            </div>
+          </div>
+
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1.5rem; text-align: center;">
+            💡 <strong>Tip:</strong> Save these files directly to your phone's 'Files' or 'Books' app for easy access.
+          </p>
+        </div>
+
+        <!-- WHATSAPP INTEGRATION -->
+        <div class="download-section" style="border-color: #f59e0b; background: rgba(245, 158, 11, 0.05);">
+          <h3 style="color: #f59e0b; display: flex; align-items: center; gap: 0.5rem;">
+            <span>💬</span> Join Our VIP Support Community
+          </h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+            Access direct tips, check-in reminders, and talk with other members on a similar journey.
+          </p>
+          <a href="https://chat.whatsapp.com/BRl4g3PA38hBdNiuG8nZfO" class="btn btn-pulse" style="width: 100%; display: inline-flex; justify-content: center; align-items: center; gap: 0.5rem; background: #f59e0b; color: #000;" target="_blank" rel="noopener">
+            Join Official VIP WhatsApp Group
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
+  <!-- ========== FOOTER ========== -->
+  <footer style="border-top: 1px solid var(--border-subtle); padding: 2rem 0; text-align: center;">
     <div class="container">
-      <p>© 2026 The Happy Tiffin. All rights reserved.</p>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">© 2026 Secret Swap Recipe Vault. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+      </div>
     </div>
   </footer>
+
+  <script>
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scrollProgress').style.width = scrolled + '%';
+    });
+  </script>
 
 </body>
 </html>
