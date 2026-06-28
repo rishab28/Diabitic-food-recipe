@@ -848,24 +848,25 @@ h1, h2, h3, h4 {
   font-weight: 600;
 }
 
-/* --- 15. Responsive Styles --- */
+/* --- 15. Responsive Styles (Fully Mobile Optimized) --- */
 @media (max-width: 991px) {
   .hero {
-    padding: 60px 0;
+    padding: 40px 0;
   }
   
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
-    text-align: center;
-  }
-  
-  .hero-bullets {
-    align-items: center;
+    gap: 30px;
+    text-align: left; /* Keep left alignment for better direct response readability */
   }
   
   .cta-block {
     margin: 0 auto;
+    max-width: 100%;
+  }
+  
+  .hero-bullets {
+    align-items: flex-start;
   }
   
   .gallery-showcase {
@@ -874,45 +875,232 @@ h1, h2, h3, h4 {
   }
   
   .gallery-image-box {
-    max-width: 460px;
+    max-width: 100%;
     margin: 0 auto;
   }
   
   .offer-layout {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 30px;
   }
   
   .offer-mockup {
-    max-width: 320px;
+    max-width: 260px;
     margin: 0 auto;
   }
 }
 
 @media (max-width: 767px) {
+  .top-bar {
+    font-size: 0.82rem;
+    padding: 8px 10px;
+  }
+
   .section-title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
   
+  .section-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+
+  .hero {
+    padding: 30px 0;
+  }
+
   .hero-title {
-    font-size: 2.3rem;
+    font-size: 1.95rem;
+    line-height: 1.25;
   }
   
+  .hero-subtitle {
+    font-size: 1.05rem;
+    margin-bottom: 25px;
+  }
+
+  .hero-benefits-grid {
+    gap: 15px;
+  }
+
+  .benefit-icon {
+    font-size: 1.3rem;
+    padding: 8px;
+  }
+
+  .benefit-item h4 {
+    font-size: 1rem;
+  }
+
+  .benefit-item p {
+    font-size: 0.85rem;
+  }
+
+  .floating-badge {
+    padding: 8px 12px;
+    bottom: 12px;
+    right: 12px;
+  }
+
+  .fb-stars {
+    font-size: 0.75rem;
+  }
+
+  .fb-text {
+    font-size: 0.78rem;
+  }
+
+  .checklist-item {
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .checklist-item p {
+    font-size: 0.92rem;
+  }
+
+  .epiphany-box {
+    padding: 20px;
+  }
+
+  .epiphany-box h4 {
+    font-size: 1.1rem;
+  }
+
+  .epiphany-box p {
+    font-size: 0.92rem;
+  }
+
   .framework-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
+
+  .framework-card {
+    padding: 25px 20px;
+    text-align: center;
+  }
+
+  .fc-icon {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+  }
+
+  .story-card {
+    padding: 25px 20px;
+  }
+
+  .story-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .story-avatar {
+    font-size: 2.2rem;
+    padding: 10px;
+  }
+
+  .story-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .story-body p {
+    font-size: 0.92rem;
+    margin-bottom: 14px;
+  }
+
+  .khadufarm-bridge {
+    padding: 15px;
+    font-size: 0.88rem !important;
+    margin-top: 20px;
+  }
+
+  .objection-handler-box {
+    padding: 20px 15px;
+    margin-top: -10px;
+    margin-bottom: 30px;
+  }
+
+  .objection-handler-box h4 {
+    font-size: 1.05rem;
+  }
+
+  .objection-handler-box p {
+    font-size: 0.88rem;
+  }
+
+  .stack-item {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 15px;
+  }
+
+  .stack-icon {
+    font-size: 1.8rem;
+    padding: 8px;
+  }
+
+  .stack-desc h4 {
+    font-size: 1.05rem;
+  }
+
+  .stack-desc p {
+    font-size: 0.85rem;
+  }
+
+  .preview-img {
+    max-width: 100%;
+  }
+
+  .chat-bubble {
+    max-width: 90%;
+    font-size: 0.92rem;
+    padding: 12px 14px 22px 14px;
+  }
+
   .pricing-card {
-    padding: 40px 20px;
+    padding: 35px 15px;
   }
-  
+
+  .price-comparison {
+    padding: 15px;
+  }
+
+  .comparison-row {
+    font-size: 0.88rem;
+  }
+
   .price-amount {
-    font-size: 3.8rem;
+    font-size: 3.6rem;
   }
-  
+
+  .guarantee-box {
+    padding: 18px;
+  }
+
+  .g-badge {
+    font-size: 1.05rem;
+  }
+
+  .g-text {
+    font-size: 0.85rem;
+  }
+
   .btn {
     font-size: 1.1rem;
-    padding: 16px 30px;
+    padding: 16px 24px;
+  }
+
+  .accordion-header {
+    padding: 16px 20px;
+    font-size: 0.95rem;
+  }
+
+  .accordion-item.active .accordion-content {
+    padding: 0 20px 20px 20px;
   }
 }
