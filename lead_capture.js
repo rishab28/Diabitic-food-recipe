@@ -1,15 +1,15 @@
 /**
  * Secret Swap Funnel - Lead Capture & Exit Intent System
  * Author: Priya & KhaduFarm Tech Team
- * Description: Captures names, WhatsApp numbers, and emails of abandoning users
- * and checkout clickers before redirecting them to payment.
+ * Description: Intercepts exit intent to offer a high-value lead magnet bribe
+ * (3 free recipes + 1 bonus guide) and captures WhatsApp/Email leads.
+ * Normal checkout buttons remain direct and uninterrupted.
  */
 
 (function() {
   // CONFIGURATION: Set your webhook URL here (e.g. Google Sheets web app, Make.com, or Zapier)
-  const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzS-uN0X4Y-Yq56p0a-G7dYfU_1-WwP2x4t_YtK-k2XgK5R2zG-m94n_TqQ3G0k_w/exec"; // Placeholder/Default
+  const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzS-uN0X4Y-Yq56p0a-G7dYfU_1-WwP2x4t_YtK-k2XgK5R2zG-m94n_TqQ3G0k_w/exec";
   
-  let targetPaymentUrl = "";
   let leadModalInjected = false;
 
   // Injected CSS Styles
@@ -49,24 +49,22 @@
       transform: scale(1);
     }
     .lead-header {
-      background: linear-gradient(135deg, #FF7020, #FF5500);
+      background: linear-gradient(135deg, #10B981, #059669);
       color: #FFFFFF;
       padding: 25px 20px;
       text-align: center;
       position: relative;
     }
-    .lead-header.exit-theme {
-      background: linear-gradient(135deg, #10B981, #059669);
-    }
     .lead-header h3 {
       margin: 0;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 800;
       font-family: 'Outfit', 'Inter', sans-serif;
+      line-height: 1.3;
     }
     .lead-header p {
-      margin: 5px 0 0;
-      font-size: 0.9rem;
+      margin: 6px 0 0;
+      font-size: 0.88rem;
       opacity: 0.9;
     }
     .lead-close {
@@ -91,10 +89,10 @@
       background: rgba(0,0,0,0.3);
     }
     .lead-body {
-      padding: 30px 25px;
+      padding: 25px 25px 30px;
     }
     .lead-form-group {
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       text-align: left;
     }
     .lead-form-group label {
@@ -102,61 +100,48 @@
       font-size: 0.85rem;
       font-weight: 600;
       color: #475569;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
     .lead-input {
       width: 100%;
-      padding: 12px 16px;
+      padding: 11px 14px;
       border: 1.5px solid #CBD5E1;
       border-radius: 10px;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       transition: border-color 0.2s;
       outline: none;
       color: #1E293B;
     }
     .lead-input:focus {
-      border-color: #FF7020;
-    }
-    .lead-header.exit-theme ~ .lead-body .lead-input:focus {
       border-color: #10B981;
     }
     .lead-submit-btn {
       width: 100%;
-      background: #FF7020;
+      background: #10B981;
       color: white;
       border: none;
-      padding: 14px;
-      font-size: 1.1rem;
+      padding: 13px;
+      font-size: 1.05rem;
       font-weight: 700;
-      border-radius: 12px;
+      border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 6px 20px rgba(255, 112, 32, 0.3);
+      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.25);
       transition: all 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      margin-top: 10px;
     }
     .lead-submit-btn:hover {
-      background: #E05300;
-      transform: translateY(-2px);
-    }
-    .lead-header.exit-theme ~ .lead-body .lead-submit-btn {
-      background: #10B981;
-      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
-    }
-    .lead-header.exit-theme ~ .lead-body .lead-submit-btn:hover {
       background: #059669;
+      transform: translateY(-1px);
     }
     .lead-trust {
       text-align: center;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: #64748B;
       margin-top: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
     }
   `;
   document.head.appendChild(style);
@@ -165,15 +150,42 @@
   function injectModal() {
     if (leadModalInjected) return;
     
+    const isKidsPage = window.location.href.includes("kids");
+    
+    // Customize copy based on Kids vs Diabetic funnel
+    let giftTitle = "";
+    let giftSubtitle = "";
+    let gift1Name = "";
+    let gift1Path = "";
+    let gift2Name = "";
+    let gift2Path = "";
+    
+    if (isKidsPage) {
+      giftTitle = "🎁 Wait! Get 3 Free Recipes + 1 Tiffin Calendar Sheet!";
+      giftSubtitle = "Enter your details below to download them instantly on the next screen.";
+      gift1Name = "📥 Download 3 Free Recipes (PDF)";
+      gift1Path = "deliverables/Five_Minute_Breakfast_Guide.pdf";
+      gift2Name = "📥 Download Empty Tiffin Calendar (Excel)";
+      gift2Path = "deliverables/Empty_Tiffin_Calendar.xlsx";
+    } else {
+      giftTitle = "🎁 Wait! Get 3 Sugar-Safe Dessert Swaps + 1 Grocery List!";
+      giftSubtitle = "Enter your details below to download them instantly on the next screen.";
+      gift1Name = "📥 Download 3 Dessert Swaps (PDF)";
+      gift1Path = "final_deliverables_pdf_excel/Herbal_Drinks_Kadha_Recipes.pdf";
+      gift2Name = "📥 Download Smart Grocery Lists (Excel)";
+      gift2Path = "final_deliverables_pdf_excel/Smart_Grocery_Shopping_Lists.xlsx";
+    }
+    
     const modalHtml = `
       <div class="lead-backdrop" id="leadBackdrop">
         <div class="lead-modal">
-          <div class="lead-header" id="leadHeader">
+          <div class="lead-header">
             <button class="lead-close" id="leadCloseBtn">&times;</button>
-            <h3 id="leadTitle">⚡ Complete Your Order</h3>
-            <p id="leadSubtitle">Enter details to proceed to secure payment gateway</p>
+            <h3 id="leadTitle">${giftTitle}</h3>
+            <p id="leadSubtitle">${giftSubtitle}</p>
           </div>
           <div class="lead-body">
+            <!-- LEAD CAPTURE FORM -->
             <form id="leadForm">
               <div class="lead-form-group">
                 <label>Your Name / Aapka Naam</label>
@@ -188,14 +200,32 @@
                 <input type="email" id="leadEmail" class="lead-input" placeholder="e.g. name@email.com" required />
               </div>
               
-              <button type="submit" class="lead-submit-btn" id="leadSubmitBtn">
-                Proceed to Secure Payment →
+              <button type="submit" class="lead-submit-btn">
+                Claim My Free Gifts Now →
               </button>
               
               <div class="lead-trust">
-                🔒 Protected by Indian DPDP Act 2023. We never share your data.
+                🔒 Protected by Indian DPDP Act 2023. We never share your details.
               </div>
             </form>
+            
+            <!-- SUCCESS STATE / DOWNLOAD SCREEN -->
+            <div id="leadSuccess" style="display: none; text-align: center;">
+              <div style="font-size: 3rem; margin-bottom: 10px;">🎉</div>
+              <h4 style="color: #10B981; font-size: 1.25rem; font-weight: 800; margin: 0 0 8px;">Access Granted! / Gift Unlock!</h4>
+              <p style="font-size: 0.88rem; color: #475569; margin: 0 0 20px; line-height: 1.5;">
+                Aapke free gifts niche ready hain. Click karke download karein:
+              </p>
+              
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <a id="giftBtn1" href="${gift1Path}" class="lead-submit-btn" style="background: #10B981; text-decoration: none; margin: 0;" download>${gift1Name}</a>
+                <a id="giftBtn2" href="${gift2Path}" class="lead-submit-btn" style="background: #3B82F6; box-shadow: 0 6px 16px rgba(59, 130, 246, 0.25); text-decoration: none; margin: 0;" download>${gift2Name}</a>
+              </div>
+              
+              <button id="leadContinueBtn" class="lead-submit-btn" style="background: #64748B; box-shadow: none; font-size: 0.9rem; padding: 10px; margin-top: 15px;">
+                Return to Page
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -207,6 +237,7 @@
     
     // Bind Events
     document.getElementById('leadCloseBtn').addEventListener('click', closeLeadModal);
+    document.getElementById('leadContinueBtn').addEventListener('click', closeLeadModal);
     document.getElementById('leadBackdrop').addEventListener('click', function(e) {
       if (e.target === this) closeLeadModal();
     });
@@ -215,31 +246,12 @@
     leadModalInjected = true;
   }
 
-  function openLeadModal(destinationUrl, isExitIntent = false) {
+  function openLeadModal() {
     injectModal();
-    targetPaymentUrl = destinationUrl;
-    
     const backdrop = document.getElementById('leadBackdrop');
-    const header = document.getElementById('leadHeader');
-    const title = document.getElementById('leadTitle');
-    const subtitle = document.getElementById('leadSubtitle');
-    const submitBtn = document.getElementById('leadSubmitBtn');
-    
-    if (isExitIntent) {
-      header.classList.add('exit-theme');
-      title.innerHTML = "🎁 Wait! Get 1 Free Guide + ₹100 Off!";
-      subtitle.innerHTML = "Enter details to grab this discount code immediately!";
-      submitBtn.innerHTML = "Claim My Gift & Proceed →";
-    } else {
-      header.classList.remove('exit-theme');
-      title.innerHTML = "⚡ Complete Your Order";
-      subtitle.innerHTML = "Enter details to proceed to secure payment gateway";
-      submitBtn.innerHTML = "Proceed to Secure Payment →";
-    }
-    
     backdrop.classList.add('active');
     
-    // Facebook Lead Event Tracking (Optional placeholder)
+    // Facebook Lead Event Tracking
     if (typeof fbq === 'function') {
       fbq('track', 'InitiateCheckout');
     }
@@ -255,7 +267,7 @@
   function handleLeadSubmit(e) {
     e.preventDefault();
     
-    const name = document.getElementById('leadName').value.strip ? document.getElementById('leadName').value.strip() : document.getElementById('leadName').value;
+    const name = document.getElementById('leadName').value.trim ? document.getElementById('leadName').value.trim() : document.getElementById('leadName').value;
     const phone = document.getElementById('leadPhone').value;
     const email = document.getElementById('leadEmail').value;
     
@@ -274,7 +286,7 @@
     if (WEBHOOK_URL && !WEBHOOK_URL.includes("placeholder")) {
       fetch(WEBHOOK_URL, {
         method: "POST",
-        mode: "no-cors", // Bypasses CORS blocks
+        mode: "no-cors",
         headers: {
           "Content-Type": "application/json"
         },
@@ -285,18 +297,15 @@
     // Facebook Lead Capture Event
     if (typeof fbq === 'function') {
       fbq('track', 'Lead', {
-        content_name: 'Funnel Checkout Click',
+        content_name: 'Exit Intent Gift Form',
         value: 0.00,
         currency: 'INR'
       });
     }
 
-    closeLeadModal();
-
-    // Proceed to payment after brief timeout (to allow asynchronous fetch call to fire)
-    setTimeout(function() {
-      window.location.href = targetPaymentUrl;
-    }, 150);
+    // Toggle to success download state
+    document.getElementById('leadForm').style.display = 'none';
+    document.getElementById('leadSuccess').style.display = 'block';
   }
 
   // --- EXIT INTENT TRIGGER LOGIC ---
@@ -309,18 +318,7 @@
     if (localStorage.getItem('funnel_lead')) return;
     
     exitIntentTriggered = true;
-    
-    // Define discount link based on page
-    let exitUrl = "https://superprofile.bio/vp/FUIMWaYB?checkout=true"; // default
-    if (window.location.href.includes("kids/index-en.html")) {
-      exitUrl = "https://superprofile.bio/vp/FUIMWaYB?discountCode=KIDS50";
-    } else if (window.location.href.includes("kids")) {
-      exitUrl = "https://superprofile.bio/vp/FUIMWaYB?discountCode=KIDS50";
-    } else {
-      exitUrl = "https://superprofile.bio/vp/FUIMWaYB?discountCode=KHADU50";
-    }
-    
-    openLeadModal(exitUrl, true);
+    openLeadModal();
   }
 
   // 1. Desktop Exit Intent (Mouse leaves top of window)
@@ -331,7 +329,6 @@
   });
 
   // 2. Mobile Exit Intent (Back button intercept hack)
-  // Push state so we can catch popstate (back click)
   window.addEventListener('load', function() {
     setTimeout(function() {
       history.pushState({ exitIntent: true }, "", window.location.href);
@@ -340,9 +337,7 @@
   
   window.addEventListener('popstate', function(e) {
     if (e.state && e.state.exitIntent) {
-      // User is clicking back, intercept and show exit modal
       triggerExitIntent();
-      // Push state again so they can exit next time
       history.pushState(null, "", window.location.href);
     }
   });
@@ -363,25 +358,5 @@
   document.addEventListener('keypress', resetTimer);
   document.addEventListener('touchstart', resetTimer);
   document.addEventListener('scroll', resetTimer);
-
-  // --- INTERCEPT ALL CHECKOUT CTA BUTTONS ---
-  function hookCheckoutButtons() {
-    const buttons = document.querySelectorAll('a');
-    buttons.forEach(function(btn) {
-      const href = btn.getAttribute('href') || "";
-      if (href.includes("superprofile.bio") && !btn.id.includes("exitCTA")) {
-        // Change click behavior
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          openLeadModal(href, false);
-        });
-      }
-    });
-  }
-
-  // Hook buttons immediately and periodically (to catch dynamic buttons)
-  window.addEventListener('DOMContentLoaded', hookCheckoutButtons);
-  setTimeout(hookCheckoutButtons, 1000);
-  setTimeout(hookCheckoutButtons, 3000);
 
 })();
