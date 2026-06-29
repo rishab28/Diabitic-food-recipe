@@ -1352,7 +1352,8 @@ h1, h2, h3, h4 {
   /* Shift Crisp Chat Bubble up on mobile to avoid overlapping the sticky bar */
   .crisp-client, 
   #crisp-chatbox {
-    margin-bottom: 75px !important;
+    bottom: 95px !important;
+    margin-bottom: 95px !important;
   }
 }
 
