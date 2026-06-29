@@ -13,7 +13,7 @@
   const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxLAG9bSL8rdr-0YYwXxM61al5QP6FXURZqiuqmbHlcSHRI1dTcolrGPVfrBXxvyW5dtA/exec";
   
   // CONFIGURATION: Crisp Live Chat Website ID (Replace with your free Crisp ID)
-  const CRISP_WEBSITE_ID = "92be432f-a36c-486a-aa7e-66a877c44e99";
+  const CRISP_WEBSITE_ID = "006c10ee-efc7-4e1b-b7f8-267ffeceba79";
   
   let leadModalInjected = false;
   let targetPaymentUrl = ""; // Stores checkout destination URL if clicked from a CTA
