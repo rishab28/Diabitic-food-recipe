@@ -330,10 +330,12 @@
   let exitIntentTriggered = false;
   
   function triggerExitIntent() {
-    if (exitIntentTriggered) return;
+    const isTestMode = window.location.search.includes('test=true');
     
-    // Check if user already submitted lead
-    if (localStorage.getItem('funnel_lead')) return;
+    if (exitIntentTriggered && !isTestMode) return;
+    
+    // Check if user already submitted lead (ignored in test mode)
+    if (localStorage.getItem('funnel_lead') && !isTestMode) return;
     
     exitIntentTriggered = true;
     openLeadModal();
