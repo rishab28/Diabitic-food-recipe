@@ -446,9 +446,10 @@
       // Intercept if it links to superprofile
       if (href.includes("superprofile.bio") && !btn.id.includes("downsellCTA")) {
         btn.addEventListener('click', function(e) {
-          // If they already filled out the lead form earlier, go straight to payment (pre-filled)
+          // If they already filled out the lead form earlier, go straight to payment (pre-filled, bypassed in test mode)
+          const isTestMode = window.location.search.includes('test=true');
           const savedLead = localStorage.getItem('funnel_lead');
-          if (savedLead) {
+          if (savedLead && !isTestMode) {
             try {
               const data = JSON.parse(savedLead);
               const connector = href.includes('?') ? '&' : '?';
