@@ -1348,11 +1348,12 @@ h1, h2, h3, h4 {
   .sticky-bar-price .price {
     font-size: 1.1rem;
   }
-  .whatsapp-float {
-    bottom: 5.5rem; /* Push up to avoid overlapping sticky bar */
-    right: 1.2rem;
-    width: 48px;
-    height: 48px;
+  
+  /* Shift Crisp Chat Bubble up on mobile to avoid overlapping the sticky bar */
+  .crisp-client, 
+  #crisp-chatbox,
+  div.crisp-client {
+    bottom: 85px !important;
   }
 }
 
