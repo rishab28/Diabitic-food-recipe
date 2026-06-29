@@ -482,6 +482,12 @@
   if (CRISP_WEBSITE_ID && CRISP_WEBSITE_ID !== "YOUR_CRISP_WEBSITE_ID") {
     window.$crisp = [];
     window.CRISP_WEBSITE_ID = CRISP_WEBSITE_ID;
+    
+    // Set vertical offset dynamically: 85px from bottom on mobile (to clear sticky CTA), 20px on desktop
+    const isMobile = window.innerWidth <= 767;
+    const verticalOffset = isMobile ? 85 : 20;
+    window.$crisp.push(["set", "chat:offset", [20, verticalOffset]]);
+    
     (function() {
       var d = document;
       var s = d.createElement("script");
