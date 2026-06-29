@@ -73,22 +73,6 @@
 <!-- ==================== 1. SCROLL PROGRESS BAR ==================== -->
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- ==================== 2. EXIT INTENT MODAL ==================== -->
-<div class="exit-intent-overlay" id="exitOverlay"></div>
-<div class="exit-intent-modal" id="exitModal">
-  <button class="exit-modal-close" id="exitModalClose">&times;</button>
-  <div class="exit-modal-emoji">🛑</div>
-  <h3>Ruk Jaiye! Apne Pariwaar Ki Sehat Mat Chhodiye</h3>
-  <p>Don't leave your family's health to chance. Use this special code for an exclusive discount:</p>
-  <div class="exit-modal-discount">
-    <span class="discount-label">Your Exclusive Code:</span>
-    <span class="discount-code">KHADU50</span>
-    <span class="discount-value">Extra 50% OFF on any plan</span>
-  </div>
-  <a href="https://superprofile.bio/vp/FUIMWaYB?discountCode=KHADU50" class="btn btn-primary btn-lg btn-pulse" id="exitCTA">Yes! I Want The Secret Swap Bundle →</a>
-  <p class="exit-modal-subtext">⏰ This code expires when the timer hits zero!</p>
-</div>
-
 <!-- ==================== 3. TOP ANNOUNCEMENT BAR ==================== -->
 <div class="top-bar-alert" id="topAlert">
   🚨 62% OFF BUNDLE: Limited to 500 families (due to WhatsApp support capacity). <span class="countdown-timer" id="topTimer">15:00</span> remaining.
@@ -855,37 +839,7 @@
   }
   window.addEventListener('scroll', updateStickyBar, { passive: true });
 
-  // ===================================================================
-  // f) EXIT INTENT (desktop only)
-  // ===================================================================
-  var exitOverlay = document.getElementById('exitOverlay');
-  var exitModal = document.getElementById('exitModal');
-  var exitModalClose = document.getElementById('exitModalClose');
-
-  function showExitModal() {
-    if (sessionStorage.getItem('exitShown')) return;
-    if (exitOverlay) exitOverlay.classList.add('show');
-    if (exitModal) exitModal.classList.add('show');
-    sessionStorage.setItem('exitShown', '1');
-  }
-
-  function hideExitModal() {
-    if (exitOverlay) exitOverlay.classList.remove('show');
-    if (exitModal) exitModal.classList.remove('show');
-  }
-
-  document.addEventListener('mouseleave', function (e) {
-    if (e.clientY < 0) {
-      showExitModal();
-    }
-  });
-
-  if (exitModalClose) {
-    exitModalClose.addEventListener('click', hideExitModal);
-  }
-  if (exitOverlay) {
-    exitOverlay.addEventListener('click', hideExitModal);
-  }
+  // Legacy exit intent script removed to prevent conflicts with lead_capture.js
 
   // ===================================================================
   // g) FOMO POPUP
