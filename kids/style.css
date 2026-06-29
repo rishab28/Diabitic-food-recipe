@@ -1351,13 +1351,8 @@ h1, h2, h3, h4 {
   
   /* Shift Crisp Chat Bubble up on mobile to avoid overlapping the sticky bar */
   .crisp-client, 
-  #crisp-chatbox,
-  div.crisp-client,
-  .crisp-client iframe,
-  iframe[id^="crisp-"] {
-    bottom: 85px !important;
-    transform: translateY(-70px) !important;
-    margin-bottom: 70px !important;
+  #crisp-chatbox {
+    margin-bottom: 75px !important;
   }
 }
 
