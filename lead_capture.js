@@ -8,7 +8,7 @@
 
 (function() {
   // CONFIGURATION: Set your webhook URL here (e.g. Google Sheets web app, Make.com, or Zapier)
-  const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzesOCZVHZJUVzlMWbkxMc93jUhSjAprHnVi64uznTJ5AoZx7n9SfkIteKb7dXfYSAJuQ/exec";
+  const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxLAG9bSL8rdr-0YYwXxM61al5QP6FXURZqiuqmbHlcSHRI1dTcolrGPVfrBXxvyW5dtA/exec";
   
   let leadModalInjected = false;
 
