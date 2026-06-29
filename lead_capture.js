@@ -164,7 +164,7 @@
     
     if (isKidsPage) {
       giftTitle = "🎁 WAIT! Get 3 Free Recipes + 1 Calendar + 50% OFF!";
-      giftSubtitle = "Enter your details below to claim your 50% discount coupon & download gifts instantly.";
+      giftSubtitle = "Fill this form to get 50% OFF (₹249 instead of ₹499) + your free gifts sent instantly!";
       discountCode = "KIDS50";
       paymentLink = "https://superprofile.bio/vp/FUIMWaYB?discountCode=KIDS50";
       gift1Name = "📥 Download 3 Free Recipes (PDF)";
@@ -172,11 +172,11 @@
       gift2Name = "📥 Download Empty Tiffin Calendar (Excel)";
       gift2Path = "deliverables/Empty_Tiffin_Calendar.xlsx";
     } else {
-      giftTitle = "🎁 WAIT! Get 3 Dessert Swaps + 1 Grocery List + 50% OFF!";
-      giftSubtitle = "Enter your details below to claim your 50% discount coupon & download gifts instantly.";
+      giftTitle = "🎁 WAIT! Get 7 Herbal Drinks & Kadha Recipes + 1 Grocery List + 50% OFF!";
+      giftSubtitle = "Fill this form to get 50% OFF (₹249 instead of ₹499) + your free gifts sent instantly!";
       discountCode = "KHADU50";
       paymentLink = "https://superprofile.bio/vp/FUIMWaYB?discountCode=KHADU50";
-      gift1Name = "📥 Download 3 Dessert Swaps (PDF)";
+      gift1Name = "📥 Download 7 Herbal Drinks & Kadha Recipes (PDF)";
       gift1Path = "final_deliverables_pdf_excel/Herbal_Drinks_Kadha_Recipes.pdf";
       gift2Name = "📥 Download Smart Grocery Lists (Excel)";
       gift2Path = "final_deliverables_pdf_excel/Smart_Grocery_Shopping_Lists.xlsx";
