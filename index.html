@@ -20,6 +20,19 @@
   <link rel="stylesheet" href="style.css?v=2.3" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍲</text></svg>" />
 
+  <!-- CRISP CHAT MOBILE OFFSET FORCE OVERRIDE -->
+  <style>
+    @media (max-width: 767px) {
+      body .crisp-client,
+      body .crisp-client > div,
+      body .crisp-client > div > div,
+      body #crisp-chatbox {
+        bottom: 95px !important;
+        margin-bottom: 95px !important;
+      }
+    }
+  </style>
+
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
