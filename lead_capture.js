@@ -297,15 +297,18 @@
     // Save lead locally as fallback
     localStorage.setItem('funnel_lead', JSON.stringify(payload));
     
-    // Post to Google Sheet / Webhook asynchronously
+    // Post to Google Sheet / Webhook asynchronously using form-urlencoded for maximum compatibility
     if (WEBHOOK_URL && !WEBHOOK_URL.includes("placeholder")) {
+      const formData = new URLSearchParams();
+      formData.append('name', name);
+      formData.append('phone', phone);
+      formData.append('email', email);
+      formData.append('url', window.location.href);
+
       fetch(WEBHOOK_URL, {
         method: "POST",
         mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
+        body: formData
       }).catch(err => console.log("Webhook fail:", err));
     }
     

@@ -24,22 +24,31 @@ Our landing pages now capture the **Name, WhatsApp, and Email** of users when th
 function doPost(e) {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    var data = JSON.parse(e.postData.contents);
+    
+    // Parse form parameters
+    var name = e.parameter.name || "";
+    var phone = e.parameter.phone || "";
+    var email = e.parameter.email || "";
+    var url = e.parameter.url || "";
     
     // Append a new row with lead details
     sheet.appendRow([
       new Date(),
-      data.name,
-      "'" + data.phone, // Prepended quote prevents Excel from formatting it as a scientific number
-      data.email,
-      data.url
+      name,
+      "'" + phone, // Prepended quote prevents scientific number formatting
+      email,
+      url
     ]);
     
-    return ContentService.createTextOutput(JSON.stringify({"status": "success"}))
-      .setMimeType(ContentService.MimeType.JSON);
+    return ContentService.createTextOutput("Success");
   } catch(err) {
-    return ContentService.createTextOutput(JSON.stringify({"status": "error", "message": err.message}))
-      .setMimeType(ContentService.MimeType.JSON);
+    // Fail-safe: Log error to Sheet so you know it failed
+    try {
+      var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+      sheet.appendRow([new Date(), "ERROR: " + err.message]);
+    } catch(sheetErr) {}
+    
+    return ContentService.createTextOutput("Error: " + err.message);
   }
 }
 ```
