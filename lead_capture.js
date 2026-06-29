@@ -1,16 +1,19 @@
 /**
- * Secret Swap Funnel - Lead Capture & Exit Intent System
+ * Secret Swap Funnel - Lead Capture, Exit Intent & Prefill Checkout System
  * Author: Priya & KhaduFarm Tech Team
- * Description: Intercepts exit intent to offer a high-value lead magnet bribe
- * (3 free recipes + 1 bonus guide + 50% OFF Coupon) and captures leads.
- * Normal checkout buttons remain direct and uninterrupted.
+ * Description: 
+ * - Diabetic funnel: Strict exit-intent popups only (Zero checkout friction).
+ * - Kids funnel: Opt-in modal on checkout CTA clicks + Exit-intent gifts popup.
+ * - Auto-prefill: When opt-in form is filled, user details are automatically
+ *   sent to Superprofile via query params, avoiding double data-entry!
  */
 
 (function() {
-  // CONFIGURATION: Set your webhook URL here (e.g. Google Sheets web app, Make.com, or Zapier)
+  // CONFIGURATION: Google Sheets webhook URL
   const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxLAG9bSL8rdr-0YYwXxM61al5QP6FXURZqiuqmbHlcSHRI1dTcolrGPVfrBXxvyW5dtA/exec";
   
   let leadModalInjected = false;
+  let targetPaymentUrl = ""; // Stores checkout destination URL if clicked from a CTA
 
   // Injected CSS Styles
   const style = document.createElement('style');
@@ -54,6 +57,9 @@
       padding: 22px 20px;
       text-align: center;
       position: relative;
+    }
+    .lead-header.checkout-theme {
+      background: linear-gradient(135deg, #FF7020, #FF5500);
     }
     .lead-header h3 {
       margin: 0;
@@ -115,6 +121,9 @@
     .lead-input:focus {
       border-color: #10B981;
     }
+    .lead-header.checkout-theme ~ .lead-body .lead-input:focus {
+      border-color: #FF7020;
+    }
     .lead-submit-btn {
       width: 100%;
       background: #10B981;
@@ -137,6 +146,13 @@
       background: #059669;
       transform: translateY(-1px);
     }
+    .lead-header.checkout-theme ~ .lead-body .lead-submit-btn {
+      background: #FF7020;
+      box-shadow: 0 5px 15px rgba(255, 112, 32, 0.25);
+    }
+    .lead-header.checkout-theme ~ .lead-body .lead-submit-btn:hover {
+      background: #E05300;
+    }
     .lead-trust {
       text-align: center;
       font-size: 0.7rem;
@@ -146,46 +162,26 @@
   `;
   document.head.appendChild(style);
 
-  // Injects Modal Elements to DOM
+  // Injects Modal Structure to DOM
   function injectModal() {
     if (leadModalInjected) return;
     
     const isKidsPage = window.location.href.includes("kids");
     
-    // Customize details based on funnel type
-    let giftTitle = "";
-    let giftSubtitle = "";
-    let discountCode = "";
-    let paymentLink = "";
-    let gift1Name = "";
-    let gift1Path = "";
-    let gift2Name = "";
-    let gift2Path = "";
-    
-    if (isKidsPage) {
-      giftTitle = "🎁 WAIT! Get 3 Free Recipes + 1 Calendar + 50% OFF!";
-      giftSubtitle = "Fill this form to get 50% OFF (₹249 instead of ₹499) + your free gifts sent instantly!";
-      discountCode = "KIDS50";
-      paymentLink = "https://superprofile.bio/vp/FUIMWaYB?discountCode=KIDS50";
-      gift1Name = "📥 Download 3 Free Recipes (PDF)";
-      gift1Path = "deliverables/Five_Minute_Breakfast_Guide.pdf";
-      gift2Name = "📥 Download Empty Tiffin Calendar (Excel)";
-      gift2Path = "deliverables/Empty_Tiffin_Calendar.xlsx";
-    } else {
-      giftTitle = "🎁 WAIT! Get 7 Herbal Drinks & Kadha Recipes + 1 Grocery List + 50% OFF!";
-      giftSubtitle = "Fill this form to get 50% OFF (₹249 instead of ₹499) + your free gifts sent instantly!";
-      discountCode = "KHADU50";
-      paymentLink = "https://superprofile.bio/vp/FUIMWaYB?discountCode=KHADU50";
-      gift1Name = "📥 Download 7 Herbal Drinks & Kadha Recipes (PDF)";
-      gift1Path = "final_deliverables_pdf_excel/Herbal_Drinks_Kadha_Recipes.pdf";
-      gift2Name = "📥 Download Smart Grocery Lists (Excel)";
-      gift2Path = "final_deliverables_pdf_excel/Smart_Grocery_Shopping_Lists.xlsx";
-    }
+    // Default exit-intent setup values (Diabetic as default, modified dynamically in openLeadModal)
+    let giftTitle = "🎁 WAIT! Get 7 Herbal Drinks & Kadha Recipes + 1 Grocery List + 50% OFF!";
+    let giftSubtitle = "Fill this form to get 50% OFF (₹249 instead of ₹499) + your free gifts sent instantly!";
+    let discountCode = isKidsPage ? "KIDS50" : "KHADU50";
+    let paymentLink = isKidsPage ? "https://superprofile.bio/vp/FUIMWaYB?discountCode=KIDS50" : "https://superprofile.bio/vp/FUIMWaYB?discountCode=KHADU50";
+    let gift1Name = isKidsPage ? "📥 Download 3 Free Recipes (PDF)" : "📥 Download 7 Herbal Drinks & Kadha Recipes (PDF)";
+    let gift1Path = isKidsPage ? "deliverables/Five_Minute_Breakfast_Guide.pdf" : "final_deliverables_pdf_excel/Herbal_Drinks_Kadha_Recipes.pdf";
+    let gift2Name = isKidsPage ? "📥 Download Empty Tiffin Calendar (Excel)" : "📥 Download Smart Grocery Lists (Excel)";
+    let gift2Path = isKidsPage ? "deliverables/Empty_Tiffin_Calendar.xlsx" : "final_deliverables_pdf_excel/Smart_Grocery_Shopping_Lists.xlsx";
     
     const modalHtml = `
       <div class="lead-backdrop" id="leadBackdrop">
         <div class="lead-modal">
-          <div class="lead-header">
+          <div class="lead-header" id="leadHeader">
             <button class="lead-close" id="leadCloseBtn">&times;</button>
             <h3 id="leadTitle">${giftTitle}</h3>
             <p id="leadSubtitle">${giftSubtitle}</p>
@@ -206,7 +202,7 @@
                 <input type="email" id="leadEmail" class="lead-input" placeholder="e.g. name@email.com" required />
               </div>
               
-              <button type="submit" class="lead-submit-btn">
+              <button type="submit" class="lead-submit-btn" id="leadSubmitBtn">
                 Claim My Gifts & 50% Discount →
               </button>
               
@@ -215,7 +211,7 @@
               </div>
             </form>
             
-            <!-- SUCCESS STATE / DOWNLOAD SCREEN -->
+            <!-- SUCCESS STATE / DOWNLOAD SCREEN (EXIT INTENT ONLY) -->
             <div id="leadSuccess" style="display: none; text-align: center;">
               <div style="font-size: 2.2rem; margin-bottom: 5px;">🎉</div>
               <h4 style="color: #10B981; font-size: 1.15rem; font-weight: 800; margin: 0 0 5px;">Gifts Unlocked & 50% OFF Applied!</h4>
@@ -223,9 +219,9 @@
               <!-- Discount Box -->
               <div style="background: #FFF3E0; border: 1.5px dashed #FF7020; border-radius: 12px; padding: 12px; margin-bottom: 15px;">
                 <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: #E65100; font-weight: 700; display: block; margin-bottom: 3px;">Exclusive Coupon Unlocked</span>
-                <strong style="font-size: 1.35rem; color: #D84315; letter-spacing: 1px; display: block; margin-bottom: 5px;">${discountCode}</strong>
+                <strong style="font-size: 1.35rem; color: #D84315; letter-spacing: 1px; display: block; margin-bottom: 5px;" id="successDiscountCode">${discountCode}</strong>
                 <p style="font-size: 0.82rem; color: #4E342E; margin: 0 0 10px; line-height: 1.4;">Claim the entire bundle at <b>50% OFF</b> (₹249 instead of ₹499) right now!</p>
-                <a href="${paymentLink}" class="lead-submit-btn" style="background: #FF7020; box-shadow: 0 4px 12px rgba(255, 112, 32, 0.3); text-decoration: none; margin: 0 auto; width: 100%; max-width: 320px; font-size: 0.95rem;">Claim 50% Off & Buy Now →</a>
+                <a id="successPaymentLink" href="${paymentLink}" class="lead-submit-btn" style="background: #FF7020; box-shadow: 0 4px 12px rgba(255, 112, 32, 0.3); text-decoration: none; margin: 0 auto; width: 100%; max-width: 320px; font-size: 0.95rem;">Claim 50% Off & Buy Now →</a>
               </div>
               
               <!-- Downloads Box -->
@@ -261,9 +257,54 @@
     leadModalInjected = true;
   }
 
-  function openLeadModal() {
+  function openLeadModal(isCheckoutModal = false, destinationUrl = "") {
     injectModal();
+    
     const backdrop = document.getElementById('leadBackdrop');
+    const header = document.getElementById('leadHeader');
+    const title = document.getElementById('leadTitle');
+    const subtitle = document.getElementById('leadSubtitle');
+    const submitBtn = document.getElementById('leadSubmitBtn');
+    
+    const isKidsPage = window.location.href.includes("kids");
+    targetPaymentUrl = isCheckoutModal ? destinationUrl : "";
+
+    // Reset view
+    document.getElementById('leadForm').style.display = 'block';
+    document.getElementById('leadSuccess').style.display = 'none';
+
+    if (isCheckoutModal) {
+      // Checkout CTA Click Theme
+      header.classList.add('checkout-theme');
+      title.innerHTML = "⚡ Complete Your Order";
+      subtitle.innerHTML = "Enter details to proceed to secure payment gateway";
+      submitBtn.innerHTML = "Proceed to Secure Payment →";
+    } else {
+      // Exit Intent Bribe Theme
+      header.classList.remove('checkout-theme');
+      submitBtn.innerHTML = "Claim My Gifts & 50% Discount →";
+      
+      if (isKidsPage) {
+        title.innerHTML = "🎁 WAIT! Get 3 Free Recipes + 1 Calendar + 50% OFF!";
+        subtitle.innerHTML = "Fill this form to get 50% OFF (₹249 instead of ₹499) + your free gifts sent instantly!";
+        document.getElementById('successDiscountCode').innerHTML = "KIDS50";
+        document.getElementById('successPaymentLink').setAttribute('href', "https://superprofile.bio/vp/FUIMWaYB?discountCode=KIDS50");
+        document.getElementById('giftBtn1').innerHTML = "📥 Download 3 Free Recipes (PDF)";
+        document.getElementById('giftBtn1').setAttribute('href', "deliverables/Five_Minute_Breakfast_Guide.pdf");
+        document.getElementById('giftBtn2').innerHTML = "📥 Download Empty Tiffin Calendar (Excel)";
+        document.getElementById('giftBtn2').setAttribute('href', "deliverables/Empty_Tiffin_Calendar.xlsx");
+      } else {
+        title.innerHTML = "🎁 WAIT! Get 7 Herbal Drinks & Kadha Recipes + 1 Grocery List + 50% OFF!";
+        subtitle.innerHTML = "Fill this form to get 50% OFF (₹249 instead of ₹499) + your free gifts sent instantly!";
+        document.getElementById('successDiscountCode').innerHTML = "KHADU50";
+        document.getElementById('successPaymentLink').setAttribute('href', "https://superprofile.bio/vp/FUIMWaYB?discountCode=KHADU50");
+        document.getElementById('giftBtn1').innerHTML = "📥 Download 7 Herbal Drinks & Kadha Recipes (PDF)";
+        document.getElementById('giftBtn1').setAttribute('href', "final_deliverables_pdf_excel/Herbal_Drinks_Kadha_Recipes.pdf");
+        document.getElementById('giftBtn2').innerHTML = "📥 Download Smart Grocery Lists (Excel)";
+        document.getElementById('giftBtn2').setAttribute('href', "final_deliverables_pdf_excel/Smart_Grocery_Shopping_Lists.xlsx");
+      }
+    }
+    
     backdrop.classList.add('active');
     
     // Facebook Lead Event Tracking
@@ -294,7 +335,7 @@
       timestamp: new Date().toISOString()
     };
 
-    // Save lead locally as fallback
+    // Save lead locally as fallback & for auto-prefill logic
     localStorage.setItem('funnel_lead', JSON.stringify(payload));
     
     // Post to Google Sheet / Webhook asynchronously using form-urlencoded for maximum compatibility
@@ -315,15 +356,30 @@
     // Facebook Lead Capture Event
     if (typeof fbq === 'function') {
       fbq('track', 'Lead', {
-        content_name: 'Exit Intent Gift Form',
+        content_name: targetPaymentUrl ? 'Checkout Opt-in Form' : 'Exit Intent Gift Form',
         value: 0.00,
         currency: 'INR'
       });
     }
 
-    // Toggle to success download state
-    document.getElementById('leadForm').style.display = 'none';
-    document.getElementById('leadSuccess').style.display = 'block';
+    if (targetPaymentUrl) {
+      // IF CLICKED FROM CHECKOUT CTA: Auto-prefill and redirect directly to payment gateway!
+      closeLeadModal();
+      const connector = targetPaymentUrl.includes('?') ? '&' : '?';
+      const prefilledUrl = targetPaymentUrl + connector + 
+        `name=${encodeURIComponent(name)}` +
+        `&email=${encodeURIComponent(email)}` +
+        `&phone=${encodeURIComponent(phone)}` +
+        `&mobile=${encodeURIComponent(phone)}`;
+        
+      setTimeout(function() {
+        window.location.href = prefilledUrl;
+      }, 150);
+    } else {
+      // IF CLICKED FROM EXIT INTENT: Show success download state + discount box!
+      document.getElementById('leadForm').style.display = 'none';
+      document.getElementById('leadSuccess').style.display = 'block';
+    }
   }
 
   // --- EXIT INTENT TRIGGER LOGIC ---
@@ -338,7 +394,7 @@
     if (localStorage.getItem('funnel_lead') && !isTestMode) return;
     
     exitIntentTriggered = true;
-    openLeadModal();
+    openLeadModal(false); // Open exit-intent layout (with free gifts)
   }
 
   // 1. Desktop Exit Intent (Mouse leaves top of window)
@@ -378,5 +434,44 @@
   document.addEventListener('keypress', resetTimer);
   document.addEventListener('touchstart', resetTimer);
   document.addEventListener('scroll', resetTimer);
+
+  // --- INTERCEPT CHECKOUT CTA BUTTONS ON KIDS PAGES ONLY ---
+  function hookCheckoutButtons() {
+    const isKidsPage = window.location.href.includes("kids");
+    if (!isKidsPage) return; // ONLY run checkout intercept logic on kids pages!
+
+    const buttons = document.querySelectorAll('a');
+    buttons.forEach(function(btn) {
+      const href = btn.getAttribute('href') || "";
+      // Intercept if it links to superprofile
+      if (href.includes("superprofile.bio") && !btn.id.includes("downsellCTA")) {
+        btn.addEventListener('click', function(e) {
+          // If they already filled out the lead form earlier, go straight to payment (pre-filled)
+          const savedLead = localStorage.getItem('funnel_lead');
+          if (savedLead) {
+            try {
+              const data = JSON.parse(savedLead);
+              const connector = href.includes('?') ? '&' : '?';
+              const prefilledUrl = href + connector + 
+                `name=${encodeURIComponent(data.name)}` +
+                `&email=${encodeURIComponent(data.email)}` +
+                `&phone=${encodeURIComponent(data.phone)}` +
+                `&mobile=${encodeURIComponent(data.phone)}`;
+              window.location.href = prefilledUrl;
+              return;
+            } catch(err) {}
+          }
+          
+          e.preventDefault();
+          openLeadModal(true, href); // Open checkout capture form layout
+        });
+      }
+    });
+  }
+
+  // Hook buttons
+  window.addEventListener('DOMContentLoaded', hookCheckoutButtons);
+  setTimeout(hookCheckoutButtons, 1000);
+  setTimeout(hookCheckoutButtons, 3000);
 
 })();
