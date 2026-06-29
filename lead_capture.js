@@ -2,7 +2,7 @@
  * Secret Swap Funnel - Lead Capture & Exit Intent System
  * Author: Priya & KhaduFarm Tech Team
  * Description: Intercepts exit intent to offer a high-value lead magnet bribe
- * (3 free recipes + 1 bonus guide) and captures WhatsApp/Email leads.
+ * (3 free recipes + 1 bonus guide + 50% OFF Coupon) and captures leads.
  * Normal checkout buttons remain direct and uninterrupted.
  */
 
@@ -51,13 +51,13 @@
     .lead-header {
       background: linear-gradient(135deg, #10B981, #059669);
       color: #FFFFFF;
-      padding: 25px 20px;
+      padding: 22px 20px;
       text-align: center;
       position: relative;
     }
     .lead-header h3 {
       margin: 0;
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       font-weight: 800;
       font-family: 'Outfit', 'Inter', sans-serif;
       line-height: 1.3;
@@ -69,8 +69,8 @@
     }
     .lead-close {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: 12px;
+      right: 12px;
       background: rgba(0,0,0,0.15);
       border: none;
       color: white;
@@ -89,25 +89,25 @@
       background: rgba(0,0,0,0.3);
     }
     .lead-body {
-      padding: 25px 25px 30px;
+      padding: 22px;
     }
     .lead-form-group {
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       text-align: left;
     }
     .lead-form-group label {
       display: block;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: #475569;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
     .lead-input {
       width: 100%;
-      padding: 11px 14px;
+      padding: 10px 13px;
       border: 1.5px solid #CBD5E1;
       border-radius: 10px;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       transition: border-color 0.2s;
       outline: none;
       color: #1E293B;
@@ -120,18 +120,18 @@
       background: #10B981;
       color: white;
       border: none;
-      padding: 13px;
-      font-size: 1.05rem;
+      padding: 12px;
+      font-size: 1rem;
       font-weight: 700;
       border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.25);
+      box-shadow: 0 5px 15px rgba(16, 185, 129, 0.25);
       transition: all 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      margin-top: 10px;
+      margin-top: 8px;
     }
     .lead-submit-btn:hover {
       background: #059669;
@@ -139,9 +139,9 @@
     }
     .lead-trust {
       text-align: center;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: #64748B;
-      margin-top: 15px;
+      margin-top: 12px;
     }
   `;
   document.head.appendChild(style);
@@ -152,24 +152,30 @@
     
     const isKidsPage = window.location.href.includes("kids");
     
-    // Customize copy based on Kids vs Diabetic funnel
+    // Customize details based on funnel type
     let giftTitle = "";
     let giftSubtitle = "";
+    let discountCode = "";
+    let paymentLink = "";
     let gift1Name = "";
     let gift1Path = "";
     let gift2Name = "";
     let gift2Path = "";
     
     if (isKidsPage) {
-      giftTitle = "🎁 Wait! Get 3 Free Recipes + 1 Tiffin Calendar Sheet!";
-      giftSubtitle = "Enter your details below to download them instantly on the next screen.";
+      giftTitle = "🎁 WAIT! Get 3 Free Recipes + 1 Calendar + 50% OFF!";
+      giftSubtitle = "Enter your details below to claim your 50% discount coupon & download gifts instantly.";
+      discountCode = "KIDS50";
+      paymentLink = "https://superprofile.bio/vp/FUIMWaYB?discountCode=KIDS50";
       gift1Name = "📥 Download 3 Free Recipes (PDF)";
       gift1Path = "deliverables/Five_Minute_Breakfast_Guide.pdf";
       gift2Name = "📥 Download Empty Tiffin Calendar (Excel)";
       gift2Path = "deliverables/Empty_Tiffin_Calendar.xlsx";
     } else {
-      giftTitle = "🎁 Wait! Get 3 Sugar-Safe Dessert Swaps + 1 Grocery List!";
-      giftSubtitle = "Enter your details below to download them instantly on the next screen.";
+      giftTitle = "🎁 WAIT! Get 3 Dessert Swaps + 1 Grocery List + 50% OFF!";
+      giftSubtitle = "Enter your details below to claim your 50% discount coupon & download gifts instantly.";
+      discountCode = "KHADU50";
+      paymentLink = "https://superprofile.bio/vp/FUIMWaYB?discountCode=KHADU50";
       gift1Name = "📥 Download 3 Dessert Swaps (PDF)";
       gift1Path = "final_deliverables_pdf_excel/Herbal_Drinks_Kadha_Recipes.pdf";
       gift2Name = "📥 Download Smart Grocery Lists (Excel)";
@@ -201,7 +207,7 @@
               </div>
               
               <button type="submit" class="lead-submit-btn">
-                Claim My Free Gifts Now →
+                Claim My Gifts & 50% Discount →
               </button>
               
               <div class="lead-trust">
@@ -211,19 +217,28 @@
             
             <!-- SUCCESS STATE / DOWNLOAD SCREEN -->
             <div id="leadSuccess" style="display: none; text-align: center;">
-              <div style="font-size: 3rem; margin-bottom: 10px;">🎉</div>
-              <h4 style="color: #10B981; font-size: 1.25rem; font-weight: 800; margin: 0 0 8px;">Access Granted! / Gift Unlock!</h4>
-              <p style="font-size: 0.88rem; color: #475569; margin: 0 0 20px; line-height: 1.5;">
-                Aapke free gifts niche ready hain. Click karke download karein:
-              </p>
+              <div style="font-size: 2.2rem; margin-bottom: 5px;">🎉</div>
+              <h4 style="color: #10B981; font-size: 1.15rem; font-weight: 800; margin: 0 0 5px;">Gifts Unlocked & 50% OFF Applied!</h4>
               
-              <div style="display: flex; flex-direction: column; gap: 10px;">
-                <a id="giftBtn1" href="${gift1Path}" class="lead-submit-btn" style="background: #10B981; text-decoration: none; margin: 0;" download>${gift1Name}</a>
-                <a id="giftBtn2" href="${gift2Path}" class="lead-submit-btn" style="background: #3B82F6; box-shadow: 0 6px 16px rgba(59, 130, 246, 0.25); text-decoration: none; margin: 0;" download>${gift2Name}</a>
+              <!-- Discount Box -->
+              <div style="background: #FFF3E0; border: 1.5px dashed #FF7020; border-radius: 12px; padding: 12px; margin-bottom: 15px;">
+                <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: #E65100; font-weight: 700; display: block; margin-bottom: 3px;">Exclusive Coupon Unlocked</span>
+                <strong style="font-size: 1.35rem; color: #D84315; letter-spacing: 1px; display: block; margin-bottom: 5px;">${discountCode}</strong>
+                <p style="font-size: 0.82rem; color: #4E342E; margin: 0 0 10px; line-height: 1.4;">Claim the entire bundle at <b>50% OFF</b> (₹249 instead of ₹499) right now!</p>
+                <a href="${paymentLink}" class="lead-submit-btn" style="background: #FF7020; box-shadow: 0 4px 12px rgba(255, 112, 32, 0.3); text-decoration: none; margin: 0 auto; width: 100%; max-width: 320px; font-size: 0.95rem;">Claim 50% Off & Buy Now →</a>
               </div>
               
-              <button id="leadContinueBtn" class="lead-submit-btn" style="background: #64748B; box-shadow: none; font-size: 0.9rem; padding: 10px; margin-top: 15px;">
-                Return to Page
+              <!-- Downloads Box -->
+              <div style="border-top: 1px solid #E2E8F0; padding-top: 12px; text-align: left;">
+                <span style="font-size: 0.78rem; font-weight: 700; color: #475569; display: block; margin-bottom: 8px; text-align: center;">📥 Download Your Free Gifts:</span>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                  <a id="giftBtn1" href="${gift1Path}" class="lead-submit-btn" style="background: #10B981; text-decoration: none; margin: 0; font-size: 0.9rem; padding: 9px;" download>${gift1Name}</a>
+                  <a id="giftBtn2" href="${gift2Path}" class="lead-submit-btn" style="background: #3B82F6; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2); text-decoration: none; margin: 0; font-size: 0.9rem; padding: 9px;" download>${gift2Name}</a>
+                </div>
+              </div>
+              
+              <button id="leadContinueBtn" class="lead-submit-btn" style="background: #64748B; box-shadow: none; font-size: 0.8rem; padding: 8px; margin-top: 15px; width: auto; display: inline-block;">
+                Close
               </button>
             </div>
           </div>
