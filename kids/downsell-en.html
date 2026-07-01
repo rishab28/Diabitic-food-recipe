@@ -105,6 +105,12 @@
           Your family's wellness should be complete. We are cutting the upgrade price from ₹999 down to **just ₹499** — so you don't miss out on complete family meal support!
         </p>
 
+        <!-- COUNTDOWN TIMER -->
+        <div class="countdown" id="upsellCountdown">
+          <div class="cd-box"><div class="n" id="cd-min">14</div><div class="l">Min</div></div>
+          <div class="cd-box"><div class="n" id="cd-sec">59</div><div class="l">Sec</div></div>
+        </div>
+
         <!-- Downsell Pitch Box -->
         <div style="background: #FFFDF9; border: 2px dashed #D84315; padding: 30px; border-radius: var(--radius-lg); text-align: left; margin: 30px 0; box-shadow: var(--shadow-md);">
           <h3 style="margin-bottom: 20px; font-size: 1.4rem; color: #D84315; text-align: center;">👇 Everything Included in the Family Health Upgrade (For ₹499 Only)</h3>
@@ -113,40 +119,39 @@
             🎟️ COUPON APPLIED: KIDS50 (50% Off VIP Upgrade)
           </div>
 
-          <div class="offer-list" style="gap: 20px;">
-            <div class="offer-item">
-              <span class="icon" style="background: rgba(216, 67, 21, 0.1);">🥗</span>
+          <ul class="check-list">
+            <li>
+              <span class="ic" style="color: #D84315;">✓</span>
               <div>
-                <h4>1. High-Protein Indian Meal Plans (For Parents)</h4>
-                <p>Traditional, easy-to-prep recipes designed for healthy metabolism, weight management, and daily physical energy.</p>
+                <span class="what-title">1. High-Protein Indian Meal Plans (For Parents)</span>
+                <span class="what-desc">Traditional, easy-to-prep recipes designed for healthy metabolism, weight management, and daily physical energy.</span>
               </div>
-            </div>
-            <div class="offer-item">
-              <span class="icon" style="background: rgba(216, 67, 21, 0.1);">👵</span>
+            </li>
+            <li>
+              <span class="ic" style="color: #D84315;">✓</span>
               <div>
-                <h4>2. Grandparents Wellness & Joint-Care Recipes</h4>
-                <p>Digestion-friendly recipes packed with calcium, fiber, and anti-inflammatory nutrients to support joints and metabolic wellness in elders.</p>
+                <span class="what-title">2. Grandparents Wellness & Joint-Care Recipes</span>
+                <span class="what-desc">Digestion-friendly recipes packed with calcium, fiber, and anti-inflammatory nutrients to support joints and metabolic wellness in elders.</span>
               </div>
-            </div>
-            <div class="offer-item">
-              <span class="icon" style="background: rgba(216, 67, 21, 0.1);">🚫</span>
+            </li>
+            <li>
+              <span class="ic" style="color: #D84315;">✓</span>
               <div>
-                <h4>3. "No-Sugar" Desi Desserts Guide</h4>
-                <p>Enjoy safe, natural sweets (Kheer, Halwa, Laddoo) without white processed sugar, using smart natural ingredients instead.</p>
+                <span class="what-title">3. "No-Sugar" Desi Desserts Guide</span>
+                <span class="what-desc">Enjoy safe, natural sweets (Kheer, Halwa, Laddoo) without white processed sugar, using smart natural ingredients instead.</span>
               </div>
-            </div>
-            <div class="offer-item">
-              <span class="icon" style="background: rgba(216, 67, 21, 0.1);">🛒</span>
+            </li>
+            <li>
+              <span class="ic" style="color: #D84315;">✓</span>
               <div>
-                <h4>4. Kitchen Toxic Chemical Audit</h4>
-                <p>Learn to easily scan food labels for hidden toxic emulsifiers, chemicals, and preservatives when shopping.</p>
+                <span class="what-title">4. Kitchen Toxic Chemical Audit & Grocery Checklist</span>
+                <span class="what-desc">Learn to easily scan food labels for hidden toxic emulsifiers, chemicals, and preservatives when shopping.</span>
               </div>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
 
         <div class="cta-container" style="margin: 0 auto; max-width: 500px;">
-          <!-- REPLACE THIS LINK WITH YOUR ₹499 DOWNSELL LINK FROM SUPERPROFILE -->
           <a href="https://superprofile.bio/vp/FUIMWaYB?discountCode=KIDS50" class="btn btn-primary btn-pulse" id="downsellCTA" style="background: #D84315; box-shadow: 0 6px 20px rgba(216, 67, 21, 0.3);">
             Yes! Upgrade My Order For Only ₹499 →
           </a>
@@ -165,8 +170,9 @@
     </div>
   </footer>
 
-  <!-- Meta Pixel click track -->
+  <!-- Scripts: Meta Pixel & Timer -->
   <script>
+    // Meta Pixel click track
     var downsellBtn = document.getElementById('downsellCTA');
     if (downsellBtn) {
       downsellBtn.addEventListener('click', function() {
@@ -179,6 +185,21 @@
         }
       });
     }
+
+    // Real session-based countdown (14:59 from page load)
+    (function(){
+      var total = 14*60 + 59;
+      var minEl = document.getElementById('cd-min');
+      var secEl = document.getElementById('cd-sec');
+      var tick = setInterval(function(){
+        if(total <= 0){clearInterval(tick);return;}
+        total--;
+        var m = Math.floor(total/60);
+        var s = total%60;
+        minEl.textContent = m<10?'0'+m:m;
+        secEl.textContent = s<10?'0'+s:s;
+      },1000);
+    })();
   </script>
 
 </body>

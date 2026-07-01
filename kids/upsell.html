@@ -128,40 +128,46 @@
           Picky eater bacche ki health ke sath-sath, aapke husband ka energy management, grandparents ki immunity, aur aapki apni fitness bhi utni hi important hai.
         </p>
 
+        <!-- COUNTDOWN TIMER -->
+        <div class="countdown" id="upsellCountdown">
+          <div class="cd-box"><div class="n" id="cd-min">14</div><div class="l">Min</div></div>
+          <div class="cd-box"><div class="n" id="cd-sec">59</div><div class="l">Sec</div></div>
+        </div>
+
         <!-- Upsell Pitch Box -->
         <div style="background: #FFFDF9; border: 2px dashed var(--primary); padding: 30px; border-radius: var(--radius-lg); text-align: left; margin: 30px 0; box-shadow: var(--shadow-md);">
           <h3 style="margin-bottom: 20px; font-size: 1.4rem; color: var(--primary); text-align: center;">👇 Upgrade to the Complete Family Health Blueprint (₹999 Only)</h3>
           
-          <div class="offer-list" style="gap: 20px;">
-            <div class="offer-item">
-              <span class="icon" style="background: rgba(79, 175, 80, 0.1);">🥗</span>
+          <ul class="check-list">
+            <li>
+              <span class="ic">✓</span>
               <div>
-                <h4>1. High-Protein Indian Meal Plans (For Parents)</h4>
-                <p>Husband aur aapki daily health ke liye high-protein, low-carb traditional recipes jo healthy metabolism aur energy badhane me madad karegi.</p>
+                <span class="what-title">1. High-Protein Indian Meal Plans (For Parents)</span>
+                <span class="what-desc">Husband aur aapki daily health ke liye high-protein, low-carb traditional recipes jo healthy metabolism aur energy badhane me madad karegi.</span>
               </div>
-            </div>
-            <div class="offer-item">
-              <span class="icon" style="background: rgba(79, 175, 80, 0.1);">👵</span>
+            </li>
+            <li>
+              <span class="ic">✓</span>
               <div>
-                <h4>2. Grandparents Wellness & Joint-Care Recipes</h4>
-                <p>Ghar ke bade-bujurgon ke liye calcium, fiber aur digestion-friendly Indian foods ki custom list jo unki general health aur active aging me madad karegi.</p>
+                <span class="what-title">2. Grandparents Wellness & Joint-Care Recipes</span>
+                <span class="what-desc">Ghar ke bade-bujurgon ke liye calcium, fiber aur digestion-friendly Indian foods ki custom list jo unki general health aur active aging me madad karegi.</span>
               </div>
-            </div>
-            <div class="offer-item">
-              <span class="icon" style="background: rgba(79, 175, 80, 0.1);">🚫</span>
+            </li>
+            <li>
+              <span class="ic">✓</span>
               <div>
-                <h4>3. "No-Sugar" Desi Desserts Guide</h4>
-                <p>Kheer, halwa aur laddoo banayein bina refined sugar ya harmful sweeteners ke. Sabse safe, natural aur delicious Indian sweets recipes.</p>
+                <span class="what-title">3. "No-Sugar" Desi Desserts Guide</span>
+                <span class="what-desc">Kheer, halwa aur laddoo banayein bina refined sugar ya harmful sweeteners ke. Sabse safe, natural aur delicious Indian sweets recipes.</span>
               </div>
-            </div>
-            <div class="offer-item">
-              <span class="icon" style="background: rgba(79, 175, 80, 0.1);">🛒</span>
+            </li>
+            <li>
+              <span class="ic">✓</span>
               <div>
-                <h4>4. Kitchen Toxic Chemical Audit</h4>
-                <p>Kaise identify karein ki jo refined oil, grocery aur packaged foods aap bacchon ke liye laa rahe hain, unme toxic chemicals to nahi? Smart shopping checklist.</p>
+                <span class="what-title">4. Kitchen Toxic Chemical Audit & Grocery Checklist</span>
+                <span class="what-desc">Kaise identify karein ki jo refined oil, grocery aur packaged foods aap bacchon ke liye laa rahe hain, unme toxic chemicals to nahi? Smart shopping checklist.</span>
               </div>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
 
         <div class="cta-container" style="margin: 0 auto; max-width: 500px;">
@@ -183,8 +189,9 @@
     </div>
   </footer>
 
-  <!-- Meta Pixel click track -->
+  <!-- Scripts: Meta Pixel & Timer -->
   <script>
+    // Meta Pixel click track
     var upsellBtn = document.getElementById('upsellCTA');
     if (upsellBtn) {
       upsellBtn.addEventListener('click', function() {
@@ -197,6 +204,21 @@
         }
       });
     }
+
+    // Real session-based countdown (14:59 from page load)
+    (function(){
+      var total = 14*60 + 59;
+      var minEl = document.getElementById('cd-min');
+      var secEl = document.getElementById('cd-sec');
+      var tick = setInterval(function(){
+        if(total <= 0){clearInterval(tick);return;}
+        total--;
+        var m = Math.floor(total/60);
+        var s = total%60;
+        minEl.textContent = m<10?'0'+m:m;
+        secEl.textContent = s<10?'0'+s:s;
+      },1000);
+    })();
   </script>
 
 </body>

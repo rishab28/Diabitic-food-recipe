@@ -102,8 +102,14 @@
         </h1>
         
         <p class="hero-subtitle" style="margin-top: 15px; font-size: 1.2rem;">
-          Aapki family wellness complete honi chahiye. Isliye hum standard price ₹999 ko cut karke use **sirf ₹499** kar rahe hain — taaki aap pure family plans miss na karein!
+          Kya price ki wajah se aap piche hat rahe hain? Hum de rahe hain 50% ki seedhi chhoot! Humne is upgrade ki price ₹999 se ghata kar **sirf ₹499** kar di hai tak ki aap baki family ki health support miss na karein.
         </p>
+
+        <!-- COUNTDOWN TIMER -->
+        <div class="countdown" id="upsellCountdown">
+          <div class="cd-box"><div class="n" id="cd-min">14</div><div class="l">Min</div></div>
+          <div class="cd-box"><div class="n" id="cd-sec">59</div><div class="l">Sec</div></div>
+        </div>
 
         <!-- Downsell Pitch Box -->
         <div style="background: #FFFDF9; border: 2px dashed #D84315; padding: 30px; border-radius: var(--radius-lg); text-align: left; margin: 30px 0; box-shadow: var(--shadow-md);">
@@ -113,40 +119,39 @@
             🎟️ COUPON APPLIED: KIDS50 (50% Off VIP Upgrade)
           </div>
 
-          <div class="offer-list" style="gap: 20px;">
-            <div class="offer-item">
-              <span class="icon" style="background: rgba(216, 67, 21, 0.1);">🥗</span>
+          <ul class="check-list">
+            <li>
+              <span class="ic" style="color: #D84315;">✓</span>
               <div>
-                <h4>1. High-Protein Indian Meal Plans (For Parents)</h4>
-                <p>Husband aur aapke liye high-protein traditional Indian recipes jo energy levels sustain rakhegi aur metabolism booster plans provide karegi.</p>
+                <span class="what-title">1. High-Protein Indian Meal Plans (For Parents)</span>
+                <span class="what-desc">Husband aur aapke liye high-protein traditional Indian recipes jo energy levels sustain rakhegi aur metabolism booster plans provide karegi.</span>
               </div>
-            </div>
-            <div class="offer-item">
-              <span class="icon" style="background: rgba(216, 67, 21, 0.1);">👵</span>
+            </li>
+            <li>
+              <span class="ic" style="color: #D84315;">✓</span>
               <div>
-                <h4>2. Grandparents Wellness & Joint-Care Recipes</h4>
-                <p>Ghar ke bade-bujurgon ke digestion aur active health ke liye calcium, fiber rich easily digestible local recipes list.</p>
+                <span class="what-title">2. Grandparents Wellness & Joint-Care Recipes</span>
+                <span class="what-desc">Ghar ke bade-bujurgon ke digestion aur active health ke liye calcium, fiber rich easily digestible local recipes list.</span>
               </div>
-            </div>
-            <div class="offer-item">
-              <span class="icon" style="background: rgba(216, 67, 21, 0.1);">🚫</span>
+            </li>
+            <li>
+              <span class="ic" style="color: #D84315;">✓</span>
               <div>
-                <h4>3. "No-Sugar" Desi Desserts Guide</h4>
-                <p>Safe natural Indian sweets recipes (Laddoo, Halwa, Kheer) bina processed refined sugar ke, dry fruits aur dates use karke.</p>
+                <span class="what-title">3. "No-Sugar" Desi Desserts Guide</span>
+                <span class="what-desc">Safe natural Indian sweets recipes (Laddoo, Halwa, Kheer) bina processed refined sugar ke, dry fruits aur dates use kheer.</span>
               </div>
-            </div>
-            <div class="offer-item">
-              <span class="icon" style="background: rgba(216, 67, 21, 0.1);">🛒</span>
+            </li>
+            <li>
+              <span class="ic" style="color: #D84315;">✓</span>
               <div>
-                <h4>4. Kitchen Toxic Chemical Audit</h4>
-                <p>Packaged foods aur groceries check-sheet jo chemical additives and hidden sugars ko identify karne me help karega.</p>
+                <span class="what-title">4. Kitchen Toxic Chemical Audit & Grocery Checklist</span>
+                <span class="what-desc">Packaged foods aur groceries check-sheet jo chemical additives and hidden sugars ko identify karne me help karega.</span>
               </div>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
 
         <div class="cta-container" style="margin: 0 auto; max-width: 500px;">
-          <!-- REPLACE THIS LINK WITH YOUR ₹499 DOWNSELL LINK FROM SUPERPROFILE -->
           <a href="https://superprofile.bio/vp/FUIMWaYB?discountCode=KIDS50" class="btn btn-primary btn-pulse" id="downsellCTA" style="background: #D84315; box-shadow: 0 6px 20px rgba(216, 67, 21, 0.3);">
             Yes! Upgrade My Order For Only ₹499 →
           </a>
@@ -165,8 +170,9 @@
     </div>
   </footer>
 
-  <!-- Meta Pixel click track -->
+  <!-- Scripts: Meta Pixel & Timer -->
   <script>
+    // Meta Pixel click track
     var downsellBtn = document.getElementById('downsellCTA');
     if (downsellBtn) {
       downsellBtn.addEventListener('click', function() {
@@ -179,6 +185,21 @@
         }
       });
     }
+
+    // Real session-based countdown (14:59 from page load)
+    (function(){
+      var total = 14*60 + 59;
+      var minEl = document.getElementById('cd-min');
+      var secEl = document.getElementById('cd-sec');
+      var tick = setInterval(function(){
+        if(total <= 0){clearInterval(tick);return;}
+        total--;
+        var m = Math.floor(total/60);
+        var s = total%60;
+        minEl.textContent = m<10?'0'+m:m;
+        secEl.textContent = s<10?'0'+s:s;
+      },1000);
+    })();
   </script>
 
 </body>
