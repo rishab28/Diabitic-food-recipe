@@ -131,15 +131,16 @@ h1, h2, h3, h4 {
 }
 
 .btn-primary {
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, #FF5A00 100%);
   color: white;
-  box-shadow: 0 10px 28px rgba(255, 112, 32, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 28px rgba(255, 112, 32, 0.3);
 }
 
 .btn-primary:hover {
-  background: var(--primary-hover);
+  background: linear-gradient(135deg, var(--primary-hover) 0%, #E35E14 100%);
   transform: translateY(-2px);
-  box-shadow: 0 14px 34px rgba(255, 112, 32, 0.45);
+  box-shadow: 0 14px 34px rgba(255, 112, 32, 0.4);
 }
 
 .btn-pulse {
@@ -258,20 +259,29 @@ h1, h2, h3, h4 {
 
 .floating-badge {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background: var(--accent-gold);
-  padding: 12px 20px;
+  bottom: 24px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 14px 22px;
   border-radius: var(--radius-md);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 32px rgba(45, 36, 30, 0.12);
   text-align: center;
+  animation: badgeFloat 3s ease-in-out infinite;
+}
+
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 .fb-stars {
-  color: white;
+  color: #FFB300;
   display: block;
-  font-size: 0.85rem;
-  margin-bottom: 2px;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
 }
 
 .fb-text {
@@ -353,11 +363,13 @@ h1, h2, h3, h4 {
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .framework-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(255, 112, 32, 0.08);
+  border-color: rgba(255, 112, 32, 0.3);
 }
 
 .fc-icon {
@@ -469,6 +481,12 @@ h1, h2, h3, h4 {
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-sm);
   position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.stack-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(255, 112, 32, 0.2);
 }
 
 .stack-item.core {
