@@ -3810,14 +3810,6 @@ footer {
     padding: 12px 14px 22px 14px;
   }
   
-  /* Shift Crisp Chat Bubble up on mobile to avoid overlapping the sticky bar */
-  .crisp-client,
-  .crisp-client > div,
-  .crisp-client > div > div,
-  #crisp-chatbox {
-    bottom: 95px !important;
-    margin-bottom: 95px !important;
-  }
 }
 
 

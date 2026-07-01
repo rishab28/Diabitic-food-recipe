@@ -12,8 +12,8 @@
   // CONFIGURATION: Google Sheets webhook URL
   const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxLAG9bSL8rdr-0YYwXxM61al5QP6FXURZqiuqmbHlcSHRI1dTcolrGPVfrBXxvyW5dtA/exec";
   
-  // CONFIGURATION: Crisp Live Chat Website ID (Replace with your free Crisp ID)
-  const CRISP_WEBSITE_ID = "006c10ee-efc7-4e1b-b7f8-267ffeceba79";
+  // CONFIGURATION: Crisp Live Chat Website ID (DISABLED)
+  const CRISP_WEBSITE_ID = "";
   
   let leadModalInjected = false;
   let targetPaymentUrl = ""; // Stores checkout destination URL if clicked from a CTA
@@ -478,23 +478,6 @@
   setTimeout(hookCheckoutButtons, 1000);
   setTimeout(hookCheckoutButtons, 3000);
 
-  // --- CRISP LIVE CHAT WIDGET INTEGRATION (Shopify Inbox alternative) ---
-  if (CRISP_WEBSITE_ID && CRISP_WEBSITE_ID !== "YOUR_CRISP_WEBSITE_ID") {
-    window.$crisp = [];
-    window.CRISP_WEBSITE_ID = CRISP_WEBSITE_ID;
-    
-    // Set vertical offset dynamically: 95px from bottom on mobile (to clear sticky CTA), 20px on desktop
-    const isMobile = window.innerWidth <= 767;
-    const verticalOffset = isMobile ? 95 : 20;
-    window.$crisp.push(["set", "chat:offset", [20, verticalOffset]]);
-    
-    (function() {
-      var d = document;
-      var s = d.createElement("script");
-      s.src = "https://client.crisp.chat/l.js";
-      s.async = 1;
-      d.getElementsByTagName("head")[0].appendChild(s);
-    })();
-  }
+  // --- CRISP LIVE CHAT WIDGET REMOVED ---
 
 })();
