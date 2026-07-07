@@ -46,20 +46,20 @@
 
   <!-- URGENCY HEADER -->
   <div class="upsell-header-bar" style="background: #D84315; color: white;">
-    ⚠️ WAIT! FINAL OFFER — 50% DISCOUNT ACTIVATED
+    ⚠️ SPECIAL UPGRADE OFFER — 50% SAVINGS ACTIVATED
   </div>
 
   <div class="upsell-progress-container" style="background: rgba(216, 67, 21, 0.05); padding: 15px; border-radius: 8px; text-align: center; margin: 20px auto; max-width: 600px; border: 1px dashed rgba(216, 67, 21, 0.3);">
-    <div class="upsell-progress-text" style="color: #D84315; font-weight: 700; font-size: 1.15rem; margin-bottom: 0;">🛑 Don't Leave Your Support System Behind!</div>
-    <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 5px 0 0 0;">I want to remove every single excuse. Get the exact same program for a final 50% off.</p>
+    <div class="upsell-progress-text" style="color: #D84315; font-weight: 700; font-size: 1.15rem; margin-bottom: 0;">🎁 Special Access Pricing Active</div>
+    <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 5px 0 0 0;">We want to make this program as accessible as possible. Upgrade your order for a final 50% off.</p>
   </div>
 
   <section class="upsell-hero">
     <h1 class="upsell-title">
-      I know ₹999 is a commitment... So let's make this an absolute <span class="highlight-yellow">NO-BRAINER</span> for you!
+      Let's make this an absolute <span class="highlight-yellow">NO-BRAINER</span> for you!
     </h1>
     <p class="upsell-subtitle" style="font-size: 1.25rem;">
-      I want to make sure you succeed. If price was the only thing holding you back, I am giving you a **One-Time Final Discount** to upgrade your journey right now.
+      I want to make sure your family has all the support they need. We've slashed the upgrade price for this session so that price is not a barrier to your progress.
     </p>
 
     <img src="upsell_mockup.webp" alt="90-Day Sugar-Safe System Bundle" class="upsell-product-image" style="max-width: 320px;" />
@@ -131,17 +131,38 @@
       <div class="upsell-price-subtext">One-Time Payment • Instant Access</div>
       
       <div style="display: flex; flex-direction: column; align-items: center; width: 100%; margin-top: 1rem;">
-        <!-- Checkout link updated to point to user's payment url -->
-        <a href="https://superprofile.bio/vp/Ro2FQ3-t?checkout=true" class="upsell-cta-btn" style="width: 100%; background: #D84315; box-shadow: 0 6px 20px rgba(216, 67, 21, 0.3);">Yes! Upgrade My Order for ₹499 (Use Code: KHADU50)</a>
-        <div style="font-size: 0.95rem; color: #D84315; font-weight: 700; margin-top: 8px; text-align: center;">👉 Apply coupon code <span style="background: #D84315; color: white; padding: 2px 6px; border-radius: 4px;">KHADU50</span> at checkout to slash price to ₹499!</div>
+        <!-- 
+          DEVELOPER NOTE (Russell Brunson Tip): 
+          To completely eliminate checkout friction, create a separate product on SuperProfile 
+          priced directly at ₹499 (no coupon required) and replace the href below with that URL!
+        -->
+        <a href="https://superprofile.bio/vp/Ro2FQ3-t?checkout=true" class="upsell-cta-btn" style="width: 100%; background: #D84315; box-shadow: 0 6px 20px rgba(216, 67, 21, 0.3);">Yes! Upgrade My Order for ₹499</a>
+        <div style="font-size: 0.95rem; color: #D84315; font-weight: 700; margin-top: 8px; text-align: center;">
+          👉 Apply coupon code <span id="couponCode" onclick="copyCoupon()" style="background: #D84315; color: white; padding: 2px 8px; border-radius: 4px; cursor: pointer; transition: all 0.2s;" title="Click to copy">KHADU50</span> <span id="copyStatus" style="font-size: 0.85rem; color: #10B981; margin-left: 8px; display: none;">✓ Copied!</span> at checkout to slash price to ₹499!
+        </div>
         <div style="font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 0.8rem;">🔒 100% Secure Checkout. UPI & Cards Accepted.</div>
       </div>
       
       <!-- No Thanks Link -->
       <div style="margin-top: 2rem;">
-        <a href="thankyou.html" class="upsell-no-thanks" style="color: #7F8C8D;">No thanks. I'll pass on this final 50% discount. I want to finalize my purchase and go to my download area.</a>
+        <a href="thankyou.html" class="upsell-no-thanks" style="color: #7F8C8D;">No thanks. I'll pass on this upgrade. I want to finalize my purchase and go to my download area.</a>
       </div>
     </div>
+
+    <script>
+    function copyCoupon() {
+      navigator.clipboard.writeText("KHADU50").then(() => {
+        const status = document.getElementById("copyStatus");
+        status.style.display = "inline";
+        const codeSpan = document.getElementById("couponCode");
+        codeSpan.style.background = "#10B981";
+        setTimeout(() => {
+          status.style.display = "none";
+          codeSpan.style.background = "#D84315";
+        }, 2000);
+      });
+    }
+    </script>
 
   </section>
 

@@ -41,10 +41,20 @@
 
   <script>
   if (typeof fbq === 'function') {
+    // 1. Track Purchase of the main Pro Bundle (since they paid and landed here)
+    fbq('track', 'Purchase', {
+      content_name: 'Secret Swap Pro Bundle',
+      content_category: 'Recipe eBook',
+      content_type: 'product',
+      value: 499.00,
+      currency: 'INR'
+    });
+
+    // 2. Track ViewContent of the Upsell Offer
     fbq('track', 'ViewContent', {
       content_name: '90-Day VIP System Upsell',
       content_type: 'product',
-      value: 999,
+      value: 999.00,
       currency: 'INR'
     });
   }
@@ -59,16 +69,16 @@
   </div>
 
   <div class="upsell-progress-container" style="background: rgba(16, 185, 129, 0.05); padding: 15px; border-radius: 8px; text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid rgba(16, 185, 129, 0.15);">
-    <div class="upsell-progress-text" style="color: var(--accent-green); font-weight: 700; font-size: 1.1rem; margin-bottom: 0;">✅ Order Confirmed! Your Secret Swap Recipe Vault is on its way.</div>
+    <div class="upsell-progress-text" style="color: var(--accent-green); font-weight: 700; font-size: 1.1rem; margin-bottom: 0;">✅ Order Confirmed! Your Kitchen Transformation Kit is on its way.</div>
     <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 5px 0 0 0;">As a special thank you, unlock this one-time kitchen system before you go...</p>
   </div>
 
   <section class="upsell-hero">
     <h1 class="upsell-title">
-      Congratulations on claiming your Secret Swap Recipe Vault! But before we complete your order... Do you want the exact <span class="highlight-yellow">"Plug-and-Play" System</span> to support your healthy journey?
+      Congratulations on claiming your Kitchen Transformation Kit! Accelerate your journey with the exact <span class="highlight-yellow">"Plug-and-Play" 90-Day VIP System</span>...
     </h1>
     <p class="upsell-subtitle" style="font-size: 1.3rem;">
-      Having recipes is step one. But knowing exactly <strong>when</strong> to eat, <strong>how much</strong> to eat, and having a <strong>bulletproof system that holds you accountable</strong> is the difference between giving up and building a lasting healthy lifestyle.
+      Having recipes and grocery lists is a great start. But knowing exactly <strong>when</strong> to eat, <strong>how much</strong> to eat, and having a <strong>structured daily framework</strong> makes building a consistent low-GI routine effortless.
     </p>
 
     <img src="upsell_mockup.webp" alt="90-Day Sugar-Safe System Bundle" class="upsell-product-image" />
@@ -82,11 +92,11 @@
         </div>
       </div>
 
-      <p><strong>Here is the sad truth:</strong> After thousands of people bought my recipes, I noticed a heartbreaking trend. 80% of them gave up after 2 weeks.</p>
-      <p>Why? Because planning meals every single day is exhausting. Deciding what to eat, calculating portions, and finding the motivation when you are tired... it's too much friction.</p>
-      <p>I realized I needed to create a system that takes over your brain and removes 100% of the guesswork.</p>
-      <p>What if I literally handed you a <strong>Plug-and-Play System</strong> where your only job is to just follow simple instructions?</p>
-      <p>Introducing the ultimate unfair advantage:</p>
+      <p><strong>Here is the reality of changing habits:</strong> After talking to hundreds of families using our recipes, I noticed a common pattern. Meal planning and daily decisions can quickly become overwhelming.</p>
+      <p>Why? Because deciding what to cook every single day takes time. Calculating flours, tracking grocery shopping, and planning menus when you are busy creates friction. This is called <strong>"Decision Fatigue"</strong>, and it is the #1 challenge families face when trying to build healthy routines.</p>
+      <p>I realized I needed to create a system that takes over your brain, removes 100% of the guesswork, and holds you by the hand every single day.</p>
+      <p>What if I literally handed you a <strong>Plug-and-Play Daily Action Plan</strong> where your only job is to just follow simple instructions?</p>
+      <p>Introducing the ultimate companion system to help you stay on track:</p>
       <h3 style="color: var(--text-primary); text-align: center; font-size: 1.8rem; margin-top: 1.5rem;">The 90-Day Sugar-Safe System</h3>
       <p style="text-align: center; color: var(--accent-green); font-weight: 700; margin-top: 1rem; font-size: 1.15rem;">
 
@@ -129,6 +139,15 @@
           <h4>"Print & Go" Smart Grocery Checklists</h4>
           <span class="bonus-value">Value: ₹999</span>
           <p>Hand this to your sabzi-wala or use it on Zepto. Buy exactly what you need for the week based on the 90-day plan. Zero waste, zero confusion.</p>
+        </div>
+      </div>
+
+      <div class="upsell-deliverable-item">
+        <div class="upsell-deliverable-icon">✅</div>
+        <div class="upsell-deliverable-text">
+          <h4>Private VIP WhatsApp Community & Check-Ins</h4>
+          <span class="bonus-value">Value: ₹2,499</span>
+          <p>You don't have to do this alone. Join our private support group of like-minded Indian families. Ask questions directly to Priya, share meal photos, get daily encouragement, and keep your motivation high every single day.</p>
         </div>
       </div>
 
@@ -195,7 +214,7 @@
       <p style="color: var(--text-secondary); margin-bottom: 2rem;">If you hired a premium dietician for 3 months, it would cost you at least ₹15,000.</p>
       
       <div class="total-value-box">
-        <h4>Total Real World Value: <span class="strike">₹8,994</span></h4>
+        <h4>Total Real World Value: <span class="strike">₹11,493</span></h4>
       </div>
 
       <div class="offer-stack-list">
@@ -204,6 +223,7 @@
           <li><span class="offer-stack-item-name">Sugar-Safe Habits Tracker</span> <span class="offer-stack-item-value">₹1,999</span></li>
           <li><span class="offer-stack-item-name">VIP Accountability Protocol</span> <span class="offer-stack-item-value">₹1,499</span></li>
           <li><span class="offer-stack-item-name">Smart Grocery Checklists</span> <span class="offer-stack-item-value">₹999</span></li>
+          <li><span class="offer-stack-item-name">Private VIP WhatsApp Community</span> <span class="offer-stack-item-value">₹2,499</span></li>
           <li><span class="offer-stack-item-name">Bonus 1: Wedding Cheat Code</span> <span class="offer-stack-item-value">₹999</span></li>
           <li><span class="offer-stack-item-name">Bonus 2: Safe Snacking Guide</span> <span class="offer-stack-item-value">₹499</span></li>
         </ul>

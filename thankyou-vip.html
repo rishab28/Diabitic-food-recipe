@@ -120,6 +120,19 @@
   fbq('init', '832552641809527'); // Meta Pixel ID inserted
   fbq('track', 'PageView');
   fbq('trackCustom', 'ThankYouVIPPageView');
+
+  // Track Purchase of the VIP System Upgrade
+  var upgradeValue = 999.00;
+  if (document.referrer && document.referrer.indexOf('downsell.html') !== -1) {
+    upgradeValue = 499.00;
+  }
+  fbq('track', 'Purchase', {
+    content_name: 'VIP System Upgrade',
+    content_category: 'Recipe eBook Upgrade',
+    content_type: 'product',
+    value: upgradeValue,
+    currency: 'INR'
+  });
   </script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=832552641809527&ev=PageView&noscript=1"
@@ -263,6 +276,22 @@
                 <span class="download-item-size">10 Traditional Wellness Drinks (PDF)</span>
               </div>
               <a href="final_deliverables_pdf_excel/Herbal_Drinks_Kadha_Recipes.pdf" class="btn btn-green" download style="padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
+            </div>
+
+            <div class="download-item" style="border: 1.5px solid var(--accent-green); background: rgba(16, 185, 129, 0.02);">
+              <div class="download-item-info">
+                <span class="download-item-title" style="color: var(--accent-green); font-weight: 600;">★ 1-Click Zepto & Blinkit Grocery Cheat Sheet</span>
+                <span class="download-item-size">Instant Sourcing Brand Guide (PDF)</span>
+              </div>
+              <a href="final_deliverables_pdf_excel/Zepto_Blinkit_One_Click_Grocery_List.pdf" class="btn btn-green" download style="padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
+            </div>
+
+            <div class="download-item" style="border: 1.5px solid var(--accent-green); background: rgba(16, 185, 129, 0.02);">
+              <div class="download-item-info">
+                <span class="download-item-title" style="color: var(--accent-green); font-weight: 600;">★ The Cook & Maid Training Sheet (Hinglish)</span>
+                <span class="download-item-size">1-Page Print-Ready Guide (PDF)</span>
+              </div>
+              <a href="final_deliverables_pdf_excel/Maid_Cook_Training_Guide_Hindi.pdf" class="btn btn-green" download style="padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
             </div>
           </div>
 

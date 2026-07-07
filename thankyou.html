@@ -212,6 +212,22 @@
               </div>
               <a href="final_deliverables_pdf_excel/Herbal_Drinks_Kadha_Recipes.pdf" class="btn btn-green" download style="padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
             </div>
+
+            <div class="download-item" style="border: 1.5px solid var(--accent-green); background: rgba(16, 185, 129, 0.02);">
+              <div class="download-item-info">
+                <span class="download-item-title" style="color: var(--accent-green); font-weight: 600;">★ 1-Click Zepto & Blinkit Grocery Cheat Sheet</span>
+                <span class="download-item-size">Instant Sourcing Brand Guide (PDF)</span>
+              </div>
+              <a href="final_deliverables_pdf_excel/Zepto_Blinkit_One_Click_Grocery_List.pdf" class="btn btn-green" download style="padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
+            </div>
+
+            <div class="download-item" style="border: 1.5px solid var(--accent-green); background: rgba(16, 185, 129, 0.02);">
+              <div class="download-item-info">
+                <span class="download-item-title" style="color: var(--accent-green); font-weight: 600;">★ The Cook & Maid Training Sheet (Hinglish)</span>
+                <span class="download-item-size">1-Page Print-Ready Guide (PDF)</span>
+              </div>
+              <a href="final_deliverables_pdf_excel/Maid_Cook_Training_Guide_Hindi.pdf" class="btn btn-green" download style="padding: 0.5rem 1rem; font-size: 0.82rem;">Download</a>
+            </div>
           </div>
 
           <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1.5rem; text-align: center;">
@@ -235,26 +251,46 @@
 
       <!-- SECOND CHANCE VIP UPGRADE -->
       <div class="upsell-section">
-        <span class="section-tag" style="justify-content:center; margin-bottom: 0.75rem; background: rgba(16, 185, 129, 0.1); color: var(--accent-green); display:inline-flex; padding:0.25rem 0.75rem; border-radius:20px; font-weight:bold; font-size:0.8rem;">Second Chance VIP Offer</span>
-        <h2>Access The 90-Day VIP System at 50% OFF</h2>
+        <span class="section-tag" style="justify-content:center; margin-bottom: 0.75rem; background: rgba(16, 185, 129, 0.1); color: var(--accent-green); display:inline-flex; padding:0.25rem 0.75rem; border-radius:20px; font-weight:bold; font-size:0.8rem;">Exclusive Upgrade Opportunity</span>
+        <h2>Did you pass on the 90-Day VIP System earlier?</h2>
         <p style="color: var(--text-secondary); max-width: 520px; margin: 0.5rem auto 2rem; font-size: 0.95rem;">
-          Get the complete 90-Day Master Meal Plan, Smart Trackers, Grocery Lists, and VIP Community Access.
+          It’s completely normal if you wanted to check out your core recipes first! But if you're ready to put your daily meal planning on autopilot and eliminate all guesswork, you can still unlock the **90-Day VIP System** right now at a special price.
         </p>
 
         <div class="price-card" style="text-align: left; padding: 2rem; background: var(--bg-card); max-width: 500px; margin: 0 auto; border: 1.5px solid var(--border-green); border-radius: var(--radius-lg);">
-          <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-green);">💎 Upgrade to 90-Day VIP System</h4>
+          <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-green);">💎 The "I'm Ready Now" VIP Upgrade</h4>
           <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.5;">
-            Includes the 90-Day Protocol, Accountability Trackers, Festival Cheat Code, and Safe Snacking Guide.
+            Includes the 90-Day Master Meal Plan, Smart Trackers, grocery lists, private community check-ins, and all festival guides.
           </p>
           <div style="font-size: 1.8rem; font-weight: 800; color: var(--accent-green); margin-bottom: 1rem;">
             ₹499 <span style="text-decoration: line-through; font-size: 1rem; color: var(--text-muted); font-weight: 400;">(Regular ₹999)</span>
           </div>
           <div style="background: rgba(16, 185, 129, 0.1); border: 1px dashed var(--accent-green); color: var(--accent-green); padding: 0.75rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; margin-bottom: 1.5rem;">
-            🎁 Use code <span style="background: var(--accent-green); color: white; padding: 2px 6px; border-radius: 4px;">KHADU50</span> on checkout to get 50% OFF!
+            🎁 Use code <span id="couponCode" onclick="copyCoupon()" style="background: var(--accent-green); color: white; padding: 2px 6px; border-radius: 4px; cursor: pointer; transition: all 0.2s;" title="Click to copy">KHADU50</span> <span id="copyStatus" style="font-size: 0.85rem; color: #10B981; margin-left: 8px; display: none;">✓ Copied!</span> on checkout to get 50% OFF!
           </div>
+          <!-- 
+            DEVELOPER NOTE (Russell Brunson Tip): 
+            For maximum conversion, create a separate product on SuperProfile priced directly at ₹499 
+            with no coupon code required, and replace the href below with that direct URL!
+          -->
           <a href="https://superprofile.bio/vp/Ro2FQ3-t?checkout=true" class="btn btn-green btn-pulse" style="width: 100%; text-align: center;">Upgrade to VIP System Now →</a>
         </div>
       </div>
+
+      <script>
+      function copyCoupon() {
+        navigator.clipboard.writeText("KHADU50").then(() => {
+          const status = document.getElementById("copyStatus");
+          status.style.display = "inline";
+          const codeSpan = document.getElementById("couponCode");
+          codeSpan.style.background = "#10B981";
+          setTimeout(() => {
+            status.style.display = "none";
+            codeSpan.style.background = "var(--accent-green)";
+          }, 2000);
+        });
+      }
+      </script>
     </div>
   </section>
 
