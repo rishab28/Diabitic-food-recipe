@@ -169,7 +169,7 @@
   function injectModal() {
     if (leadModalInjected) return;
     
-    const isKidsPage = window.location.href.includes("kids");
+    const isKidsPage = false;
     
     // Default exit-intent setup values (Diabetic as default, modified dynamically in openLeadModal)
     let giftTitle = "🎁 WAIT! Get 7 Herbal Drinks & Kadha Recipes + 1 Grocery List + 50% OFF!";
@@ -269,7 +269,7 @@
     const subtitle = document.getElementById('leadSubtitle');
     const submitBtn = document.getElementById('leadSubmitBtn');
     
-    const isKidsPage = window.location.href.includes("kids");
+    const isKidsPage = false;
     targetPaymentUrl = isCheckoutModal ? destinationUrl : "";
 
     // Reset view
@@ -440,7 +440,7 @@
 
   // --- INTERCEPT CHECKOUT CTA BUTTONS ON KIDS PAGES ONLY ---
   function hookCheckoutButtons() {
-    const isKidsPage = window.location.href.includes("kids");
+    const isKidsPage = false;
     if (!isKidsPage) return; // ONLY run checkout intercept logic on kids pages!
 
     const buttons = document.querySelectorAll('a');
