@@ -3993,3 +3993,318 @@ footer {
   color: var(--accent-green);
   font-weight: 800;
 }
+
+/* =========================================================================
+   2026 FUNNEL SUPERPOWERS: SUGAR SPIKE RISK CALCULATOR, WHATSAPP CTA & TOASTS
+   ========================================================================= */
+
+.calculator-section {
+  padding: 85px 0;
+  background: white;
+  border-top: 1.5px solid var(--border-subtle);
+  border-bottom: 1.5px solid var(--border-subtle);
+}
+
+.calculator-container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 45px;
+  background: #FFFDF9;
+  border: 1.5px solid rgba(230, 106, 21, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 45px;
+  box-shadow: 0 15px 40px rgba(230, 106, 21, 0.04);
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .calculator-container {
+    grid-template-columns: 1fr;
+    padding: 30px 20px;
+    gap: 35px;
+  }
+}
+
+.calculator-title {
+  font-size: 1.95rem;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+}
+
+.calculator-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.calc-group {
+  margin-bottom: 22px;
+  text-align: left;
+}
+
+.calc-label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.calc-select {
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-subtle);
+  background: white;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  outline: none;
+  font-family: var(--font-body);
+  transition: border-color 0.2s;
+  cursor: pointer;
+}
+.calc-select:focus {
+  border-color: var(--accent-primary);
+}
+
+.food-spike-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.food-item {
+  position: relative;
+}
+
+.food-item input {
+  position: absolute;
+  opacity: 0;
+  width: 0; height: 0;
+}
+
+.food-item label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 10px;
+  background: white;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  user-select: none;
+  text-align: center;
+}
+
+.food-item label:hover {
+  border-color: rgba(230, 106, 21, 0.3);
+  background: rgba(230, 106, 21, 0.01);
+}
+
+.food-item input:checked + label {
+  background: rgba(230, 106, 21, 0.05);
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(230, 106, 21, 0.08);
+}
+
+.food-emoji {
+  font-size: 1.8rem;
+  margin-bottom: 6px;
+}
+
+.food-item label strong {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+
+.food-desc {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+/* Results panel styles */
+.calc-results-panel {
+  background: white;
+  border: 1.5px solid rgba(230, 106, 21, 0.1);
+  border-radius: var(--radius-md);
+  padding: 35px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(45, 36, 30, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gauge-wrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin-bottom: 20px;
+}
+
+.gauge-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.gauge-bg {
+  fill: none;
+  stroke: #F1ECE3;
+  stroke-width: 8px;
+}
+
+.gauge-fill {
+  fill: none;
+  stroke: var(--accent-primary);
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-dasharray: 251.2;
+  stroke-dashoffset: 251.2;
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.175, 0.885, 0.32, 1);
+}
+
+.gauge-label {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-family: var(--font-body);
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.result-status {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--accent-red);
+  font-family: var(--font-body);
+}
+
+.result-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 25px;
+  min-height: 60px;
+}
+
+/* WhatsApp Order Button Style */
+.wa-order-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  margin: 15px auto 0 auto;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  max-width: 380px;
+}
+.wa-order-btn:hover {
+  background: #128C7E;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
+  color: white;
+}
+
+/* Simulated Social Proof Toast Style */
+.social-proof-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(230, 106, 21, 0.12);
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 10px 30px rgba(45, 36, 30, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 99999;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
+  max-width: 330px;
+}
+.social-proof-toast.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+.social-proof-icon {
+  font-size: 1.6rem;
+  background: rgba(230, 106, 21, 0.08);
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.social-proof-text {
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+  text-align: left;
+}
+.social-proof-text strong {
+  font-weight: 700;
+}
+.social-proof-time {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Shift Social Proof Toast up on mobile to avoid overlapping the sticky bar */
+@media (max-width: 767px) {
+  .social-proof-toast {
+    bottom: 95px !important;
+    left: 15px !important;
+    right: 15px !important;
+    max-width: calc(100% - 30px) !important;
+    padding: 10px 14px !important;
+  }
+  .social-proof-icon {
+    font-size: 1.3rem !important;
+    padding: 5px !important;
+  }
+  .social-proof-text {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* GSAP Pre-Animation states to prevent layout shifts */
+.gsap-reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  will-change: transform, opacity;
+}
+
+/* Fallback for disabled Javascript or Slow GSAP Load */
+.no-js .gsap-reveal,
+noscript .gsap-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}

@@ -67,7 +67,9 @@
     });
   }
   </script>
-
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
@@ -116,6 +118,10 @@
             <span>🔒 100% Secure 256-bit Encrypted Checkout. UPI & Cards Accepted.</span>
             <span style="font-size: 0.65rem; color: var(--text-muted); margin-top: 2px;">By proceeding, you agree to our terms & privacy policy in compliance with the Indian DPDP Act 2023.</span>
           </div>
+          <!-- 2026 Funnel Superpower: Direct WhatsApp Order Link -->
+          <a href="https://wa.me/918800123456?text=Hi%20Priya,%20I%20want%20to%20order%20the%20Diabetic-Friendly%20Secret%20Swap%20Recipe%20Vault%20for%20Rs.499.%20Please%20send%20UPI%20details." class="wa-order-btn" style="max-width: 400px;" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 6px;"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.907h.004c4.368 0 7.926-3.559 7.93-7.93a7.897 7.897 0 0 0-2.327-5.615zM7.994 14.52a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.69-4.86c-.2-.1-1.185-.584-1.37-.652-.185-.067-.32-.1-.454.1-.134.2-.52.652-.637.787-.117.135-.235.15-.435.05-.2-.1-.84-.31-1.598-.985-.59-.525-.985-1.175-1.1-1.372-.117-.197-.013-.304.087-.403.09-.09.2-.23.3-.346.1-.115.133-.197.2-.33.067-.133.033-.25-.017-.35-.05-.1-.454-1.096-.622-1.5-.163-.393-.343-.34-.454-.346-.11-.006-.235-.006-.36-.006a.719.719 0 0 0-.52.24c-.18.2-0.69.674-0.69 1.642 0 .968.705 1.902.803 2.035.1.133 1.386 2.116 3.357 2.967.469.203.835.324 1.12.415.47.15.897.129 1.235.078.377-.058 1.185-.484 1.352-.927.168-.444.168-.824.118-.927-.05-.1-.197-.15-.397-.25z"/></svg> Order Directly on WhatsApp (Pay via UPI)
+          </a>
         </div>
         <a href="#story" class="btn btn-secondary" style="margin-top: 1rem;">See The Backstory</a>
       </div>
@@ -179,6 +185,112 @@
     </div>
   </div>
 </div>
+
+<!-- ==================== INTERACTIVE SUGAR SPIKE & SWAP ASSESSMENT ==================== -->
+<section class="calculator-section" id="calculatorSection">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 35px;">
+      <span class="section-tag" style="justify-content:center; background: var(--accent-glow); color: var(--accent-primary); margin-bottom: 10px;">Assess Your Spike Risk</span>
+      <h2 class="calculator-title">Apna Sugar Spike Risk Aur Healthy Swaps Check Karein! 📊</h2>
+      <p class="calculator-subtitle">Niche un staple Indian foods ko select/tick karein jo aap din me khate hain, aur dekhein unka aapke blood sugar par kya asar padta hai:</p>
+    </div>
+
+    <div class="calculator-container">
+      <!-- Input Panel -->
+      <div class="calc-inputs-panel">
+        <div class="calc-group">
+          <label class="calc-label">Select the foods you eat regularly (Tick all that apply):</label>
+          <div class="food-spike-grid">
+            <div class="food-item">
+              <input type="checkbox" id="foodRice" value="rice" checked onchange="calculateSpikeRisk()">
+              <label for="foodRice">
+                <span class="food-emoji">🍚</span>
+                <strong>Safed Chawal (White Rice)</strong>
+                <span class="food-desc">High GI (~73) Staple</span>
+              </label>
+            </div>
+            <div class="food-item">
+              <input type="checkbox" id="foodRoti" value="roti" checked onchange="calculateSpikeRisk()">
+              <label for="foodRoti">
+                <span class="food-emoji">🫓</span>
+                <strong>Normal Gehu Roti</strong>
+                <span class="food-desc">Spikes sugar fast (GI ~62)</span>
+              </label>
+            </div>
+            <div class="food-item">
+              <input type="checkbox" id="foodPotato" value="potato" onchange="calculateSpikeRisk()">
+              <label for="foodPotato">
+                <span class="food-emoji">🥔</span>
+                <strong>Aloo Sabzi / Chips</strong>
+                <span class="food-desc">Very high GI (~78) starch</span>
+              </label>
+            </div>
+            <div class="food-item">
+              <input type="checkbox" id="foodTea" value="tea" checked onchange="calculateSpikeRisk()">
+              <label for="foodTea">
+                <span class="food-emoji">☕</span>
+                <strong>Chai / Coffee (With Sugar)</strong>
+                <span class="food-desc">Refined sucrose spike</span>
+              </label>
+            </div>
+            <div class="food-item">
+              <input type="checkbox" id="foodBiscuit" value="biscuit" onchange="calculateSpikeRisk()">
+              <label for="foodBiscuit">
+                <span class="food-emoji">🍪</span>
+                <strong>Maida Biscuits / Rusk</strong>
+                <span class="food-desc">Trans fats & refined flour</span>
+              </label>
+            </div>
+            <div class="food-item">
+              <input type="checkbox" id="foodJuice" value="juice" onchange="calculateSpikeRisk()">
+              <label for="foodJuice">
+                <span class="food-emoji">🧃</span>
+                <strong>Packed Juices / Sodas</strong>
+                <span class="food-desc">Liquid sugar (GI ~70)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-group" style="margin-top: 25px;">
+          <label class="calc-label" for="diabeticDuration">Aapko kab se diabetes / pre-diabetes hai?</label>
+          <select id="diabeticDuration" class="calc-select" onchange="calculateSpikeRisk()">
+            <option value="recent">Abhi haal hi me pata chala hai (Recent)</option>
+            <option value="medium" selected>1 se 5 saal se (1-5 Years)</option>
+            <option value="long">5 saal se zyada se (5+ Years)</option>
+            <option value="prediabetic">Pre-diabetic / Sugar control karna chahte hain</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Results Panel -->
+      <div class="calc-results-panel">
+        <div class="gauge-wrapper">
+          <svg class="gauge-svg" viewBox="0 0 100 100">
+            <circle class="gauge-bg" cx="50" cy="50" r="40" />
+            <circle class="gauge-fill" id="gaugeFill" cx="50" cy="50" r="40" />
+          </svg>
+          <div class="gauge-label" id="gaugeScore">0%</div>
+        </div>
+
+        <div class="result-status" id="resultStatus">CHECKING...</div>
+        <p class="result-desc" id="resultDesc">Please select your staple foods to evaluate your sugar spike risk index.</p>
+
+        <!-- Dynamic Objections & Swaps Info Box -->
+        <div id="calculatorSwapsArea" style="width:100%; display:none; text-align:left; margin-bottom: 20px; background: rgba(21, 128, 61, 0.04); border: 1.2px solid rgba(21, 128, 61, 0.12); padding: 15px; border-radius: 8px;">
+          <strong style="color: var(--accent-green); font-size: 0.9rem; display: block; margin-bottom: 6px;">💡 Suggested Smart Swaps to lower spikes:</strong>
+          <ul id="swapsList" style="font-size: 0.8rem; line-height: 1.5; color: var(--text-secondary); margin: 0; padding-left: 15px;">
+            <!-- Swaps dynamically inserted here -->
+          </ul>
+        </div>
+
+        <a href="#pricing" class="btn btn-pulse plan-cta" style="font-size: 1rem; padding: 14px 28px; width: 100%; text-decoration: none; color: white; display: inline-block; font-weight: bold; background: var(--accent-primary); border-radius: 8px; box-shadow: 0 4px 15px var(--accent-glow); text-align: center;">
+          Get Secret Swaps Recipe Vault To Fix This →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ==================== 8. PROBLEM SECTION ==================== -->
 <section class="problem-sec" id="problem">
@@ -487,6 +599,10 @@
             <span>🔒 100% Secure 256-bit Encrypted Checkout. UPI & Cards Accepted.</span>
             <span style="font-size: 0.65rem; color: var(--text-muted); margin-top: 2px;">By proceeding, you agree to our terms & privacy policy in compliance with the Indian DPDP Act 2023.</span>
           </div>
+          <!-- 2026 Funnel Superpower: Direct WhatsApp Order Link -->
+          <a href="https://wa.me/918800123456?text=Hi%20Priya,%20I%20want%20to%20order%20the%20Diabetic-Friendly%20Secret%20Swap%20Recipe%20Vault%20for%20Rs.499.%20Please%20send%20UPI%20details." class="wa-order-btn" style="margin-top: 15px;" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 6px;"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.907h.004c4.368 0 7.926-3.559 7.93-7.93a7.897 7.897 0 0 0-2.327-5.615zM7.994 14.52a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.69-4.86c-.2-.1-1.185-.584-1.37-.652-.185-.067-.32-.1-.454.1-.134.2-.52.652-.637.787-.117.135-.235.15-.435.05-.2-.1-.84-.31-1.598-.985-.59-.525-.985-1.175-1.1-1.372-.117-.197-.013-.304.087-.403.09-.09.2-.23.3-.346.1-.115.133-.197.2-.33.067-.133.033-.25-.017-.35-.05-.1-.454-1.096-.622-1.5-.163-.393-.343-.34-.454-.346-.11-.006-.235-.006-.36-.006a.719.719 0 0 0-.52.24c-.18.2-0.69.674-0.69 1.642 0 .968.705 1.902.803 2.035.1.133 1.386 2.116 3.357 2.967.469.203.835.324 1.12.415.47.15.897.129 1.235.078.377-.058 1.185-.484 1.352-.927.168-.444.168-.824.118-.927-.05-.1-.197-.15-.397-.25z"/></svg> Order Directly on WhatsApp (Pay via UPI)
+          </a>
         </div>
         <div class="payment-trust">
           <span>💳</span> <span>📱 UPI</span> <span>🏦 Net Banking</span>
@@ -1150,6 +1266,205 @@
       if (el) sectionObserver.observe(el);
     });
   }
+
+  // ===================================================================
+  // o) 2026 FUNNEL SUPERPOWERS: SUGAR SPIKE RISK CALCULATOR LOGIC
+  // ===================================================================
+  window.calculateSpikeRisk = function() {
+    const foodRice = document.getElementById('foodRice').checked;
+    const foodRoti = document.getElementById('foodRoti').checked;
+    const foodPotato = document.getElementById('foodPotato').checked;
+    const foodTea = document.getElementById('foodTea').checked;
+    const foodBiscuit = document.getElementById('foodBiscuit').checked;
+    const foodJuice = document.getElementById('foodJuice').checked;
+    
+    const diabeticDuration = document.getElementById('diabeticDuration').value;
+
+    let baseScore = 20; // baseline risk score
+    let swaps = [];
+
+    if (foodRice) {
+      baseScore += 25;
+      swaps.push("<strong>Safed Chawal Swap:</strong> Use Foxtail/Kodo Millet or Cauliflower Rice to drop Glycemic Load by 45%.");
+    }
+    if (foodRoti) {
+      baseScore += 20;
+      swaps.push("<strong>Wheat Roti Swap:</strong> Mix Ragi, Oats & Chana flour (Secret Mix, Page 14 of Ebook) instead of normal Gehu.");
+    }
+    if (foodPotato) {
+      baseScore += 20;
+      swaps.push("<strong>Aloo Swap:</strong> Replace with Sweet Potato (Shakarkandi) or pumpkin recipes inside the vault.");
+    }
+    if (foodTea) {
+      baseScore += 15;
+      swaps.push("<strong>Sugary Tea Swap:</strong> Use our organic herbal Kadha recipes or sweeten with Stevia.");
+    }
+    if (foodBiscuit) {
+      baseScore += 25;
+      swaps.push("<strong>Maida Biscuits Swap:</strong> Replace with our 5-Minute Roasted Masala Chana or Ragi crackers.");
+    }
+    if (foodJuice) {
+      baseScore += 30;
+      swaps.push("<strong>Liquid Sugar Swap:</strong> Whole fruits or fiber-rich low-GI raw juices only.");
+    }
+
+    // Duration multiplier
+    if (diabeticDuration === 'long') baseScore += 10;
+    else if (diabeticDuration === 'medium') baseScore += 5;
+    else if (diabeticDuration === 'prediabetic') baseScore -= 5;
+
+    const finalScore = Math.min(100, Math.max(10, baseScore));
+    
+    // Gauge Animation
+    const scoreEl = document.getElementById('gaugeScore');
+    const statusEl = document.getElementById('resultStatus');
+    const descEl = document.getElementById('resultDesc');
+    const swapsArea = document.getElementById('calculatorSwapsArea');
+    const swapsList = document.getElementById('swapsList');
+    const gaugeFill = document.getElementById('gaugeFill');
+
+    // Count score up
+    let currentScore = 0;
+    const duration = 800; // ms
+    const startTime = performance.now();
+
+    function animateScore(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      currentScore = Math.floor(progress * finalScore);
+      scoreEl.innerText = currentScore + '%';
+      
+      if (progress < 1) {
+        requestAnimationFrame(animateScore);
+      }
+    }
+    requestAnimationFrame(animateScore);
+
+    // SVG stroke offset logic
+    // circumference = 2 * PI * r = 2 * 3.14159 * 40 = 251.2
+    const offset = 251.2 - (251.2 * finalScore) / 100;
+    if (gaugeFill) {
+      gaugeFill.style.strokeDashoffset = offset;
+    }
+
+    // Risk Status and Copywriting outcomes
+    if (finalScore >= 75) {
+      statusEl.innerHTML = "CRITICAL SUGAR SPIKE RISK 🚨";
+      statusEl.style.color = "#dc2626"; // red
+      descEl.innerHTML = "Aapka daily diet sugar spikes ke liye <strong>extreme high-risk zone</strong> me hai. Normal Wheat Roti aur Safed Chawal milkar blood sugar ko tezi se badhate hain, jisse beta cells fatigue hote hain. Aapko turant <em>Low-GI food swaps</em> ki zaroorat hai.";
+    } else if (finalScore >= 45) {
+      statusEl.innerHTML = "HIGH SPIKE RISK ⚠️";
+      statusEl.style.color = "#d97706"; // gold
+      descEl.innerHTML = "Aapka diet <strong>moderate-to-high risk zone</strong> me aata hai. Aap kuch healthy meals le rahe hain, lekin choti choti mistakes (jaise evening biscuits ya subah ki chai) sugar control hone nahi de rahi hain. Secret Swap Recipe Vault inhi flaws ko seedhe theek karega.";
+    } else {
+      statusEl.innerHTML = "MODERATE RISK 📉";
+      statusEl.style.color = "#15803d"; // green
+      descEl.innerHTML = "Aapka risk score moderate hai, lekin safe zone me rehne ke liye aapko meal planning and preparation guidelines ko strictly follow karna hoga taaki pre-diabetic se revert kar sakein.";
+    }
+
+    // Insert Swaps
+    if (swaps.length > 0) {
+      swapsArea.style.display = 'block';
+      swapsList.innerHTML = swaps.map(swap => `<li style="margin-bottom: 6px;">${swap}</li>`).join('');
+    } else {
+      swapsArea.style.display = 'none';
+    }
+
+    // Send pixel custom event
+    if (typeof fbq === 'function') {
+      fbq('trackCustom', 'CalculatedSugarSpikeRisk', {
+        score: finalScore,
+        durationCategory: diabeticDuration,
+        staplesCount: swaps.length
+      });
+    }
+  };
+
+  // ===================================================================
+  // p) SIMULATED SOCIAL PROOF TOAST SYSTEM
+  // ===================================================================
+  function initSocialProofToast() {
+    const locations = ['Delhi', 'Mumbai', 'Bangalore', 'Gurugram', 'Noida', 'Pune', 'Hyderabad', 'Jaipur', 'Ahmedabad', 'Chandigarh', 'Kolkata', 'Chennai', 'Indore', 'Bhopal', 'Lucknow'];
+    const names = ['Ramesh', 'Sanjay', 'Sunita', 'Anil', 'Kamlesh', 'Rajesh', 'Vijay', 'Meena', 'Asha', 'Ritu', 'Mahendra', 'Suresh', 'Karan', 'Neelam', 'Rajeev'];
+    const actions = ['just claimed their 62% discount! 🎁', 'just ordered the Secret Swap Recipe Vault! 🍲', 'joined the VIP WhatsApp Community! 💬', 'unlocked the 7-Day Sugar Reset Protocol! 🛡️'];
+    const icons = ['🔥', '🍲', '💬', '🛡️', '🎁', '🥗'];
+
+    // Inject toast container to body
+    const toast = document.createElement('div');
+    toast.id = 'socialProofToast';
+    toast.className = 'social-proof-toast';
+    document.body.appendChild(toast);
+
+    function showRandomToast() {
+      const name = names[Math.floor(Math.random() * names.length)];
+      const loc = locations[Math.floor(Math.random() * locations.length)];
+      const action = actions[Math.floor(Math.random() * actions.length)];
+      const icon = icons[Math.floor(Math.random() * icons.length)];
+      const randomTime = Math.floor(Math.random() * 50) + 10;
+
+      toast.innerHTML = `
+        <span class="social-proof-icon">${icon}</span>
+        <div class="social-proof-text">
+          <strong>${name} (${loc})</strong> ${action}
+          <span class="social-proof-time">${randomTime} seconds ago</span>
+        </div>
+      `;
+
+      toast.classList.add('visible');
+
+      setTimeout(() => {
+        toast.classList.remove('visible');
+      }, 5000); // show for 5s
+    }
+
+    // Trigger toast alerts periodically
+    setTimeout(showRandomToast, 4000); // first toast at 4s
+    setInterval(showRandomToast, 12000); // subsequent toasts every 12s
+  }
+
+  // ===================================================================
+  // q) GSAP SCROLL REVEALS & INITIALIZATION
+  // ===================================================================
+  window.addEventListener('DOMContentLoaded', () => {
+    // Initial calculator check
+    calculateSpikeRisk();
+
+    // Init social proof
+    initSocialProofToast();
+
+    // GSAP Animation setup
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Pre-apply reveal triggers to specific elements
+      const revealElements = document.querySelectorAll('.hero-content, .hero-image, .credibility-bar, .calculator-container, .problem-sec, .pricing-card, .review-card');
+      revealElements.forEach(el => {
+        el.classList.add('gsap-reveal');
+      });
+
+      // Animate on scroll trigger
+      revealElements.forEach(el => {
+        gsap.to(el, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none'
+          }
+        });
+      });
+    } else {
+      // Fallback: If GSAP didn't load, make everything visible immediately
+      const revealElements = document.querySelectorAll('.hero-content, .hero-image, .credibility-bar, .calculator-container, .problem-sec, .pricing-card, .review-card');
+      revealElements.forEach(el => {
+        el.style.opacity = 1;
+        el.style.transform = 'none';
+      });
+    }
+  });
 
 })();
 </script>
