@@ -67,6 +67,75 @@
     });
   }
   </script>
+
+  <script>
+  (function() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      let ref = params.get('ref');
+      
+      // If not in URL, check cookies
+      if (!ref) {
+        const match = document.cookie.match(new RegExp('(^| )referral_code=([^;]+)'));
+        if (match) ref = decodeURIComponent(match[2]);
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        // 1. Dynamic Winner Generator (matching thankyou.html)
+        const nameEl = document.getElementById('index-winner-promo');
+        if (nameEl) {
+          const today = new Date();
+          const currentDay = today.getDay();
+          const daysSinceSunday = currentDay === 0 ? 7 : currentDay;
+          const lastSunday = new Date(today);
+          lastSunday.setDate(today.getDate() - daysSinceSunday);
+          
+          const dateString = lastSunday.toLocaleDateString('en-IN', { day: '2-digit', month: 'short' });
+          const seed = lastSunday.getFullYear() * 10000 + (lastSunday.getMonth() + 1) * 100 + lastSunday.getDate();
+          
+          const winners = [
+            { name: "Karan Johar (Mumbai)", upi: "ka***ar" },
+            { name: "Sunita Sharma (Delhi)", upi: "su****ma" },
+            { name: "Rahul Verma (Bengaluru)", upi: "ra****ma" },
+            { name: "Priya Patel (Ahmedabad)", upi: "pr****el" },
+            { name: "Amit Singh (Lucknow)", upi: "am****gh" },
+            { name: "Neha Gupta (Jaipur)", upi: "ne****ta" },
+            { name: "Sanjay Reddy (Hyderabad)", upi: "sa****dy" }
+          ];
+          
+          const winnerIndex = seed % winners.length;
+          const winner = winners[winnerIndex];
+          nameEl.innerHTML = `Last Sunday's Winner: <strong>${winner.name} (${winner.upi}@upi) won ₹5,000!</strong>`;
+        }
+
+        // 2. Setup Top Announcement Bar
+        const topAlert = document.getElementById('topAlert');
+        if (topAlert) {
+          if (ref && ref.startsWith('KIT-')) {
+            // Save/Refresh referral code in a 7-day cookie
+            const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toUTCString();
+            document.cookie = 'referral_code=' + encodeURIComponent(ref) +
+              '; expires=' + expires + '; path=/; SameSite=Lax';
+            console.log('📌 Referral code saved:', ref);
+
+            topAlert.innerHTML = `🎁 SPECIAL REFERRAL DEAL: Invited by <strong>${ref}</strong>! Get the 'Sugar-Safe Sweet Treats Vault' (Worth ₹399) FREE on purchase!`;
+            topAlert.style.background = 'linear-gradient(90deg, #b45309, #d97706)';
+            topAlert.style.color = '#fff';
+            topAlert.style.fontWeight = '800';
+          } else {
+            // Default Lottery Announcement
+            topAlert.innerHTML = `🍀 WEEKLY ₹5,000 CASH LUCKY DRAW: Register your order today to get free entry! (Sunday Draw Active)`;
+            topAlert.style.background = 'linear-gradient(90deg, #064e3b, #047857)';
+            topAlert.style.color = '#fff';
+            topAlert.style.fontWeight = '700';
+          }
+        }
+      });
+    } catch(e) {}
+  })();
+  </script>
+  <!-- ── END REFERRAL TRACKER ── -->
+
   <!-- GSAP CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -99,14 +168,36 @@
       </p>
 
       <!-- HORMOZI QUICK WIN -->
-      <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); padding: 0.8rem 1.5rem; border-radius: 8px; display: inline-block; margin-bottom: 2rem; max-width: 600px; text-align: left;">
+      <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); padding: 0.8rem 1.5rem; border-radius: 8px; display: inline-block; margin-bottom: 1.5rem; max-width: 600px; text-align: left;">
         <span style="color: var(--accent-green); font-weight: 700;">⚡ THE QUICK WIN:</span> <span style="color: var(--text-primary); font-size: 0.95rem;">Buy swap ingredients in 1-click tonight, print our maid guide, and enjoy healthy parathas tomorrow!</span>
       </div>
 
-      <div class="hero-timer-container" style="text-align: center; margin-bottom: 1.5rem; padding: 1rem; background: rgba(16, 185, 129, 0.08); border: 1px dashed var(--accent-green); border-radius: var(--radius-md);">
-        <div style="color: var(--accent-green); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">⚡ Launch Offer Discount:</div>
-        <div class="hero-countdown" style="font-size: 1.8rem; font-weight: 800; color: var(--text-primary);">62% OFF Launch Deal Active</div>
+      <!-- WEEKLY 5K LOTTERY PROMOTION -->
+      <div style="
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.05) 100%);
+        border: 1.5px solid rgba(245, 158, 11, 0.4);
+        border-radius: 12px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        text-align: left;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 4px 20px rgba(245, 158, 11, 0.1);
+      ">
+        <div style="font-size: 2.2rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">🍀</div>
+        <div style="flex: 1;">
+          <h4 style="color: #b45309; font-size: 0.95rem; font-weight: 800; margin: 0 0 2px 0; text-transform: uppercase; letter-spacing: 0.5px;">🔥 Weekly ₹5,000 Cash Draw Active!</h4>
+          <p style="color: var(--text-secondary); font-size: 0.82rem; margin: 0; line-height: 1.4;">
+            Every buyer tonight gets a <strong>FREE Lucky Draw Entry Ticket</strong>. <span id="index-winner-promo" style="color: var(--text-dark); font-weight: 700;">Loading last draw...</span>
+          </p>
+        </div>
       </div>
+
+
 
       <div class="hero-cta-row">
         <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
