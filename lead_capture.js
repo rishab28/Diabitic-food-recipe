@@ -407,25 +407,12 @@
     }
   });
 
-  // 2. Mobile Exit Intent (Back button intercept hack)
-  window.addEventListener('load', function() {
-    setTimeout(function() {
-      history.pushState({ exitIntent: true }, "", window.location.href);
-    }, 1000);
-  });
-  
-  window.addEventListener('popstate', function(e) {
-    if (e.state && e.state.exitIntent) {
-      triggerExitIntent();
-      history.pushState(null, "", window.location.href);
-    }
-  });
-
-  // 3. Mobile/Tablet Inactivity Timer (18 seconds)
+  // 2. Mobile/Tablet Inactivity Timer (60 seconds)
+  // Replaced back-button hijack to fully comply with Meta Ad Policies (Non-functional Landing Page / Circumventing Systems policies).
   let idleTime = 0;
   const idleInterval = setInterval(function() {
     idleTime += 1;
-    if (idleTime >= 18) {
+    if (idleTime >= 60) {
       triggerExitIntent();
       clearInterval(idleInterval);
     }
